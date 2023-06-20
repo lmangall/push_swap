@@ -5,6 +5,7 @@ https://www.youtube.com/watch?v=OaG81sDEpVk&ab_channel=Oceano
 https://www.geeksforgeeks.org/radix-sort/
 https://www.programiz.com/dsa/radix-sort
 https://medium.com/@ayogun/push-swap-c1f5d2d41e97
+https://sharkigamers.github.io/pushswap_epitech_project/
 
 
 # push_swap
@@ -98,6 +99,174 @@ To apply radix sort on push_swap, we will treat stack A as box 1 and stack B as 
 At the i-th bit from the right, if the i-th bit of the top number in stack A is 0, we perform the pb instruction to move the number to stack B. Otherwise, we perform the ra instruction to leave it in stack A. This process is similar to how numbers are placed in boxes in radix sort.
 
 After performing this operation for each number, they will be in the boxes corresponding to their digits.
+
+
+
+
+
+
+
+
+
+
+In C, a linked list is a data structure used to store a collection of elements. Unlike arrays, linked lists do not require contiguous memory allocation. Instead, each element in a linked list, known as a node, contains a value and a reference to the next node in the list.
+
+
+Here's an example of a basic implementation of a singly linked list in C:
+
+In this example, we define a structure called Node to represent a node in the linked list. It has two members: data to store the value of the node and next to point to the next node.
+
+The createNode function is used to create a new node by allocating memory dynamically using malloc. It takes the data value as a parameter and returns a pointer to the newly created node.
+
+The insertAtBeginning function inserts a new node at the beginning of the linked list. It creates a new node using createNode, sets its next pointer to the current head of the list, and updates the head to point to the new node.
+
+The insertAtEnd function inserts a new node at the end of the linked list. If the list is empty, it simply assigns the new node as the head. Otherwise, it traverses the list using a while loop until it reaches the last node and then adds the new node as the next node.
+
+The display function is used to print the elements of the linked list. It starts from the head and iterates through the list, printing each node's data.
+
+Finally, in the main function, we create a linked list, insert some nodes using insertAtEnd and insertAtBeginning, and display the resulting list using the display function.
+
+This is a basic implementation to get you started with linked lists in C. There are other operations you can perform on linked lists, such as deleting nodes, searching for a value, or inserting at a specific position.
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the structure for a node
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to create a new node
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to insert a node at the beginning of the list
+void insertAtBeginning(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    newNode->next = *head;
+    *head = newNode;
+}
+
+// Function to insert a node at the end of the list
+void insertAtEnd(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+    struct Node* current = *head;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+    current->next = newNode;
+}
+
+// Function to print the linked list
+void display(struct Node* head) {
+    struct Node* current = head;
+    while (current != NULL) {
+        printf("%d ", current->data);
+        current = current->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    struct Node* head = NULL;
+
+    // Insert some nodes
+    insertAtEnd(&head, 10);
+    insertAtEnd(&head, 20);
+    insertAtBeginning(&head, 5);
+
+    // Display the linked list
+    printf("Linked list: ");
+    display(head);
+
+    return 0;
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+In the context of the 42 push_swap project, you can use a linked list to implement a stack data structure. The push_swap project involves sorting a stack of integers using a limited set of operations.
+
+Here's a brief overview of how you can use a linked list to implement a stack for the push_swap project:
+
+Define the structure for a node:
+```c
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+Create functions to perform stack operations:
+```
+
+push: Insert a new element at the top of the stack.
+pop: Remove and return the top element from the stack.
+peek: Get the value of the top element without removing it.
+isEmpty: Check if the stack is empty.
+Implement these functions using the linked list structure:
+
+```c
+void push(Node** top, int data) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = data;
+    newNode->next = *top;
+    *top = newNode;
+}
+
+int pop(Node** top) {
+    if (isEmpty(*top)) {
+        printf("Error: Stack underflow!\n");
+        exit(EXIT_FAILURE);
+    }
+    Node* temp = *top;
+    int data = temp->data;
+    *top = (*top)->next;
+    free(temp);
+    return data;
+}
+
+int peek(Node* top) {
+    if (isEmpty(top)) {
+        printf("Error: Stack is empty!\n");
+        exit(EXIT_FAILURE);
+    }
+    return top->data;
+}
+
+int isEmpty(Node* top) {
+    return top == NULL;
+}
+```
+
+Utilize the stack functions in your push_swap algorithm:
+Use push to insert elements onto the stack as you read input or generate instructions.
+Use pop to retrieve elements from the stack when needed for sorting operations.
+Use peek to access the top element for comparisons or other operations.
+Use isEmpty to check if the stack is empty before performing any stack-related operations.
+By implementing a stack using a linked list, you can effectively manage the stack of integers in the push_swap project. The linked list structure allows for dynamic allocation and deallocation of nodes, providing flexibility in handling the stack operations.
+
 
 
 
