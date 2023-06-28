@@ -7,6 +7,9 @@ https://www.programiz.com/dsa/radix-sort
 https://medium.com/@ayogun/push-swap-c1f5d2d41e97
 https://sharkigamers.github.io/pushswap_epitech_project/
 
+Why using double pointers:
+https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/
+
 
 # push_swap
 Coding assignment from the 42 Berlin school : sort a stack of int in the most efficient way possible
