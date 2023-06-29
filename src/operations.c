@@ -89,6 +89,15 @@ int	rotate(t_list **stack, char *code)
 	return (0);
 }
 
+int rr(t_list **stack_a, t_list **stack_b)
+{
+	if ((lst_size(*stack_a) < 2) || (lst_size(*stack_b) < 2))
+		return (-1);
+	rotate(stack_a, "no msg");
+	rotate(stack_b, "no msg");
+	ft_putendl_fd("rr", 1);
+	return(0);
+}
 
 int	reverse_rotate(t_list **stack, char *code)
 {
@@ -113,14 +122,12 @@ int	reverse_rotate(t_list **stack, char *code)
 	return (0);
 }
 
-
-
-
-// int rotate(t_list **stack)
-// int ra(t_list **stack_a)
-// int rb(t_list **stack_b)
-// int rr(t_list **stack_a, t_list **stack_b)
-// int reverseRotate(t_list **stack)
-// int rra(t_list **stack_a)
-// int rrb(t_list **stack_b)
-// int rrr(t_list **stack_a, t_list **stack_b)
+int	rrr(t_list **stack_a, t_list **stack_b)
+{
+	if ((lst_size(*stack_a) < 2) || (lst_size(*stack_b) < 2))
+		return (-1);
+	reverse_rotate(stack_a, "no msg");
+	reverse_rotate(stack_b, "no msg");
+	ft_putendl_fd("rrr", 1);
+	return(0);
+}

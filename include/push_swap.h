@@ -124,7 +124,8 @@ int ss(t_list **stack_a, t_list **stack_b);
  */
 int push(t_list **stack_a, t_list **stack_b, char *code);
 /**
- * Rotate stack a (shifts all elements from bottom to top).
+ * Rotate stack a : Shift up all elements of stack a by 1.
+ * The first element becomes the last one.
  * 
  * @param stack Pointer to the stack.
  * @param code The operation code to print.
@@ -132,7 +133,8 @@ int push(t_list **stack_a, t_list **stack_b, char *code);
  */
 int	rotate(t_list **stack, char *code);
 /**
- * Reverse rotate stack a (shifts all elements from top to bottom).
+ * Reverse rotate stack: Shift down all elements of stack by 1.
+ * The last element becomes the first one.
  * 
  * @param stack Pointer to the stack.
  * @param code The operation code to print.
@@ -148,57 +150,25 @@ int	reverse_rotate(t_list **stack, char *code);
  */
 t_list	*ft_lstprev(t_list *lst, t_list *current);
 
-// /**
-//  * @brief Shift up all elements of stack a by 1. The first element becomes the last one.
-//  * 
-//  * @param stack_a A pointer to stack a.
-//  * @return int Returns 0 if successful, -1 otherwise.
-//  */
-// int ra(t_list **stack_a);
+/**
+ * Rotate stack a and stack b simultaneously: Shift up all elements of both stacks by 1.
+ * The first element becomes the last one in each stack.
+ * 
+ * @param stack_a Pointer to stack a.
+ * @param stack_b Pointer to stack b.
+ * @return 0 if successful, -1 if there are less than 2 elements in either stack.
+ */
+int	rr(t_list **stack_a, t_list **stack_b);
 
-// /**
-//  * @brief Shift up all elements of stack b by 1. The first element becomes the last one.
-//  * 
-//  * @param stack_b A pointer to stack b.
-//  * @return int Returns 0 if successful, -1 otherwise.
-//  */
-// int rb(t_list **stack_b);
-
-// /**
-//  * @brief Shift up all elements of stack a and stack b by 1.
-//  * 
-//  * @param stack_a A pointer to stack a.
-//  * @param stack_b A pointer to stack b.
-//  * @return int Returns 0 if successful, -1 otherwise.
-//  */
-// int rr(t_list **stack_a, t_list **stack_b);
-
-// /**
-//  * @brief Shift down all elements of stack a by 1. The last element becomes the first one.
-//  * 
-//  * @param stack_a A pointer to stack a.
-//  * @return int Returns 0 if successful, -1 otherwise.
-//  */
-// int rra(t_list **stack_a);
-
-// /**
-//  * @brief Shift down all elements of stack b by 1. The last element becomes the first one.
-//  * 
-//  * @param stack_b A pointer to stack b.
-//  * @return int Returns 0 if successful, -1 otherwise.
-//  */
-// int rrb(t_list **stack_b);
-
-// /**
-//  * @brief Shift down all elements of stack a and stack b by 1.
-//  * 
-//  * @param stack_a A pointer to stack a.
-//  * @param stack_b A pointer to stack b.
-//  * @return int Returns 0 if successful, -1 otherwise.
-//  */
-// int rrr(t_list **stack_a, t_list
-
-
+/**
+ * Reverse rotate stack a and stack b simultaneously: Shift down all elements of both stacks by 1.
+ * The last element becomes the first one in each stack.
+ * 
+ * @param stack_a Pointer to stack a.
+ * @param stack_b Pointer to stack b.
+ * @return 0 if successful, -1 if there are less than 2 elements in either stack.
+ */
+int	rrr(t_list **stack_a, t_list **stack_b);
 
 #endif
 
