@@ -4,7 +4,7 @@ SRCDIR = src
 INCDIR = include
 LIBFTDIR = lib/libft
 
-SRCS = $(SRCDIR)/push_swap.c $(SRCDIR)/list_manip.c $(SRCDIR)/binary.c
+SRCS = $(SRCDIR)/push_swap.c $(SRCDIR)/list_manip.c $(SRCDIR)/binary.c $(SRCDIR)/operations.c
 OBJS = $(patsubst $(SRCDIR)/%.c, $(SRCDIR)/%.o, $(SRCS))
 
 CC = gcc

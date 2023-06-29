@@ -11,6 +11,8 @@
 		"vector": "c",
 		"iterator": "c",
 		"utility": "c",
-		"ios": "c"
+		"ios": "c",
+		"chrono": "c",
+		"variant": "c"
 	}
 }

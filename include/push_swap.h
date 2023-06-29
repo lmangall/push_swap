@@ -74,6 +74,112 @@ int lst_size(t_list *head);
  */
 void assign_index_by_value(t_list *stack);
 int	print_binary(int num);
+
+
+//sorting operations
+/**
+ * @brief Swap the first 2 elements at the top of stack a.
+ * 
+ * @param stack A pointer to the stack a.
+ * @return int Returns 0 if successful, -1 otherwise.
+ */
+int swap(t_list **stack);
+
+/**
+ * @brief Swap the first 2 elements at the top of stack a.
+ * 
+ * @param stack_a A pointer to stack a.
+ * @return int Returns 0 if successful, -1 otherwise.
+ */
+int sa(t_list **stack_a);
+
+// /**
+//  * @brief Swap the first 2 elements at the top of stack b.
+//  * 
+//  * @param stack_b A pointer to stack b.
+//  * @return int Returns 0 if successful, -1 otherwise.
+//  */
+// int sb(t_list **stack_b);
+
+// /**
+//  * @brief Swap stack a and stack b.
+//  * 
+//  * @param stack_a A pointer to stack a.
+//  * @param stack_b A pointer to stack b.
+//  * @return int Returns 0 if successful, -1 otherwise.
+//  */
+// int ss(t_list **stack_a, t_list **stack_b);
+
+// /**
+//  * @brief Take the first element at the top of stack b and put it at the top of stack a.
+//  * 
+//  * @param stack_a A pointer to stack a.
+//  * @param stack_b A pointer to stack b.
+//  * @return int Returns 0 if successful, -1 otherwise.
+//  */
+// int pa(t_list **stack_a, t_list **stack_b);
+
+// /**
+//  * @brief Take the first element at the top of stack a and put it at the top of stack b.
+//  * 
+//  * @param stack_a A pointer to stack a.
+//  * @param stack_b A pointer to stack b.
+//  * @return int Returns 0 if successful, -1 otherwise.
+//  */
+// int pb(t_list **stack_a, t_list **stack_b);
+
+// /**
+//  * @brief Shift up all elements of stack a by 1. The first element becomes the last one.
+//  * 
+//  * @param stack_a A pointer to stack a.
+//  * @return int Returns 0 if successful, -1 otherwise.
+//  */
+// int ra(t_list **stack_a);
+
+// /**
+//  * @brief Shift up all elements of stack b by 1. The first element becomes the last one.
+//  * 
+//  * @param stack_b A pointer to stack b.
+//  * @return int Returns 0 if successful, -1 otherwise.
+//  */
+// int rb(t_list **stack_b);
+
+// /**
+//  * @brief Shift up all elements of stack a and stack b by 1.
+//  * 
+//  * @param stack_a A pointer to stack a.
+//  * @param stack_b A pointer to stack b.
+//  * @return int Returns 0 if successful, -1 otherwise.
+//  */
+// int rr(t_list **stack_a, t_list **stack_b);
+
+// /**
+//  * @brief Shift down all elements of stack a by 1. The last element becomes the first one.
+//  * 
+//  * @param stack_a A pointer to stack a.
+//  * @return int Returns 0 if successful, -1 otherwise.
+//  */
+// int rra(t_list **stack_a);
+
+// /**
+//  * @brief Shift down all elements of stack b by 1. The last element becomes the first one.
+//  * 
+//  * @param stack_b A pointer to stack b.
+//  * @return int Returns 0 if successful, -1 otherwise.
+//  */
+// int rrb(t_list **stack_b);
+
+// /**
+//  * @brief Shift down all elements of stack a and stack b by 1.
+//  * 
+//  * @param stack_a A pointer to stack a.
+//  * @param stack_b A pointer to stack b.
+//  * @return int Returns 0 if successful, -1 otherwise.
+//  */
+// int rrr(t_list **stack_a, t_list
+
+
+
 #endif
 
 

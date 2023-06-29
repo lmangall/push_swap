@@ -70,6 +70,10 @@ int main(int argc, char **argv)
 	printf("\nContents of stack_a (printed from the linked list)):\n");
 	print_list(*stack_a);
 
+	swap(stack_a);
+	printf("\nstack_a has %d elements\n", lst_size(*stack_a));
+	printf("\nContents of stack_a (printed from the linked list)):\n");
+	print_list(*stack_a);
 
 	//a function "int index_to_binaryindex(int index_base10) that transform a base 10 number into binary
 
