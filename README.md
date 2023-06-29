@@ -1,14 +1,14 @@
+- [Useful ressources:](https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e)
+- [https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e](https://www.youtube.com/watch?v=OaG81sDEpVk&ab_channel=Oceano)
+- [https://www.youtube.com/watch?v=OaG81sDEpVk&ab_channel=Oceano](https://www.geeksforgeeks.org/radix-sort/)
+- [https://www.geeksforgeeks.org/radix-sort/](https://www.programiz.com/dsa/radix-sort)
+- [https://www.programiz.com/dsa/radix-sort](https://medium.com/@ayogun/push-swap-c1f5d2d41e97)
+- [https://medium.com/@ayogun/push-swap-c1f5d2d41e97](https://sharkigamers.github.io/pushswap_epitech_project/)
+- [https://sharkigamers.github.io/pushswap_epitech_project/](https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/)
 
-Useful ressources:
-https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
-https://www.youtube.com/watch?v=OaG81sDEpVk&ab_channel=Oceano
-https://www.geeksforgeeks.org/radix-sort/
-https://www.programiz.com/dsa/radix-sort
-https://medium.com/@ayogun/push-swap-c1f5d2d41e97
-https://sharkigamers.github.io/pushswap_epitech_project/
+Regarding the use of double pointers:
+- [Why using double pointers](https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/)
 
-Why using double pointers:
-https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/
 
 
 # push_swap

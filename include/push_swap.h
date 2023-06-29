@@ -11,6 +11,8 @@
 
 # include "../lib/libft/src/libft.h"
 
+#define NO_IDX -1
+
 typedef struct	s_list
 {
 	int				index;
@@ -53,6 +55,24 @@ t_list	*ft_lstnew(int value);
  */
 t_list *ft_lstlast(t_list *lst);
 void stack_ini(t_list **stack, int argc, char **argv);
+/**
+ * @brief Returns the size of a linked list.
+ *
+ * This function calculates the number of nodes in a linked list.
+ *
+ * @param head Pointer to the head of the linked list.
+ * @return The size of the linked list.
+ */
+int lst_size(t_list *head);
+/**
+ * @brief Assigns an index to each node in the linked list based on their values.
+ *
+ * This function iterates through the linked list and assigns an index value to each node
+ * based on their values. Nodes with smaller values are assigned lower indices, starting from 0.
+ *
+ * @param stack Pointer to the head of the linked list.
+ */
+void assign_index_by_value(t_list *stack);
 
 #endif
 

@@ -12,11 +12,11 @@
  * This function iterates through the linked list starting from the given head
  * and prints the index and value of each node.
  *
- * @param list Pointer to the head of the linked list.
+ * @param head Pointer to the head of the linked list.
  */
-void print_list(const t_list *list)
+void print_list(const t_list *head)
 {
-    const t_list *current = list;
+    const t_list *current = head;
 
     while (current != NULL)
     {
@@ -25,12 +25,26 @@ void print_list(const t_list *list)
     }
 }
 
+// void print_list(t_list *head)
+// {
+// 	t_list	*tmp;
+
+// 	tmp = head;
+// 	while (tmp != NULL)
+// 	{
+// 		ft_putnbr_fd(tmp->value, 1);
+// 		ft_putendl_fd("", 1);
+// 		tmp = tmp->next;
+// 	}
+// }
+
+
 void stack_ini(t_list **stack, int argc, char **argv)
 {
 	int		i;
 	t_list *new_list;
 
-	i = 0;
+	i = 1;
 	// t_list = new_lst;
 
 	// go over the args (values), create a list for each and add it to the stack
@@ -58,6 +72,8 @@ int main(int argc, char **argv)
 	*stack_b = NULL;
 	stack_ini(stack_a, argc, argv);
 
+	assign_index_by_value(*stack_a);
+
 	// Print the contents of stack_a
 	printf("Contents of stack_a:\n");
 	print_list(*stack_a);
@@ -70,6 +86,11 @@ int main(int argc, char **argv)
 		printf("argv[%d] = %s\n", i, argv[i]);
 		i++;
 	}
+
+	printf("\nlst_size = %d\n", lst_size(*stack_a));
+
+
+	// printf("\nmax_index = %d\n", set_maxindex(*stack_a));
 
 	// 	sort_stack(stack_a, stack_b);
 	// free_stack(stack_a);
