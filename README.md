@@ -26,17 +26,17 @@ Operations: A limited set of operations is provided to manipulate the stacks. Th
 
 | Code  | Instruction                         | Action                                                 |
 | ----- | ----------------------------------- | ------------------------------------------------------ |
-| `sa`  | swap a                              | swaps the 2 top elements of stack a                    |
-| `sb`  | swap b                              | swaps the 2 top elements of stack b                    |
-| `ss`  | swap a + swap b                     | both `sa` and `sb`                                     |
-| `pa`  | push a                              | moves the top element of stack b at the top of stack a |
-| `pb`  | push b                              | moves the top element of stack a at the top of stack b |
-| `ra`  | rotate a                            | shifts all elements of stack a from bottom to top      |
-| `rb`  | rotate b                            | shifts all elements of stack b from bottom to top      |
-| `rr`  | rotate a + rotate b                 | both `ra` and `rb`                                     |
-| `rra` | reverse rotate a                    | shifts all elements of stack a from top to bottom      |
-| `rrb` | reverse rotate b                    | shifts all elements of stack b from top to bottom      |
-| `rrr` | reverse rotate a + reverse rotate b | both `rra` and `rrb`                                   |
+| `sa`  | swap a                              | Swaps the 2 top elements of stack a                    |
+| `sb`  | swap b                              | Swaps the 2 top elements of stack b                    |
+| `ss`  | swap a + swap b                     | Both `sa` and `sb`                                     |
+| `pa`  | push a                              | Moves the top element of stack b at the top of stack a |
+| `pb`  | push b                              | Moves the top element of stack a at the top of stack b |
+| `ra`  | rotate a                            | Shift up all elements of stack a by 1                  |
+| `rb`  | rotate b                            | Shift up all elements of stack b by 1                  |
+| `rr`  | rotate a + rotate b                 | Both `ra` and `rb`                                     |
+| `rra` | reverse rotate a                    | Shift down all elements of stack a by 1                |
+| `rrb` | reverse rotate b                    | Shift down all elements of stack b by 1                |
+| `rrr` | reverse rotate a + reverse rotate b | Both `rra` and `rrb`                                   |
 
 The program should follow specific formatting rules for the output.
 Algorithm Complexity: The project places importance on developing an efficient algorithm. The number of operations performed should be limited, and the algorithm should sort the stack within a specific range of allowed operations.

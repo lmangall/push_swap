@@ -92,7 +92,7 @@ int main(int argc, char **argv)
 	printf("\nContents of stack_b:\n");
 	print_list(*stack_b);
 
-	push(stack_a, stack_b, "pa");
+	rotate(stack_a, "ra");
 	printf("\nstack_a has %d elements\n", lst_size(*stack_a));
 	printf("\nContents of stack_a:\n");
 	print_list(*stack_a);

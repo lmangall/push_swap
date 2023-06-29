@@ -67,8 +67,51 @@ int push(t_list **stack_a, t_list **stack_b, char *code)
 		ft_putendl_fd(code, 1);
 	return (0);
 }
-// int pa(t_list **stack_a, t_list **stack_b)
-// int pb(t_list **stack_a, t_list **stack_b)
+
+int	rotate(t_list **stack, char *code)
+{
+	t_list	*head;
+	t_list	*tail;
+
+	if (lst_size(*stack) < 2)
+		return (-1);
+
+	head = *stack;
+	tail = ft_lstlast(head);
+	*stack = head->next;
+	head->next = NULL;
+	tail->next = head;
+
+	ft_putendl_fd(code, 1);
+
+	return (0);
+}
+
+
+int	reverse_rotate(t_list **stack, char *code)
+{
+	t_list	*head;
+	t_list	*tail;
+	t_list	*prev_tail;
+
+	if (lst_size(*stack) < 2)
+		return (-1);
+
+	head = *stack;
+	tail = ft_lstlast(head);
+	prev_tail = ft_lstprev(*stack, tail);
+	prev_tail->next = NULL;
+	tail->next = head;
+	*stack = tail;
+
+	ft_putendl_fd(code, 1);
+
+	return (0);
+}
+
+
+
+
 // int rotate(t_list **stack)
 // int ra(t_list **stack_a)
 // int rb(t_list **stack_b)

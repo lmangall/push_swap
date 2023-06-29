@@ -49,6 +49,19 @@ t_list	*ft_lstlast(t_list *lst)
 	return (tmp);
 }
 
+t_list	*ft_lstprev(t_list *lst, t_list *current)
+{
+	t_list	*prev = NULL;
+
+	while (lst && lst != current)
+	{
+		prev = lst;
+		lst = lst->next;
+	}
+
+	return prev;
+}
+
 int	lst_size(t_list *head)
 {
 	int		i;

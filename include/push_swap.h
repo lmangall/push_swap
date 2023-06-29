@@ -111,20 +111,42 @@ int swap(t_list **stack, char *code);
  */
 int ss(t_list **stack_a, t_list **stack_b);
 /**
- * @brief Moves the top element of one stack to the top of another stack.
+ * Pushes the top element from one stack to another stack.
  *
- * @param stack_from A pointer to the stack to move the element from.
- * @param stack_to A pointer to the stack to move the element to.
- * @param code The operation code. (pa or pb)
- * @return 0 if the push was successful, -1 otherwise.
+ * @param stack_a Pointer to the stack A.
+ * @param stack_b Pointer to the stack B.
+ * @param code    The operation code: "pa" for push a, "pb" for push b.
  *
- * @note If the operation code is "pa", the top element of stack_b will be moved to the top of stack_a.
- *       If the operation code is "pb", the top element of stack_a will be moved to the top of stack_b.
+ * @return 0 if the operation is successful, otherwise -1.
+ *
+ * @note This function prints the operation code to the standard output, indicating
+ *       whether it was "pa" (push a) or "pb" (push b).
  */
-int push(t_list **stack_from, t_list **stack_to, char *code);
-
-
-
+int push(t_list **stack_a, t_list **stack_b, char *code);
+/**
+ * Rotate stack a (shifts all elements from bottom to top).
+ * 
+ * @param stack Pointer to the stack.
+ * @param code The operation code to print.
+ * @return 0 if successful, -1 if there are less than 2 elements in the stack.
+ */
+int	rotate(t_list **stack, char *code);
+/**
+ * Reverse rotate stack a (shifts all elements from top to bottom).
+ * 
+ * @param stack Pointer to the stack.
+ * @param code The operation code to print.
+ * @return 0 if successful, -1 if there are less than 2 elements in the stack.
+ */
+int	reverse_rotate(t_list **stack, char *code);
+/**
+ * Find the previous node to the given node in a linked list.
+ * 
+ * @param lst The linked list.
+ * @param current The current node.
+ * @return The previous node if found, NULL otherwise.
+ */
+t_list	*ft_lstprev(t_list *lst, t_list *current);
 
 // /**
 //  * @brief Shift up all elements of stack a by 1. The first element becomes the last one.
