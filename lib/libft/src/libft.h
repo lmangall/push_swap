@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 13:54:17 by lmangall          #+#    #+#             */
-/*   Updated: 2023/06/21 21:54:47 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/06/29 21:21:09 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -376,6 +376,16 @@ int		ft_isspace(int c);
 // size_t	ft_strlen(char *s);
 // char	*ft_strchr(char *s, int c);
 // char	*ft_strjoin(char *stored_s, char *buff);
+
+/**
+ * Locate the first occurrence of a substring in a string.
+ * 
+ * @param haystack The string to search in.
+ * @param needle The substring to search for.
+ * @return A pointer to the first occurrence of the substring within the string,
+ *         or NULL if the substring is not found.
+ */
+char	*ft_strstr(const char *haystack, const char *needle);
 
 //extra for GNL:
 char	*stored_s_to_str(char *stored_s);

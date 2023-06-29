@@ -6,7 +6,7 @@
 #    By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 12:56:38 by lmangall          #+#    #+#              #
-#    Updated: 2023/05/21 14:17:17 by lmangall         ###   ########.fr        #
+#    Updated: 2023/06/29 21:20:44 by lmangall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRC_FILES = ft_atoi.c \
 		ft_putnbr_fd.c \
 		ft_putstr_fd.c \
 		ft_split.c \
+		ft_strstr.c \
 		ft_strchr.c \
 		ft_strcmp.c \
 		ft_strdup.c \
