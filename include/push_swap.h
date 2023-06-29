@@ -73,7 +73,7 @@ int lst_size(t_list *head);
  * @param stack Pointer to the head of the linked list.
  */
 void assign_index_by_value(t_list *stack);
-
+int	print_binary(int num);
 #endif
 
 

@@ -1,28 +1,19 @@
 #include "../include/push_swap.h"
 
-// static	void add_value(int value, int index, struct s_list	next)
-// {
-
 
 // }
 
-/**
- * @brief Prints the content of a linked list.
- *
- * This function iterates through the linked list starting from the given head
- * and prints the index and value of each node.
- *
- * @param head Pointer to the head of the linked list.
- */
+
 void print_list(const t_list *head)
 {
     const t_list *current = head;
 
+    printf("\n     Value      Index     Binary\n");
     while (current != NULL)
     {
-        printf("Index: %d, Value: %d\n", current->index, current->value);
-        current = current->next;
-    }
+		//%10d specifies a fixed width of 10 chars, left-aligned using the - flag
+        printf("%10d %10d %10d\n", current->value, current->index, print_binary(current->index));
+        current = current->next;    }
 }
 
 // void print_list(t_list *head)
@@ -39,6 +30,7 @@ void print_list(const t_list *head)
 // }
 
 
+// go over the args (values), create a list for each and add it to the stack
 void stack_ini(t_list **stack, int argc, char **argv)
 {
 	int		i;
@@ -47,7 +39,6 @@ void stack_ini(t_list **stack, int argc, char **argv)
 	i = 1;
 	// t_list = new_lst;
 
-	// go over the args (values), create a list for each and add it to the stack
 	while( i < argc)
 	{
 		new_list = ft_lstnew(atoi(argv[i]));
@@ -75,22 +66,14 @@ int main(int argc, char **argv)
 	assign_index_by_value(*stack_a);
 
 	// Print the contents of stack_a
-	printf("Contents of stack_a:\n");
+	printf("\nstack_a has %d elements\n", lst_size(*stack_a));
+	printf("\nContents of stack_a (printed from the linked list)):\n");
 	print_list(*stack_a);
 
-	// Print the command-line arguments
-	printf("\nargc = %d\n", argc);
-	int i = 0;
-	while (i < argc)
-	{
-		printf("argv[%d] = %s\n", i, argv[i]);
-		i++;
-	}
 
-	printf("\nlst_size = %d\n", lst_size(*stack_a));
+	//a function "int index_to_binaryindex(int index_base10) that transform a base 10 number into binary
 
-
-	// printf("\nmax_index = %d\n", set_maxindex(*stack_a));
+	//a function index_to_binaryindex
 
 	// 	sort_stack(stack_a, stack_b);
 	// free_stack(stack_a);
