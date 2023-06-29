@@ -21,6 +21,17 @@ typedef struct	s_list
 	struct	s_list	*next;
 }	t_list;
 
+
+/**
+ * @brief Adds the specified node to the front of a stack (list), making it the new head.
+ *
+ * @param stack A pointer to the stack (list).
+ * @param new The node to add to the stack.
+ *
+ * @note The new node becomes the head of the stack, and its next pointer is set to the previous head.
+ */
+void ft_lstadd_front(t_list **stack, t_list *new);
+
 /**
  * @brief Adds the specified node to a stack (list), making it the last node.
  *
@@ -77,56 +88,43 @@ int	print_binary(int num);
 
 
 //sorting operations
-/**
- * @brief Swap the first 2 elements at the top of stack a.
- * 
- * @param stack A pointer to the stack a.
- * @return int Returns 0 if successful, -1 otherwise.
- */
-int swap(t_list **stack);
 
 /**
- * @brief Swap the first 2 elements at the top of stack a.
- * 
- * @param stack_a A pointer to stack a.
- * @return int Returns 0 if successful, -1 otherwise.
+ * @brief Swaps the top two elements of a stack.
+ *
+ * @param stack A pointer to the stack.
+ * @param code The operation code.
+ * @return 0 if the swap was successful, -1 otherwise.
+ *
+ * @note If the operation code is "sa", the message "sa" will be printed.
+ *       If the operation code is "sb", the message "sb" will be printed.
  */
-int sa(t_list **stack_a);
+int swap(t_list **stack, char *code);
+/**
+ * @brief Swaps the top two elements of both stack_a and stack_b simultaneously.
+ *
+ * @param stack_a A pointer to stack_a.
+ * @param stack_b A pointer to stack_b.
+ * @return 0 if the swap was successful, -1 otherwise.
+ *
+ * @note The message "ss" will be printed after the swap operation.
+ */
+int ss(t_list **stack_a, t_list **stack_b);
+/**
+ * @brief Moves the top element of one stack to the top of another stack.
+ *
+ * @param stack_from A pointer to the stack to move the element from.
+ * @param stack_to A pointer to the stack to move the element to.
+ * @param code The operation code. (pa or pb)
+ * @return 0 if the push was successful, -1 otherwise.
+ *
+ * @note If the operation code is "pa", the top element of stack_b will be moved to the top of stack_a.
+ *       If the operation code is "pb", the top element of stack_a will be moved to the top of stack_b.
+ */
+int push(t_list **stack_from, t_list **stack_to, char *code);
 
-// /**
-//  * @brief Swap the first 2 elements at the top of stack b.
-//  * 
-//  * @param stack_b A pointer to stack b.
-//  * @return int Returns 0 if successful, -1 otherwise.
-//  */
-// int sb(t_list **stack_b);
 
-// /**
-//  * @brief Swap stack a and stack b.
-//  * 
-//  * @param stack_a A pointer to stack a.
-//  * @param stack_b A pointer to stack b.
-//  * @return int Returns 0 if successful, -1 otherwise.
-//  */
-// int ss(t_list **stack_a, t_list **stack_b);
 
-// /**
-//  * @brief Take the first element at the top of stack b and put it at the top of stack a.
-//  * 
-//  * @param stack_a A pointer to stack a.
-//  * @param stack_b A pointer to stack b.
-//  * @return int Returns 0 if successful, -1 otherwise.
-//  */
-// int pa(t_list **stack_a, t_list **stack_b);
-
-// /**
-//  * @brief Take the first element at the top of stack a and put it at the top of stack b.
-//  * 
-//  * @param stack_a A pointer to stack a.
-//  * @param stack_b A pointer to stack b.
-//  * @return int Returns 0 if successful, -1 otherwise.
-//  */
-// int pb(t_list **stack_a, t_list **stack_b);
 
 // /**
 //  * @brief Shift up all elements of stack a by 1. The first element becomes the last one.

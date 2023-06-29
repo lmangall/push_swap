@@ -66,14 +66,39 @@ int main(int argc, char **argv)
 	assign_index_by_value(*stack_a);
 
 	// Print the contents of stack_a
-	printf("\nstack_a has %d elements\n", lst_size(*stack_a));
-	printf("\nContents of stack_a (printed from the linked list)):\n");
+	printf("\nStack_a has %d elements\n", lst_size(*stack_a));
+	printf("Contents of stack_a:\n");
 	print_list(*stack_a);
 
-	swap(stack_a);
+	// swap(stack_a, "sa");
+	// printf("\nstack_a has %d elements\n", lst_size(*stack_a));
+	// printf("\nContents of stack_a (printed from the linked list)):\n");
+	// print_list(*stack_a);
+
+	// do pb, print a and b
+	push(stack_a, stack_b, "pb");
 	printf("\nstack_a has %d elements\n", lst_size(*stack_a));
-	printf("\nContents of stack_a (printed from the linked list)):\n");
+	printf("\nContents of stack_a:\n");
 	print_list(*stack_a);
+	printf("\nstack_b has %d elements\n", lst_size(*stack_b));
+	printf("\nContents of stack_b:\n");
+	print_list(*stack_b);
+
+	push(stack_a, stack_b, "pb");
+	printf("\nstack_a has %d elements\n", lst_size(*stack_a));
+	printf("\nContents of stack_a:\n");
+	print_list(*stack_a);
+	printf("\nstack_b has %d elements\n", lst_size(*stack_b));
+	printf("\nContents of stack_b:\n");
+	print_list(*stack_b);
+
+	push(stack_a, stack_b, "pa");
+	printf("\nstack_a has %d elements\n", lst_size(*stack_a));
+	printf("\nContents of stack_a:\n");
+	print_list(*stack_a);
+	printf("\nstack_b has %d elements\n", lst_size(*stack_b));
+	printf("\nContents of stack_b:\n");
+	print_list(*stack_b);
 
 	//a function "int index_to_binaryindex(int index_base10) that transform a base 10 number into binary
 

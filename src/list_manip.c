@@ -1,5 +1,11 @@
 #include "../include/push_swap.h"
 
+void	ft_lstadd_front(t_list **stack, t_list *new)
+{
+	new->next = *stack;
+	*stack = new;
+}
+
 void	ft_lstadd_back(t_list **stack, t_list *new)
 {
 	t_list	*n;
