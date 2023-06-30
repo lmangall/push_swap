@@ -11,6 +11,86 @@ Regarding the use of double pointers:
 
 
 
+# Yet to do 
+- implement a small number algo ?
+- Use tester
+- Fix leaks
+- polish and check makefile
+- final norminette
+- organize code
+- clean readme
+
+
+
+Same as...
+```C
+void	stack_ini(t_list **stack, int argc, char **argv)
+{
+	int		i;
+	t_list	*new_list;
+
+	i = 1;
+	// t_list = new_lst;
+	while (i < argc)
+	{
+		new_list = ft_lstnew(atoi(argv[i]));
+		ft_lstadd_back(stack, new_list);
+		i++;
+	}
+}
+```
+
+same as:
+```c
+void stack_ini(t_list **stack, int argc, char **argv)
+{
+	int i;
+
+	i = 1;
+	while (i < argc)
+	{
+		ft_lstadd_back(stack, ft_lstnew(atoi(argv[i])));
+		i++;
+	}
+}
+}```
+
+The print_list function takes a pointer to the head of a linked list (head) as its input and prints the contents of the list.
+```c
+void	print_list(const t_list *head)
+{
+	const t_list	*current;
+
+	current = head;
+	printf("\n     Value      Index     Binary\n");
+	while (current != NULL)
+	{
+		//%10d specifies a fixed width of 10 chars, left-aligned using the - flag
+        printf("%10d %10d %10d\n", current->value, current->index, print_binary(current->index));
+        current = current->next;
+		current = current->next;
+	}
+}
+```
+
+
+
+```c
+	// algo(stack_a, stack_b);
+	printf("\nstack_a has %d elements\n", lst_size(*stack_a));
+	printf("\nContents of stack_a:\n");
+	print_list(*stack_a);
+	printf("\nstack_b has %d elements\n", lst_size(*stack_b));
+	printf("\nContents of stack_b:\n");
+	print_list(*stack_b);```
+````
+
+
+
+```c
+c code block
+```
+
 
 VSCode:
 Collapse all regions in Visual Studio Code is Cmd+K followed by Cmd+0 (zero).
@@ -148,3 +228,54 @@ int is_bit_set(int num, int bit)
 > - Otherwise, perform the `ra` operation to keep the number in `stack_a`.
 > - After that, perform the `pa` operation until there are no numbers left in `stack_b`.
 > - Repeat this process for the second and third bit.
+
+
+
+
+
+
+
+
+#INI AND MAIN VERSION 2 (malloced in ini)
+```c
+void stack_ini(t_list **stack, int argc, char **argv)
+{
+	int i;
+	t_list *new_list;
+
+	i = 1;
+	while (i < argc)
+	{
+		new_list = (t_list *)malloc(sizeof(t_list));
+		if (!new_list)
+			exit_free("Memory allocation failed", *stack, NULL);
+		new_list->value = atoi(argv[i]);
+		new_list->index = 0;
+		new_list->next = NULL;
+		ft_lstadd_back(stack, new_list);
+		i++;
+	}
+}
+
+
+int main(int argc, char **argv)
+{
+	t_list *stack_a;
+	t_list *stack_b;
+
+	if (argc < 2)
+		return (-1);
+
+	stack_a = NULL;
+	stack_b = NULL;
+
+	stack_ini(&stack_a, argc, argv);
+	assign_index_by_value(stack_a);
+
+	algo(&stack_a, &stack_b);
+	print_list(stack_a);
+
+	exit_free("allgood", stack_a, stack_b);
+	return (0);
+}
+```

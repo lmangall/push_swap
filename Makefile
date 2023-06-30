@@ -1,24 +1,34 @@
-NAME = push_swap
+# Makefile
 
+# Directories
 SRCDIR = src
 INCDIR = include
 LIBFTDIR = lib/libft
 
-SRCS = $(SRCDIR)/push_swap.c $(SRCDIR)/list_manip.c $(SRCDIR)/binary.c $(SRCDIR)/operations.c
-OBJS = $(patsubst $(SRCDIR)/%.c, $(SRCDIR)/%.o, $(SRCS))
+# Source files
+SRCS = push_swap.c \
+       list_manip.c \
+       binary.c \
+       operations.c \
+	   exit.c
 
+# Object files
+OBJS = $(patsubst %.c, %.o, $(SRCS))
+
+# Compiler
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I$(INCDIR)
 
-RM = rm -rf
+# Targets
+NAME = push_swap
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(MAKE) -C $(LIBFTDIR)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFTDIR)/libft.a -o $(NAME)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFTDIR) -lft
 
-$(SRCDIR)/%.o: $(SRCDIR)/%.c
+%.o: $(SRCDIR)/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

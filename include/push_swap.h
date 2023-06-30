@@ -17,7 +17,6 @@ typedef struct	s_list
 {
 	int				index;
 	int				value;
-	struct	s_list	*prev;
 	struct	s_list	*next;
 }	t_list;
 
@@ -86,6 +85,23 @@ int lst_size(t_list *head);
  */
 void assign_index_by_value(t_list *stack);
 int	print_binary(int num);
+
+//error handling
+/**
+ * @brief Frees a stack of t_list nodes.
+ *
+ * @param stack Pointer to the top of the stack.
+ */
+void free_stack(t_list *stack);
+/**
+ * @brief Exits the program after displaying an error message 
+ * and freeing the stack_a and stack_b.
+ *
+ * @param msg Error message to display.
+ * @param stack_a Pointer to stack A.
+ * @param stack_b Pointer to stack B.
+ */
+void exit_free(char *msg, t_list *stack_a, t_list *stack_b);
 
 
 //sorting operations
