@@ -142,7 +142,7 @@ int is_bit_set(int num, int bit)
 	return (result);
 }
 
-static int	bits_of_biggest_index(t_list **stack_a)
+static int	max_index_bits_nbr(t_list **stack_a)
 {
 	int	idx;
 	int	bits_nbr;
@@ -154,48 +154,52 @@ static int	bits_of_biggest_index(t_list **stack_a)
 	return (bits_nbr);
 }
 
+
+
 int algo(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*current;
 	int i;
-	int j = 0;
-	int checked_bit = 0;
-	int size;
-	int bits_nbr;
+	int j;
+	t_list *current_node;
+	int stack_a_size;
+	int stack_b_size;
+	int checked_bit;
 
-	bits_nbr = bits_of_biggest_index(stack_a);
-
-	printf("\nbits_nbr:%d\n", bits_nbr);
-
-
-	i = 0;
-	size = 1;
-	printf("\nsize:%d\n", size);
-	current = *stack_a;
-	while (checked_bit < bits_nbr)
+	stack_a_size = lst_size(*stack_a);
+	stack_b_size = 0;
+	checked_bit = 0;
+	while (checked_bit < max_index_bits_nbr(stack_a))
 	{
-		while(j++ <= size)
+		i = 0;
+		j = 0;
+		current_node = *stack_a;
+		while (j < stack_a_size)
 		{
-			size = lst_size(*stack_a);
-			while(i++ < size)
+			i = 0;
+			while (i < stack_a_size)
 			{
-				// printf("\n             i:%d\n", i);
-				// printf("current->index:%d\n", current->index);
-				if(is_bit_set(current->index, checked_bit) == 1)
+				if (is_bit_set(current_node->index, checked_bit))
 					push(stack_a, stack_b, "pb");
 				else
 					rotate(stack_a, "ra");
-				current = *stack_a;
+
+				current_node = *stack_a;
+				i++;
 			}
-			size = lst_size(*stack_b);
-			push(stack_a, stack_b, "pa");
+			j++;
+			stack_b_size = lst_size(*stack_b);
+			while (stack_b_size-- > 0)
+				push(stack_a, stack_b, "pa");
 		}
 		checked_bit++;
-		j = 0;
-		i = 0;
 	}
-
-
-	return (0);
+	return 0;
 }
+
+
+
+
+
+
+
 
