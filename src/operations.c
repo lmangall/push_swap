@@ -131,3 +131,39 @@ int	rrr(t_list **stack_a, t_list **stack_b)
 	ft_putendl_fd("rrr", 1);
 	return(0);
 }
+
+int is_bit_set(int num, int bit)
+{
+	int shifted;
+	int	result;
+
+	shifted = num >> bit;
+	result = shifted & 1;
+	return (result);
+}
+
+int algo(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*current;
+	int i;
+	int size;
+
+	i = 0;
+	size = lst_size(*stack_a);
+	printf("\nsize:%d\n", size);
+	current = *stack_a;
+	while(i++ < size)
+	// while(current != NULL)
+	{
+		printf("\n             i:%d\n", i);
+		printf("current->index:%d\n", current->index);
+		if(is_bit_set(current->index, 0) == 1)
+			push(stack_a, stack_b, "pb");
+		else
+			rotate(stack_a, "ra");
+		current = *stack_a;
+		 // current = current->next;
+	}
+	return (0);
+}
+

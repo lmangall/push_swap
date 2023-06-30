@@ -273,3 +273,34 @@ By implementing a stack using a linked list, you can effectively manage the stac
 
 
 
+
+
+
+When you say that a bit is "set" in binary, it means that the value of that particular bit is 1. In binary representation, each digit or bit can have a value of either 0 or 1. When a bit is set, it indicates that it is turned on or active with a value of 1. Conversely, when a bit is not set, it means the value of that bit is 0.
+
+/**
+ * @brief Checks if a specific bit in an integer is set.
+ *
+ * This function checks the value of a specific bit in the binary representation
+ * of an integer. It works by right-shifting the integer by the given bit position,
+ * effectively moving the bit of interest to the rightmost position. Then, it performs
+ * a bitwise AND operation with 1 to extract the value of the rightmost bit. If the
+ * extracted bit is 1, the specified bit is considered set; otherwise, it is considered
+ * not set.
+ *
+ * @param num The integer value.
+ * @param bit The position of the bit to check.
+ * @return 1 if the specified bit is set (1), 0 otherwise (0).
+ */
+int is_bit_set(int num, int bit)
+
+
+> Radix sort:
+> 
+> - Check the numbers one by one.
+> - If a number ends with 1, put it in the 1 stack (`stack_b`).
+> - If a number ends with 0, leave it in the 0 stack (`stack_a`).
+> - If the i-th digit of the top number in `stack_a` is 0, perform the `pb` operation to move this number to `stack_b`.
+> - Otherwise, perform the `ra` operation to keep the number in `stack_a`.
+> - After that, perform the `pa` operation until there are no numbers left in `stack_b`.
+> - Repeat this process for the second and third bit.

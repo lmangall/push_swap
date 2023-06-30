@@ -149,7 +149,6 @@ int	reverse_rotate(t_list **stack, char *code);
  * @return The previous node if found, NULL otherwise.
  */
 t_list	*ft_lstprev(t_list *lst, t_list *current);
-
 /**
  * Rotate stack a and stack b simultaneously: Shift up all elements of both stacks by 1.
  * The first element becomes the last one in each stack.
@@ -159,7 +158,6 @@ t_list	*ft_lstprev(t_list *lst, t_list *current);
  * @return 0 if successful, -1 if there are less than 2 elements in either stack.
  */
 int	rr(t_list **stack_a, t_list **stack_b);
-
 /**
  * Reverse rotate stack a and stack b simultaneously: Shift down all elements of both stacks by 1.
  * The last element becomes the first one in each stack.
@@ -169,6 +167,26 @@ int	rr(t_list **stack_a, t_list **stack_b);
  * @return 0 if successful, -1 if there are less than 2 elements in either stack.
  */
 int	rrr(t_list **stack_a, t_list **stack_b);
+
+
+
+//sorting algorithms
+/**
+ * @brief Checks if a specific bit in an integer is set.
+ *
+ * This function checks the value of a specific bit in the binary representation
+ * of an integer. It works by right-shifting the integer by the given bit position,
+ * effectively moving the bit of interest to the rightmost position. Then, it performs
+ * a bitwise AND operation with 1 to extract the value of the rightmost bit. If the
+ * extracted bit is 1, the specified bit is considered set; otherwise, it is considered
+ * not set.
+ *
+ * @param num The integer value.
+ * @param bit The position of the bit to check.
+ * @return 1 if the specified bit is set (1), 0 otherwise (0).
+ */
+int is_bit_set(int num, int bit);
+int algo(t_list **stack_a, t_list **stack_b);
 
 #endif
 

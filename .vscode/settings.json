@@ -13,6 +13,7 @@
 		"utility": "c",
 		"ios": "c",
 		"chrono": "c",
-		"variant": "c"
+		"variant": "c",
+		"__locale": "c"
 	}
 }
