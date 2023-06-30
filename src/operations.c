@@ -168,11 +168,11 @@ int algo(t_list **stack_a, t_list **stack_b)
 	stack_a_size = lst_size(*stack_a);
 	stack_b_size = 0;
 	checked_bit = 0;
+	i = 0;
+	current_node = *stack_a;
 	while (checked_bit < max_index_bits_nbr(stack_a))
 	{
-		i = 0;
 		j = 0;
-		current_node = *stack_a;
 		while (j < stack_a_size)
 		{
 			i = 0;
