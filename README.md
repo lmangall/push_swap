@@ -11,6 +11,12 @@ Regarding the use of double pointers:
 
 
 
+
+VSCode:
+Collapse all regions in Visual Studio Code is Cmd+K followed by Cmd+0 (zero).
+Cmd+j hides the terminal
+
+
 # push_swap
 Coding assignment from the 42 Berlin school : sort a stack of int in the most efficient way possible
 
