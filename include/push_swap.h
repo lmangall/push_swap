@@ -21,7 +21,7 @@ typedef struct	s_list
 	struct	s_list	*next;
 }	t_list;
 
-
+//list manipulation
 /**
  * @brief Adds the specified node to the front of a stack (list), making it the new head.
  *
@@ -31,7 +31,6 @@ typedef struct	s_list
  * @note The new node becomes the head of the stack, and its next pointer is set to the previous head.
  */
 void ft_lstadd_front(t_list **stack, t_list *new);
-
 /**
  * @brief Adds the specified node to a stack (list), making it the last node.
  *
@@ -75,6 +74,8 @@ void stack_ini(t_list **stack, int argc, char **argv);
  * @return The size of the linked list.
  */
 int lst_size(t_list *head);
+
+//other
 /**
  * @brief Assigns an index to each node in the linked list based on their values.
  *
@@ -88,7 +89,6 @@ int	print_binary(int num);
 
 
 //sorting operations
-
 /**
  * @brief Swaps the top two elements of a stack.
  *
@@ -186,6 +186,38 @@ int	rrr(t_list **stack_a, t_list **stack_b);
  * @return 1 if the specified bit is set (1), 0 otherwise (0).
  */
 int is_bit_set(int num, int bit);
+/**
+ * @brief Calculates the number of bits required to represent the maximum index in stack_a.
+ *
+ * This function determines the number of bits needed to represent the maximum index value
+ * in the provided stack_a. It calculates the maximum index by subtracting 1 from the size
+ * of stack_a and then calculates the number of bits required to represent that maximum
+ * index value by shifting the index value right until it becomes zero, counting the number
+ * of shifts.
+ *
+ * @param stack_a Pointer to the stack_a list.
+ * @return The number of bits required to represent the maximum index in stack_a.
+ */
+int max_index_bits_nbr(t_list **stack_a);
+/**
+ * @brief Performs the radix sort algorithm on stack_a using stack_b.
+ *
+ * This function implements the radix sort algorithm to sort the integers in stack_a
+ * in ascending order. It iterates through each bit of the index value of the nodes
+ * in stack_a, starting from the least significant bit to the most significant bit.
+ * For each bit, it separates the nodes into two stacks: stack_a and stack_b. Nodes
+ * with the bit set(=1) are moved to stack_b using the "pb" operation, while nodes
+ * with the bit unset remain in stack_a and are rotated using the "ra" operation.
+ *
+ * After separating the nodes based on the checked bit, the function moves the nodes
+ * back from stack_b to stack_a using the "pa" operation, preserving the relative order
+ * of the nodes. This process is repeated for each bit of the index value until all bits
+ * have been checked.
+ *
+ * @param stack_a Pointer to the stack_a list.
+ * @param stack_b Pointer to the stack_b list.
+ * @return 0 to indicate successful execution of the algorithm.
+ */
 int algo(t_list **stack_a, t_list **stack_b);
 
 #endif

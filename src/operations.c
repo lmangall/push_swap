@@ -132,6 +132,8 @@ int	rrr(t_list **stack_a, t_list **stack_b)
 	return(0);
 }
 
+
+//sorting algorithm
 int is_bit_set(int num, int bit)
 {
 	int shifted;
@@ -142,7 +144,7 @@ int is_bit_set(int num, int bit)
 	return (result);
 }
 
-static int	max_index_bits_nbr(t_list **stack_a)
+int	max_index_bits_nbr(t_list **stack_a)
 {
 	int	idx;
 	int	bits_nbr;
@@ -153,8 +155,6 @@ static int	max_index_bits_nbr(t_list **stack_a)
 		bits_nbr++;
 	return (bits_nbr);
 }
-
-
 
 int algo(t_list **stack_a, t_list **stack_b)
 {
