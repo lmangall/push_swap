@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 	//  The reason for using double pointers
 	// is to allow modifications to the original pointers within a function.
 	if (argc < 2)
-		return (-1);
+		exit_free("Nothing to sort", NULL, NULL);
 	stack_a = (t_list **)malloc(sizeof(t_list));
 	stack_b = (t_list **)malloc(sizeof(t_list));
 	// NULL signifies the end of the list. => those are empty

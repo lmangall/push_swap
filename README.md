@@ -10,6 +10,7 @@ Regarding the use of double pointers:
 - [Why using double pointers](https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/)
 
 
+# CHECK IF CORRECT FOR SOME NUMBERS (seems to be a lot of operations)
 
 # Yet to do 
 - implement a small number algo ?
