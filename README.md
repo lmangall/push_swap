@@ -299,7 +299,7 @@ int is_bit_set(int num, int bit)
 > 
 > - Check the numbers one by one.
 > - If a number ends with 1, put it in the 1 stack (`stack_b`).
-> - If a number ends with 0, leave it in the 0 stack (`stack_a`).
+> - If a number ends with 0, leave it in the 0 stack (`stack_a`). => by rotating the list `ra`
 > - If the i-th digit of the top number in `stack_a` is 0, perform the `pb` operation to move this number to `stack_b`.
 > - Otherwise, perform the `ra` operation to keep the number in `stack_a`.
 > - After that, perform the `pa` operation until there are no numbers left in `stack_b`.
