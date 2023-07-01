@@ -281,3 +281,88 @@ int main(int argc, char **argv)
 	return (0);
 }
 ```
+
+
+
+
+
+
+
+
+
+
+Same as...
+```C
+void check_int(char *arg)
+{
+    int i;
+    int is_negative;
+    size_t max_length;
+
+    i = 0;
+    is_negative = (arg[i] == '-');
+    if (is_negative)
+        i++;
+
+    max_length = 10 + is_negative * (11 - 10);
+    if (ft_strlen(arg) > max_length)
+        exit_free("Number exceeds int range", NULL, NULL);
+
+    while (arg[i])
+    {
+        if (!ft_isdigit(arg[i]))
+            exit_free("Not a number", NULL, NULL);
+        i++;
+    }
+
+    int is_exceed_range = (is_negative && strlen(arg) == 11 && strcmp(arg, "2147483648") > 0) ||
+                          (!is_negative && strlen(arg) == 10 && strcmp(arg, "2147483647") > 0);
+
+    if (is_exceed_range)
+        exit_free("Number exceeds int range", NULL, NULL);
+}
+```
+
+same as:
+```c
+void check_int(char *arg)
+{
+    int i;
+    int is_negative;
+	size_t max_length;
+
+    i = 0;
+    is_negative = 0;
+    if (arg[i] == '-')
+    {
+        is_negative = 1;
+        i++;
+    }
+
+    max_length = (is_negative) * 11 + (!is_negative) * 10;
+    if (ft_strlen(arg) > max_length)
+        exit_free("Number exceeds int range", NULL, NULL);
+
+    while (arg[i])
+    {
+        if (!ft_isdigit(arg[i]))
+            exit_free("Not a number", NULL, NULL);
+        i++;
+    }
+
+    int is_exceed_range = 0;
+    if (is_negative)
+    {
+        if (strlen(arg) == 11 && strcmp(arg, "2147483648") > 0)
+            is_exceed_range = 1;
+    }
+    else
+    {
+        if (strlen(arg) == 10 && strcmp(arg, "2147483647") > 0)
+            is_exceed_range = 1;
+    }
+
+    if (is_exceed_range)
+        exit_free("Number exceeds int range", NULL, NULL);
+}
+```
