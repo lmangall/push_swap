@@ -147,25 +147,24 @@ int	max_index_bits_nbr(t_list **stack_a)
 		bits_nbr++;
 	return (bits_nbr);
 }
-
-int	algo(t_list **stack_a, t_list **stack_b)
+int algo(t_list **stack_a, t_list **stack_b)
 {
-	int		i;
-	int		j;
-	t_list	*current_node;
-	int		stack_a_size;
-	int		stack_b_size;
-	int		checked_bit;
+	int i;
+	int j;
+	t_list *current_node;
+	int stack_a_size;
+	int stack_b_size;
+	int checked_bit;
 
 	stack_a_size = lst_size(*stack_a);
 	stack_b_size = 0;
 	checked_bit = 0;
-	i = 0;
 	current_node = *stack_a;
 	while (checked_bit < max_index_bits_nbr(stack_a))
 	{
+		i = 0;
 		j = 0;
-		while (j < stack_a_size)
+		while (j < stack_a_size - i)
 		{
 			i = 0;
 			while (i < stack_a_size)
@@ -180,7 +179,7 @@ int	algo(t_list **stack_a, t_list **stack_b)
 			j++;
 			stack_b_size = lst_size(*stack_b);
 			while (stack_b_size-- > 0)
-				push(stack_a, stack_b, "pa");
+			push(stack_a, stack_b, "pa");
 		}
 		checked_bit++;
 	}

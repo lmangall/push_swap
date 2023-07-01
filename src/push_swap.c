@@ -20,7 +20,6 @@ void	stack_ini(t_list **stack, int argc, char **argv)
 	t_list	*new_list;
 
 	i = 1;
-	// t_list = new_lst;
 	while (i < argc)
 	{
 		new_list = ft_lstnew(atoi(argv[i]));
@@ -45,7 +44,6 @@ int	main(int argc, char **argv)
 	*stack_b = NULL;
 	stack_ini(stack_a, argc, argv);
 	assign_index_by_value(*stack_a);
-	// print_list(*stack_a);
 	algo(stack_a, stack_b);
 	print_list(*stack_a);
 	exit_free("allgood", *stack_a, *stack_b);

@@ -14,6 +14,7 @@ Regarding the use of double pointers:
 
 # Yet to do 
 - implement a small number algo ?
+- add a test to check if already sorted
 - Use tester
 - Fix leaks
 - polish and check makefile
@@ -83,7 +84,7 @@ void	print_list(const t_list *head)
 	print_list(*stack_a);
 	printf("\nstack_b has %d elements\n", lst_size(*stack_b));
 	printf("\nContents of stack_b:\n");
-	print_list(*stack_b);```
+	print_list(*stack_b);
 ````
 
 

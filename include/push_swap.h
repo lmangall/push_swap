@@ -85,6 +85,7 @@ int lst_size(t_list *head);
  */
 void assign_index_by_value(t_list *stack);
 int	print_binary(int num);
+void print_list(const t_list *head);
 
 //error handling
 /**

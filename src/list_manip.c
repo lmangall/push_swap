@@ -23,7 +23,6 @@ void	ft_lstadd_back(t_list **stack, t_list *new)
 	}
 }
 
-// Creates new node and returns the pointer of it
 t_list	*ft_lstnew(int value)
 {
 	t_list	*new;
@@ -77,20 +76,20 @@ int	lst_size(t_list *head)
 	return (i);
 }
 
-void	assign_index_by_value(t_list *stack)
+void assign_index_by_value(t_list *stack)
 {
-	t_list	*node;
-	int		index;
-	int		node_nbr;
-	t_list	*min_node;
+	t_list *node;
+	int index;
+	int node_nbr;
+	t_list *min_node;
 
 	node_nbr = lst_size(stack);
 	index = 0;
 	while (index < node_nbr)
 	{
 		int min_value = 2147483647; // Initialize min_value to MAX_INT
-		min_node = stack;
-		node = stack->next; // go over all nodes
+		min_node = NULL; // Initialize min_node to NULL
+		node = stack; // Start from the first node
 		// Find the node with the minimum value
 		while (node != NULL)
 		{
@@ -103,8 +102,7 @@ void	assign_index_by_value(t_list *stack)
 		}
 		if (min_node != NULL)
 			min_node->index = index++;
-		// if (min_node == NULL || min_node->index == NO_IDX) 
-			// Add this condition to handle the last node
-		//     break ;
+		else
+			break; // Break the loop if no node is found or all nodes have been assigned an index
 	}
 }
