@@ -24,11 +24,8 @@ void	stack_ini(t_list **stack, int argc, char **argv)
 	if (argc == 2)
 		args = ft_split(argv[1], ' ');
 	else
-	{
-		i = 0;
 		args = argv;
-	}
-		while (args[i])//before was:   while (i < argc)
+	while (args[i])//before was:   while (i < argc)
 	{
 		check_int(args[i]); // Validate the integer before adding it to the stack
 		new_list = ft_lstnew(atoi(args[i]));

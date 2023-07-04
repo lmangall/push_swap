@@ -30,18 +30,19 @@ void exit_free(char *msg, t_list *stack_a, t_list *stack_b)
 
 void check_int(char *arg)
 {
+	long tmp;
 	int i;
-	int tmp;
-	
-	i = 0;
-	while (arg[i])
-	{
-		tmp = ft_atoi(&arg[i]);
-		printf("tmp: %d\n", tmp);
-		if (ft_isdigit(tmp))
-			exit_free("Not a number", NULL, NULL);
+
+    i = 0;
+    if (arg[0] == '-')
+        i++;
+    while (arg[i])
+    {
+        if (!ft_isdigit(arg[i]))
+			exit_free("Non authorized symbol among the arguments", NULL, NULL);
+        i++;
+    }
+	tmp = ft_atoi(arg);
 		if (tmp < -2147483648 || tmp > 2147483647)
 			exit_free("Number exceeds int range", NULL, NULL);
-		i++;
-	}
 }

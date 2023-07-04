@@ -89,16 +89,19 @@ void print_list(const t_list *head);
 
 //error handling
 /**
- * @brief Validates if a string represents a valid integer within the int range.
- *
- * This function performs the following validations on the given string:
- * - Ensures that the string contains only digits.
- * - Verifies if the number represented by the string exceeds the int range.
- *
- * If any of the validations fail, the function exits the program.
- *
- * @param arg The string to be checked for integer validity.
- */
+
+@brief Checks if a given argument is a valid integer.
+
+This function checks whether the provided argument is a valid integer. It verifies if the argument
+
+consists of digits only and falls within the range of a signed 32-bit integer. If the argument fails
+
+any of these checks, the program terminates and displays an appropriate error message.
+
+@param arg A pointer to the character array representing the argument.
+
+@return None.
+*/
 void check_int(char *arg);
 /**
  * @brief Frees a stack of t_list nodes.
