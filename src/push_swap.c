@@ -14,62 +14,30 @@ void print_list(const t_list *head)
 	}
 }
 
- void check_int(char *arg)
-{
-    int i;
-    int is_negative;
-	size_t max_length;
-
-    i = 0;
-    is_negative = 0;
-    if (arg[i] == '-')
-    {
-        is_negative = 1;
-        i++;
-    }
-
-    max_length = (is_negative) * 11 + (!is_negative) * 10;
-    if (ft_strlen(arg) > max_length)
-        exit_free("Number exceeds int range", NULL, NULL);
-
-    while (arg[i])
-    {
-        if (!ft_isdigit(arg[i]))
-            exit_free("Not a number", NULL, NULL);
-        i++;
-    }
-
-    int is_exceed_range = 0;
-    if (is_negative)
-    {
-        if (strlen(arg) == 11 && strcmp(arg, "2147483648") > 0)
-            is_exceed_range = 1;
-    }
-    else
-    {
-        if (strlen(arg) == 10 && strcmp(arg, "2147483647") > 0)
-            is_exceed_range = 1;
-    }
-
-    if (is_exceed_range)
-        exit_free("Number exceeds int range", NULL, NULL);
-}
-
 void	stack_ini(t_list **stack, int argc, char **argv)
 {
 	int		i;
 	t_list	*new_list;
+	char	**args;
 
-	i = 1;
-	while (i < argc)
+	i = 0;
+	if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	else
 	{
-		check_int(argv[i]); // Validate the integer before adding it to the stack
-		new_list = ft_lstnew(atoi(argv[i]));
+		i = 0;
+		args = argv;
+	}
+		while (args[i])//before was:   while (i < argc)
+	{
+		check_int(args[i]); // Validate the integer before adding it to the stack
+		new_list = ft_lstnew(atoi(args[i]));
 		ft_lstadd_back(stack, new_list);
 		i++;
+
+		//SHOULD I FREE THIS STRING (args)
 	}
 }
-
 
 int	main(int argc, char **argv)
 {
@@ -80,6 +48,7 @@ int	main(int argc, char **argv)
 	// is to allow modifications to the original pointers within a function.
 	if (argc < 2)
 		exit_free("Nothing to sort", NULL, NULL);
+	// ft_check_args(argc, argv);
 	stack_a = (t_list **)malloc(sizeof(t_list));
 	stack_b = (t_list **)malloc(sizeof(t_list));
 	// NULL signifies the end of the list. => those are empty

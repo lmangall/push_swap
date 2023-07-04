@@ -13,14 +13,43 @@ Regarding the use of double pointers:
 # CHECK IF CORRECT FOR SOME NUMBERS (seems to be a lot of operations)
 
 # Yet to do 
+- double check the check_int func and clean it
 - implement a small number algo ?
 - add a test to check if already sorted
 - Use tester
-- Fix leaks
+- Check for leaks
 - polish and check makefile
 - final norminette
+- check exit_free relative to check_int (doest it free, should it free?)
 - organize code
 - clean readme
+
+
+ARG=4 20 38; ./push_swap $ARG | ./checker_Mac $ARG
+
+
+ ARG="4 20 38 43 43 654 765 231 564 76 4376 765 765 423"; ./push_swap $ARG | ./checker_Mac $ARG
+
+
+
+
+
+```C
+int	is_sorted(t_list **stack)
+{
+	t_list	*head;
+
+	head = *stack;
+	while (head && head->next)
+	{
+		if (head->value > head->next->value)
+			return (0);
+		head = head->next;
+	}
+	return (1);
+}
+```
+
 
 
 

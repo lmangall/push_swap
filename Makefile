@@ -10,7 +10,7 @@ SRCS = push_swap.c \
        list_manip.c \
        binary.c \
        operations.c \
-	   exit.c
+	   errors_exit.c
 
 # Object files
 OBJS = $(patsubst %.c, %.o, $(SRCS))
