@@ -31,9 +31,9 @@ void	stack_ini(t_list **stack, int argc, char **argv)
 		new_list = ft_lstnew(atoi(args[i]));
 		ft_lstadd_back(stack, new_list);
 		i++;
-
-		//SHOULD I FREE THIS STRING (args)
 	}
+			//FREE THIS STRING (args)
+
 }
 
 int	main(int argc, char **argv)

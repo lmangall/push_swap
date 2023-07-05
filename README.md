@@ -13,6 +13,9 @@ Regarding the use of double pointers:
 # CHECK IF CORRECT FOR SOME NUMBERS (seems to be a lot of operations)
 
 # Yet to do 
+- implement atoli
+- check for 2 identic args
+- 
 - double check the check_int func and clean it
 - implement a small number algo ?
 - add a test to check if already sorted
