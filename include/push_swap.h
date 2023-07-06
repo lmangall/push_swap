@@ -63,6 +63,18 @@ t_list	*ft_lstnew(int value);
  * @return A pointer to the last node of the linked list, or NULL if the list is empty.
  */
 t_list *ft_lstlast(t_list *lst);
+
+/**
+ * @brief Initializes a stack with values from command-line arguments.
+ *
+ * This function initializes a stack using the provided command-line arguments.
+ * It checks for duplicates among the arguments and adds the values to the stack.
+ * It checks for the values as a long string or as separate args
+ *
+ * @param stack A pointer to the pointer of the stack.
+ * @param argc The number of command-line arguments.
+ * @param argv An array of strings representing the command-line arguments.
+ */
 void	stack_ini(t_list **stack, int argc, char **argv);
 
 /**

@@ -13,19 +13,17 @@ void print_list(const t_list *head)
 	}
 }
 
-// static void free_array(char **str)
-// {
-//     int i = 0;
+static void free_array(char **str)
+{
+    int i = 0;
 
-//     while (str[i])
-//     {
-// 		printf("being freed: %s\n", str[i]);
-//         free(str[i]);
-//         i++;
-//     }
-// 	free(str);
-// 	printf("OUT OF LOOP\n");
-// }
+    while (str[i])
+    {
+        free(str[i]);
+        i++;
+    }
+	free(str);
+}
 
 static void check_duplicate(char **args)
 {
@@ -41,6 +39,8 @@ static void check_duplicate(char **args)
 		j = i + 1;
 		while (args[j])
 		{
+			// 	printf("  CHECK  \n");
+			// printf("%s | %s\n", tmp, args[j]);
 			if(!(ft_strcmp(tmp, args[j])))
 				exit_free("Duplicate among the arguments", NULL, NULL);
 			j++;
@@ -58,32 +58,30 @@ void	stack_ini(t_list **stack, int argc, char **argv)
 	i = 0;
 	if (! stack)
 		return ;
-		//add error if argc is less than 1
 	 if (argc == 2)
 		{
-			args = ft_split(argv[1], ' ');
-			check_duplicate(args);
-			while (args[i])
-			{
-				check_int(args[i]);
-				new_list = ft_lstnew(atoi(args[i]));
-				ft_lstadd_back(stack, new_list);
-				i++;
-			}
-		}
-		else
+		args = ft_split(argv[1], ' ');
+		check_duplicate(args);
+		while (args[i])
 		{
-			// check_duplicate(args); has to be changed fot int comparation
-			i = 1;
-			while (i != argc)
-			{
-				check_int(argv[i]);
-				new_list = ft_lstnew(atoi(argv[i]));
-				ft_lstadd_back(stack, new_list);
-				i++;
-			}
-		}	
-	// free_array(args);
+			check_int(args[i]);
+			new_list = ft_lstnew(ft_atoi(args[i]));
+			ft_lstadd_back(stack, new_list);
+			i++;
+		}
+		free_array(args);
+		}
+	else
+	{
+		check_duplicate(argv + 1);
+		while (i != argc - 1)
+		{
+			check_int(argv[i + 1]);
+			new_list = ft_lstnew(ft_atoi(argv[i + 1]));
+			ft_lstadd_back(stack, new_list);
+			i++;
+		}
+	}
 }
 
 int	main(int argc, char **argv)

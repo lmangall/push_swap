@@ -177,7 +177,7 @@ int algo(t_list **stack_a, t_list **stack_b)
 			j++;
 			stack_b_size = lst_size(*stack_b);
 			while (stack_b_size-- > 0)
-			push(stack_a, stack_b, "pa");
+				push(stack_a, stack_b, "pa");
 		}
 		checked_bit++;
 	}

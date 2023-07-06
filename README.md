@@ -13,8 +13,6 @@ Regarding the use of double pointers:
 # CHECK IF CORRECT FOR SOME NUMBERS (seems to be a lot of operations)
 
 # Yet to do 
-- implement atoli
-- check for 2 identic args
 - 
 - double check the check_int func and clean it
 - implement a small number algo ?
@@ -32,6 +30,36 @@ ARG=4 20 38; ./push_swap $ARG | ./checker_Mac $ARG
 
 
  ARG="4 20 38 43 43 654 765 231 564 76 4376 765 765 423"; ./push_swap $ARG | ./checker_Mac $ARG
+
+
+
+```C
+void	stack_ini(t_list **stack, char **argv)
+{
+	int		i;
+	t_list	*new_list;
+	char	**args;
+
+	i = 0;
+	if (! stack)
+		return ;
+	// if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	// else
+	// 	args = &argv[1];
+	check_duplicate(args);
+	while (args[i])
+	{
+		check_int(args[i]);
+		new_list = ft_lstnew(atoi(args[i]));
+		ft_lstadd_back(stack, new_list);
+		i++;
+	}
+	free_array(args);
+}
+```
+
+munmap_chunk(): invalid pointer
 
 
 

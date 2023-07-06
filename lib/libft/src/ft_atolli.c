@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:08:51 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/06 14:42:08 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/06 20:53:39 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ long long	ft_atolli(const char *str)
 	nb = 0;
 	i = 0;
 	mult = 1;
-	printf("test\n");
 	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\r'
 		||str[i] == '\t' || str[i] == '\v' || str[i] == '\f')
 	{
