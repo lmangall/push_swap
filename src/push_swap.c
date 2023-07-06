@@ -13,17 +13,19 @@ void print_list(const t_list *head)
 	}
 }
 
-static void free_array(char **str)
-{
-    int i = 0;
+// static void free_array(char **str)
+// {
+//     int i = 0;
 
-    while (str[i])
-    {
-        free(str[i]);
-        i++;
-    }
-	free(str);
-}
+//     while (str[i])
+//     {
+// 		printf("being freed: %s\n", str[i]);
+//         free(str[i]);
+//         i++;
+//     }
+// 	free(str);
+// 	printf("OUT OF LOOP\n");
+// }
 
 static void check_duplicate(char **args)
 {
@@ -47,7 +49,7 @@ static void check_duplicate(char **args)
 	}
 }
 
-void	stack_ini(t_list **stack, char **argv)
+void	stack_ini(t_list **stack, int argc, char **argv)
 {
 	int		i;
 	t_list	*new_list;
@@ -56,19 +58,32 @@ void	stack_ini(t_list **stack, char **argv)
 	i = 0;
 	if (! stack)
 		return ;
-	// if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	// else
-	// 	args = &argv[1];
-	check_duplicate(args);
-	while (args[i])
-	{
-		check_int(args[i]);
-		new_list = ft_lstnew(atoi(args[i]));
-		ft_lstadd_back(stack, new_list);
-		i++;
-	}
-	free_array(args);
+		//add error if argc is less than 1
+	 if (argc == 2)
+		{
+			args = ft_split(argv[1], ' ');
+			check_duplicate(args);
+			while (args[i])
+			{
+				check_int(args[i]);
+				new_list = ft_lstnew(atoi(args[i]));
+				ft_lstadd_back(stack, new_list);
+				i++;
+			}
+		}
+		else
+		{
+			// check_duplicate(args); has to be changed fot int comparation
+			i = 1;
+			while (i != argc)
+			{
+				check_int(argv[i]);
+				new_list = ft_lstnew(atoi(argv[i]));
+				ft_lstadd_back(stack, new_list);
+				i++;
+			}
+		}	
+	// free_array(args);
 }
 
 int	main(int argc, char **argv)
@@ -82,7 +97,7 @@ int	main(int argc, char **argv)
 	stack_b = (t_list **)malloc(sizeof(t_list));
 	*stack_a = NULL;
 	*stack_b = NULL;
-	stack_ini(stack_a, argv);
+	stack_ini(stack_a, argc, argv);
 	assign_index_by_value(*stack_a);
 	algo(stack_a, stack_b);
 	print_list(*stack_a);
