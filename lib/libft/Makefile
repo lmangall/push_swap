@@ -6,7 +6,7 @@
 #    By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 12:56:38 by lmangall          #+#    #+#              #
-#    Updated: 2023/06/29 21:20:44 by lmangall         ###   ########.fr        #
+#    Updated: 2023/07/06 11:18:09 by lmangall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ CFLAGS = -g -Wall -Wextra -Werror
 AR = ar -rcs
 
 SRC_FILES = ft_atoi.c \
+		ft_atolli.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_isalnum.c \

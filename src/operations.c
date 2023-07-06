@@ -14,8 +14,6 @@ int	swap(t_list **stack, char *code)
 	index = NO_IDX;
 	head = *stack;
 	scnd = head->next;
-	// if head is null and next is null
-	// 	throw an error "Error occurred while swapping!"
 	value = head->value;
 	index = head->index;
 	head->value = scnd->value;

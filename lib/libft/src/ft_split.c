@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:06:38 by lmangall          #+#    #+#             */
-/*   Updated: 2023/06/13 10:36:43 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/06 15:11:37 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,56 @@ char	**ft_split(char const *s, char c)
 		}
 		i++;
 	}
-	split[j] = 0;
+	split[j] = NULL;
 	return (split);
 }
+/* 
+size_t	ft_findsize(const char *s, char c)
+{
+	size_t	size;
+
+	size = 0;
+	while (*s)
+	{
+		if (*s != c)
+		{
+			size++;
+			while (*s && *s != c)
+				s++;
+		}
+		else
+		{
+			s++;
+		}
+	}
+	return (size);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	size_t	i;
+	size_t	len;
+	char	**str;
+
+	if (!s)
+		return (NULL);
+	i = 0;
+	str = malloc(sizeof(char *) * (ft_findsize(s, c) + 1));
+	if (!str)
+		return (NULL);
+	while (*s)
+	{
+		if (*s != c)
+		{
+			len = 0;
+			while (*s && *s != c && ++len)
+				s++;
+			str[i++] = ft_substr(s - len, 0, len);
+		}
+		else
+			s++;
+	}
+	str[i] = 0;
+	return (str);
+}
+ */

@@ -63,7 +63,7 @@ t_list	*ft_lstnew(int value);
  * @return A pointer to the last node of the linked list, or NULL if the list is empty.
  */
 t_list *ft_lstlast(t_list *lst);
-void stack_ini(t_list **stack, int argc, char **argv);
+void stack_ini(t_list **stack, char **argv);
 /**
  * @brief Returns the size of a linked list.
  *

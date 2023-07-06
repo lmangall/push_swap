@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 13:54:17 by lmangall          #+#    #+#             */
-/*   Updated: 2023/06/29 21:21:09 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:11:18 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,6 +236,14 @@ int		ft_memcmp(const void *str1, const void *str2, size_t len);
 * value. If no valid conversion could be performed, it returns zero.
 */
 int		ft_atoi(const char *str);
+
+/**
+* @brief converts the string argument str to a long int.
+* @param str − This is the string representation of an integral number.
+* @return This function returns the converted integral number as a long
+* int value. If no valid conversion could be performed, it returns zero.
+*/
+long long		ft_atolli(const char *str);
 
 /**
 * @brief allocates the requested memory and returns a pointer to it.

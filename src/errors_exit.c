@@ -25,12 +25,13 @@ void exit_free(char *msg, t_list *stack_a, t_list *stack_b)
 		exit(1);
 	free_stack(stack_a);
 	free_stack(stack_b);
+	printf("stacks are freed, or not ?");
 	exit(1);
 }
 
 void check_int(char *arg)
 {
-	long tmp;
+	long long tmp;
 	int i;
 
     i = 0;
@@ -42,7 +43,8 @@ void check_int(char *arg)
 			exit_free("Non authorized symbol among the arguments", NULL, NULL);
         i++;
     }
-	tmp = ft_atoi(arg);
+	//printf("str tmp = %s\n", arg);
+	tmp = ft_atolli(arg);
 		if (tmp < -2147483648 || tmp > 2147483647)
 			exit_free("Number exceeds int range", NULL, NULL);
 }
