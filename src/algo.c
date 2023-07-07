@@ -159,6 +159,7 @@ int algo(t_list **stack_a, t_list **stack_b)
  */
 static int	find_position(t_list *stack_a, int index)
 {
+	printf("in find_position");
 	t_list *node;
 	int	position;
 
@@ -166,6 +167,7 @@ static int	find_position(t_list *stack_a, int index)
 	position = 1;
 	while (node != NULL)
 	{
+		printf("\n\n%i | %i\n\n", node->index, index);
 		if (node->index == index)
 			return(position);
 		position++;
@@ -174,40 +176,31 @@ static int	find_position(t_list *stack_a, int index)
 	return(-1);
 }
 
-int	small_algo(t_list *stack)
+int small_algo(t_list *stack)
 {
-	printf("\nIN SMALL ALGO\n");
-			// printf("\n\nposition of min index: %i\n", find_position(stack, find_minimum_idx(stack)));
-			// printf("lst_size: %i\n", lst_size(stack));
-	// If the minimum index is at the bottom of the stack 231
-	if (find_position(stack, find_minimum_idx(stack)) == lst_size(stack))
+	int size = lst_size(stack) - 1;
+
+	// If the minimum index is at the bottom of the stack (231)
+	if (find_position(stack, find_minimum_idx(stack)) == size)
 	{
-		printf("minimum index is at the bottom of the stack");
 		swap(&stack, "sa");
 		reverse_rotate(&stack, "rra");
 	}
-	//If the maximum index is at the bottom of the stack  213
-	else if (find_position(stack, lst_size(stack) == lst_size(stack)))
+	// If the maximum index is at the bottom of the stack (213)
+	else if (find_position(stack, size + 1) == 1)
 	{
-		printf("\n\nposition of max index: %i\n", find_position(stack, lst_size(stack)));
-		printf("lst_size: %i\n", lst_size(stack));
-		printf("maximum index is at the bottom of the stack ");
 		swap(&stack, "sa");
 	}
-	//If neither the mini nor the max index are at the bottom of the stack: 312
+	// If neither the minimum nor the maximum index are at the bottom of the stack (312)
+	else if (find_position(stack, find_minimum_idx(stack)) == 2)
+	{
+		rotate(&stack, "ra");
+	}
 	else
 	{
-		printf("neither the mini nor the max index are at the bottom of the stack");
-		//if the maximum value is located at index 2 (second element) 
-		if (find_position(stack, lst_size(stack) == 2))
-		{
-		printf("if the maximum value is located at index 2 (second element)");
-		rotate(&stack, "rra");
-		}
-		else
-			swap(&stack, "sa");
+		swap(&stack, "sa");
 	}
 	print_list(stack);
 	exit_free("correct execution", &stack);
-	return(0);
+	return 0;
 }
