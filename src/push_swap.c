@@ -79,14 +79,10 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
-	 	check_duplicate(args);
-		// printf("\n\nMAIN\n\n");
-		free_array(args);
+	 	check_duplicate(args, "free");
 	}
 	if (argc > 2)
-		check_duplicate(argv + 1);
-	// stack_a = (t_list **)malloc(sizeof(t_list));
-	// stack_b = (t_list **)malloc(sizeof(t_list));
+		check_duplicate(argv + 1, "do not free");
 	stack_a = NULL;
 	stack_b = NULL;
 	stack_ini(&stack_a, argc, argv);
@@ -94,13 +90,6 @@ int	main(int argc, char **argv)
 	if(is_sorted(stack_a))
 		exit_free("sorted",&stack_a);
 	algo(&stack_a, &stack_b);
-	// print_list(*stack_a);
-	// free_stack_d(stack_a);
-	// free_stack_d(stack_b);
-	// free(stack_a);
-	// free(stack_b);
-	// stack_a = NULL;
-	// stack_b = NULL;
 	exit_free("correct execution", &stack_a);
 	return (0);
 }

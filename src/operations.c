@@ -78,7 +78,6 @@ int	rotate(t_list **stack, char *code)
 	head->next = NULL;
 	tail->next = head;
 	if (ft_strstr(code, "ra") || ft_strstr(code, "rb"))
-		// if ((ft_strcmp(code, "ra") == 0) || (ft_strcmp(code, "rb") == 0))
 		ft_putendl_fd(code, 1);
 	return (0);
 }
@@ -108,7 +107,6 @@ int	reverse_rotate(t_list **stack, char *code)
 	tail->next = head;
 	(*stack) = tail;
 	if (ft_strstr(code, "rra") || ft_strstr(code, "rrb"))
-		// if((ft_strcmp(code, "rra") == 0) || (ft_strcmp(code, "rrb") == 0))
 		ft_putendl_fd(code, 1);
 	return (0);
 }

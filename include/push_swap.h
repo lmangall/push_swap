@@ -142,7 +142,7 @@ void free_stack(t_list *stack);
  * @param stack_b Pointer to stack B.
  */
 void exit_free(char *msg, t_list **stack_a);
-void check_duplicate(char **args);
+void check_duplicate(char **args, char *msg);
 void free_array(char **str);
 
 

@@ -37,7 +37,6 @@ void free_stack(t_list *stack)
 	{
 		tmp = current;
 		current = current->next;
-		// free(tmp->next);
 		free(tmp);
     }
 }
@@ -49,22 +48,20 @@ void exit_free(char *msg, t_list **stack_a)
 		ft_putstr_fd("Error:\n", 1);
 		ft_putendl_fd(msg, 1);
 	}
-	if (ft_strcmp(msg, "Nothing to sort") == 0)
+	if (ft_strcmp(msg, "Nothing to sort") == 0\
+	 || ft_strcmp(msg, "Duplicate among the arguments") == 0)
 		exit(1);
-	if (ft_strcmp(msg, "sorted") == 0)
-	{
-		free_stack(*stack_a);
-		exit(1);
-	}
+	// if (ft_strcmp(msg, "sorted") == 0)
+	// {
+	// 	free_stack(*stack_a);
+	// 	exit(1);
+	// }
 	free_stack(*stack_a);
-	// free_stack(*stack_b);
-	// free(stack_a);
-	// free(stack_b);
 	exit(1);
 }
 
 
-void check_duplicate(char **args)
+void check_duplicate(char **args, char *msg)
 {
 	int	i;
 	int j;
@@ -78,11 +75,10 @@ void check_duplicate(char **args)
 		j = i + 1;
 		while (args[j])
 		{
-			// 	printf("  CHECK  \n");
-			// printf("%s | %s\n", tmp, args[j]);
 			if(!(ft_strcmp(tmp, args[j])))
 			{
-				free_array(args);
+				if (ft_strcmp(msg, "free") == 0)
+					free_array(args);
 				exit_free("Duplicate among the arguments", NULL);
 			}
 			j++;
@@ -105,7 +101,6 @@ char* check_int(char *arg)
 			return("Non authorized symbol among the arguments");
         i++;
     }
-	//printf("str tmp = %s\n", arg);
 	tmp = ft_atolli(arg);
 	if (tmp < -2147483648 || tmp > 2147483647)
 		return("Number exceeds int range");
