@@ -1,5 +1,21 @@
 #include "../include/push_swap.h"
 
+int is_sorted(t_list *stack)
+{
+	t_list *current_node;
+	
+	current_node = stack;
+	while (current_node->next != NULL)
+	{
+		if (current_node->index > current_node->next->index)
+			return 0;
+		else
+			current_node = current_node->next;
+	}
+	return 1;
+}
+
+
 void free_stack(t_list *stack) 
 {
     t_list *current;
@@ -23,6 +39,11 @@ void exit_free(char *msg, t_list *stack_a, t_list *stack_b)
 	}
 	if (ft_strcmp(msg, "Nothing to sort") == 0)
 		exit(1);
+	if (ft_strcmp(msg, "sorted") == 0)
+	{
+		free_stack(stack_a);
+		exit(1);
+	}
 	free_stack(stack_a);
 	free_stack(stack_b);
 	printf("stacks are freed, or not ?");

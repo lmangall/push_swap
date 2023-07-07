@@ -102,6 +102,17 @@ void print_list(const t_list *head);
 
 //error handling
 /**
+ * @brief Check if the linked list is sorted in ascending order.
+ *
+ * This function traverses the linked list starting from the given stack
+ * and checks if the elements are arranged in ascending order based on their
+ * index values. It returns 1 if the list is sorted, and 0 otherwise.
+ *
+ * @param stack A pointer to the head of the linked list.
+ * @return 1 if the list is sorted in ascending order, 0 otherwise.
+ */
+int	is_sorted(t_list *stack);
+/**
 
 @brief Checks if a given argument is a valid integer.
 
