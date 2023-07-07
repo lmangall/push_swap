@@ -19,29 +19,30 @@ void free_array(char **str)
 {
     int i = 0;
 
-    while (str[i])
-    {
-        free(str[i]);
-        i++;
-    }
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
 	free(str);
 }
 
 void free_stack(t_list *stack) 
 {
-    t_list *current;
+	t_list *current;
 	t_list *tmp;
 	
 	current = stack;
-    while (current != NULL) 
+	while (current != NULL) 
 	{
-        tmp = current;
-        current = current->next;
-        free(tmp);
+		tmp = current;
+		current = current->next;
+		// free(tmp->next);
+		free(tmp);
     }
 }
 
-void exit_free(char *msg, t_list *stack_a, t_list *stack_b)
+void exit_free(char *msg, t_list **stack_a)
 {
 	if (ft_strcmp(msg, "correct execution") != 0)
 	{
@@ -52,17 +53,13 @@ void exit_free(char *msg, t_list *stack_a, t_list *stack_b)
 		exit(1);
 	if (ft_strcmp(msg, "sorted") == 0)
 	{
-		free_stack(stack_a);
+		free_stack(*stack_a);
 		exit(1);
 	}
-	free_stack(stack_a);
-	free_stack(stack_b);
-	stack_a = NULL;
-	stack_b = NULL;
-	free(stack_a);
-	free(stack_b);
-	print_list(stack_a);
-	printf("stacks are freed, or not ?");
+	free_stack(*stack_a);
+	// free_stack(*stack_b);
+	// free(stack_a);
+	// free(stack_b);
 	exit(1);
 }
 
@@ -86,7 +83,7 @@ void check_duplicate(char **args)
 			if(!(ft_strcmp(tmp, args[j])))
 			{
 				free_array(args);
-				exit_free("Duplicate among the arguments", NULL, NULL);
+				exit_free("Duplicate among the arguments", NULL);
 			}
 			j++;
 		}

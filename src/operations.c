@@ -72,9 +72,9 @@ int	rotate(t_list **stack, char *code)
 
 	if (lst_size(*stack) < 2)
 		return (-1);
-	head = *stack;
+	head = (*stack);
 	tail = ft_lstlast(head);
-	*stack = head->next;
+	(*stack) = head->next;
 	head->next = NULL;
 	tail->next = head;
 	if (ft_strstr(code, "ra") || ft_strstr(code, "rb"))
@@ -101,12 +101,12 @@ int	reverse_rotate(t_list **stack, char *code)
 
 	if (lst_size(*stack) < 2)
 		return (-1);
-	head = *stack;
+	head = (*stack);
 	tail = ft_lstlast(head);
-	prev_tail = ft_lstprev(*stack, tail);
+	prev_tail = ft_lstprev(stack, tail);
 	prev_tail->next = NULL;
 	tail->next = head;
-	*stack = tail;
+	(*stack) = tail;
 	if (ft_strstr(code, "rra") || ft_strstr(code, "rrb"))
 		// if((ft_strcmp(code, "rra") == 0) || (ft_strcmp(code, "rrb") == 0))
 		ft_putendl_fd(code, 1);

@@ -14,7 +14,7 @@
 // }
 
 
-void	stack_ini(t_list **stack_a, t_list **stack_b, int argc, char **argv)
+void	stack_ini(t_list **stack_a, int argc, char **argv)
 {
 	int		i;
 	t_list	*new_list;
@@ -22,8 +22,8 @@ void	stack_ini(t_list **stack_a, t_list **stack_b, int argc, char **argv)
 	char	*msg;
 
 	i = 0;
-	if (! stack_a)
-		return ;
+	// if (! stack_a)
+	// 	return ;
 	if (argc == 2)
 		{
 		args = ft_split(argv[1], ' ');
@@ -33,7 +33,7 @@ void	stack_ini(t_list **stack_a, t_list **stack_b, int argc, char **argv)
 			if (ft_strcmp(msg, "all good") != 0)
 				{
 					free_array(args);
-					exit_free(msg, *stack_a, *stack_b);
+					exit_free(msg, stack_a);
 				}
 			new_list = ft_lstnew(ft_atoi(args[i]));
 			ft_lstadd_back(stack_a, new_list);
@@ -47,33 +47,13 @@ void	stack_ini(t_list **stack_a, t_list **stack_b, int argc, char **argv)
 		{
 			msg = check_int(argv[i + 1]);
 			if (ft_strcmp(msg, "all good") != 0)
-				{
-					free_array(argv);
-					exit_free(msg, *stack_a, *stack_b);
-				}			
+				exit_free(msg, stack_a);
 			new_list = ft_lstnew(ft_atoi(argv[i + 1]));
 			ft_lstadd_back(stack_a, new_list);
 			i++;
 		}
 	}
 }
-
-// static void free_stack_d(t_list **stack)
-// {
-//     t_list *current;
-//     t_list *next;
-
-//     current = *stack; // Assign the value of stack pointer to current
-//     while (current != NULL)
-//     {
-//         next = current->next;
-//         free(current);
-//         current = next;
-//     }
-
-//     *stack = NULL; // Set the stack pointer to NULL after freeing all nodes
-// }
-
 
 void print_list(const t_list *head)
 {
@@ -90,12 +70,12 @@ void print_list(const t_list *head)
 
 int	main(int argc, char **argv)
 {
-	t_list	**stack_a;
-	t_list	**stack_b;	
+	t_list	*stack_a;
+	t_list	*stack_b;	
 	char 	**args;
 
 	if (argc < 2)
-		exit_free("Nothing to sort", NULL, NULL);
+		exit_free("Nothing to sort", NULL);
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
@@ -105,18 +85,22 @@ int	main(int argc, char **argv)
 	}
 	if (argc > 2)
 		check_duplicate(argv + 1);
-	stack_a = (t_list **)malloc(sizeof(t_list));
-	stack_b = (t_list **)malloc(sizeof(t_list));
-	*stack_a = NULL;
-	*stack_b = NULL;
-	stack_ini(stack_a, stack_b, argc, argv);
-	assign_index_by_value(*stack_a);
-	if(is_sorted(*stack_a))
-		exit_free("sorted",*stack_a, *stack_b);
-	algo(stack_a, stack_b);
+	// stack_a = (t_list **)malloc(sizeof(t_list));
+	// stack_b = (t_list **)malloc(sizeof(t_list));
+	stack_a = NULL;
+	stack_b = NULL;
+	stack_ini(&stack_a, argc, argv);
+	assign_index_by_value(stack_a);
+	if(is_sorted(stack_a))
+		exit_free("sorted",&stack_a);
+	algo(&stack_a, &stack_b);
 	// print_list(*stack_a);
 	// free_stack_d(stack_a);
 	// free_stack_d(stack_b);
-	exit_free("correct execution", *stack_a, *stack_b);
+	// free(stack_a);
+	// free(stack_b);
+	// stack_a = NULL;
+	// stack_b = NULL;
+	exit_free("correct execution", &stack_a);
 	return (0);
 }

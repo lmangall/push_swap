@@ -31,7 +31,17 @@ ARG=4 20 38; ./push_swap $ARG | ./checker_Mac $ARG
 
  ARG="4 20 38 43 43 654 765 231 564 76 4376 765 765 423"; ./push_swap $ARG | ./checker_Mac $ARG
 
+'
 
+
+
+creation
+	t_list	*stack_a;
+sending
+	&stack_a
+=>sends a pointer to pointer, because it sends the address to a pointer
+
+be careful not to dereference
 
 ```C
 void	stack_ini(t_list **stack, char **argv)

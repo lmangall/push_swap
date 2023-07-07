@@ -19,7 +19,7 @@ void	ft_lstadd_back(t_list **stack, t_list *new)
 	else
 	{
 		*stack = new;
-		(*stack)->next = NULL;
+		(*stack)->next = NULL; // why parenthesis ?
 	}
 }
 
@@ -27,7 +27,7 @@ t_list	*ft_lstnew(int value)
 {
 	t_list	*new;
 
-	new = malloc(sizeof(*new));//sizeof (t_list) ??
+	new = malloc(sizeof(t_list));//sizeof (t_list) ??
 	if (!new)
 		return (NULL);
 	new->value = value;
@@ -48,15 +48,15 @@ t_list	*ft_lstlast(t_list *lst)
 	return (tmp);
 }
 
-t_list	*ft_lstprev(t_list *lst, t_list *current)
+t_list	*ft_lstprev(t_list **lst, t_list *current)
 {
 	t_list	*prev;
 
 	prev = NULL;
-	while (lst && lst != current)
+	while (lst && lst != &current)
 	{
-		prev = lst;
-		lst = lst->next;
+		prev = *lst;
+		*lst = (*lst)->next;//why parenthesis
 	}
 	return (prev);
 }
