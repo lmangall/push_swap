@@ -64,6 +64,16 @@ t_list	*ft_lstnew(int value);
  */
 t_list *ft_lstlast(t_list *lst);
 
+//other
+/**
+ * @brief Assigns an index to each node in the linked list based on their values.
+ *
+ * This function iterates through the linked list and assigns an index value to each node
+ * based on their values. Nodes with smaller values are assigned lower indices, starting from 0.
+ *
+ * @param stack Pointer to the head of the linked list.
+ */
+void assign_index_by_value(t_list *stack);
 /**
  * @brief Initializes a stack with values from command-line arguments.
  *
@@ -76,7 +86,6 @@ t_list *ft_lstlast(t_list *lst);
  * @param argv An array of strings representing the command-line arguments.
  */
 void	stack_ini(t_list **stack, int argc, char **argv);
-
 /**
  * @brief Returns the size of a linked list.
  *
@@ -87,16 +96,7 @@ void	stack_ini(t_list **stack, int argc, char **argv);
  */
 int lst_size(t_list *head);
 
-//other
-/**
- * @brief Assigns an index to each node in the linked list based on their values.
- *
- * This function iterates through the linked list and assigns an index value to each node
- * based on their values. Nodes with smaller values are assigned lower indices, starting from 0.
- *
- * @param stack Pointer to the head of the linked list.
- */
-void assign_index_by_value(t_list *stack);
+//get rid of
 int	print_binary(int num);
 void print_list(const t_list *head);
 
@@ -126,7 +126,7 @@ any of these checks, the program terminates and displays an appropriate error me
 
 @return None.
 */
-void check_int(char *arg);
+char* check_int(char *arg);
 /**
  * @brief Frees a stack of t_list nodes.
  *

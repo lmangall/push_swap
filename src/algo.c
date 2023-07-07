@@ -1,8 +1,26 @@
 #include "../include/push_swap.h"
 #include "../lib/libft/src/libft.h"
 
+// t_list	find_minimum(t_list *stack_a)
+// {
+// 	t_list *node;
+// 	int tmp;
+// 	t_list *min_node;
 
-// sorting algorithm
+// 	int min_value = 2147483648; // Initialize min_value to MAX_INT
+// 	min_node = NULL; // Initialize min_node to NULL
+// 	node = stack_a; // Start from the first node
+// 	while (node->next != NULL)
+// 	{
+// 		if (node->value < min_value)
+// 		{
+// 			min_value = node->value;
+// 			min_node = node;
+// 		}
+// 		node = node->next;
+// 	}
+// }
+
 int	is_bit_set(int num, int bit)
 {
 	int	shifted;

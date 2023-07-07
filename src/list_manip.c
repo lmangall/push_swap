@@ -85,8 +85,8 @@ void assign_index_by_value(t_list *stack)
 
 	node_nbr = lst_size(stack);
 	index = 0;
-	while (index < node_nbr)
-	{
+	while (index < node_nbr)//instead of this I could use 'while(node->next != NULL) 7 lines below ?
+		{
 		int min_value = 2147483647; // Initialize min_value to MAX_INT
 		min_node = NULL; // Initialize min_node to NULL
 		node = stack; // Start from the first node

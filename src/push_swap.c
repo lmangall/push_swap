@@ -54,6 +54,7 @@ void	stack_ini(t_list **stack, int argc, char **argv)
 	int		i;
 	t_list	*new_list;
 	char	**args;
+	char	*msg;
 
 	i = 0;
 	if (! stack)
@@ -64,7 +65,12 @@ void	stack_ini(t_list **stack, int argc, char **argv)
 		check_duplicate(args);
 		while (args[i])
 		{
-			check_int(args[i]);
+			msg = check_int(args[i]);
+			if (ft_strcmp(msg, "all good") != 0)
+				{
+					free_array(args);
+					exit_free(msg, NULL, NULL);
+				}
 			new_list = ft_lstnew(ft_atoi(args[i]));
 			ft_lstadd_back(stack, new_list);
 			i++;
