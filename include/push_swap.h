@@ -85,7 +85,7 @@ void assign_index_by_value(t_list *stack);
  * @param argc The number of command-line arguments.
  * @param argv An array of strings representing the command-line arguments.
  */
-void	stack_ini(t_list **stack, int argc, char **argv);
+void	stack_ini(t_list **stack_a, t_list **stack_b, int argc, char **argv);
 /**
  * @brief Returns the size of a linked list.
  *
@@ -142,6 +142,8 @@ void free_stack(t_list *stack);
  * @param stack_b Pointer to stack B.
  */
 void exit_free(char *msg, t_list *stack_a, t_list *stack_b);
+void check_duplicate(char **args);
+void free_array(char **str);
 
 
 //sorting operations
