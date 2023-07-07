@@ -92,24 +92,45 @@ int	rr(t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
-int	reverse_rotate(t_list **stack, char *code)
+// int	reverse_rotate(t_list **stack, char *code)
+// {
+// 	t_list	*head;
+// 	t_list	*tail;
+// 	t_list	*prev_tail;
+
+// 	if (lst_size(*stack) < 2)
+// 		return (-1);
+// 	head = (*stack);
+// 	tail = ft_lstlast(head);
+// 	prev_tail = ft_lstprev(stack, tail);
+// 	prev_tail->next = NULL;
+// 	tail->next = head;
+// 	(*stack) = tail;
+// 	if (ft_strstr(code, "rra") || ft_strstr(code, "rrb"))
+// 		ft_putendl_fd(code, 1);
+// 	return (0);
+// }
+int reverse_rotate(t_list **stack, char *code)
 {
-	t_list	*head;
-	t_list	*tail;
-	t_list	*prev_tail;
+	t_list *head = *stack;
+	t_list *tail = ft_lstlast(head);
 
 	if (lst_size(*stack) < 2)
 		return (-1);
-	head = (*stack);
-	tail = ft_lstlast(head);
-	prev_tail = ft_lstprev(stack, tail);
-	prev_tail->next = NULL;
-	tail->next = head;
-	(*stack) = tail;
+	
+	while (head->next != tail)
+		head = head->next;
+
+	head->next = NULL;
+	tail->next = *stack;
+	*stack = tail;
+
 	if (ft_strstr(code, "rra") || ft_strstr(code, "rrb"))
 		ft_putendl_fd(code, 1);
+
 	return (0);
 }
+
 
 int	rrr(t_list **stack_a, t_list **stack_b)
 {

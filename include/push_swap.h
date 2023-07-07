@@ -64,6 +64,69 @@ t_list	*ft_lstnew(int value);
  */
 t_list *ft_lstlast(t_list *lst);
 
+//sorting algorithms
+/**
+ * @brief Checks if a specific bit in an integer is set.
+ *
+ * This function checks the value of a specific bit in the binary representation
+ * of an integer. It works by right-shifting the integer by the given bit position,
+ * effectively moving the bit of interest to the rightmost position. Then, it performs
+ * a bitwise AND operation with 1 to extract the value of the rightmost bit. If the
+ * extracted bit is 1, the specified bit is considered set; otherwise, it is considered
+ * not set.
+ *
+ * @param num The integer value.
+ * @param bit The position of the bit to check.
+ * @return 1 if the specified bit is set (1), 0 otherwise (0).
+ */
+int is_bit_set(int num, int bit);
+/**
+ * @brief Calculates the number of bits required to represent the maximum index in stack_a.
+ *
+ * This function determines the number of bits needed to represent the maximum index value
+ * in the provided stack_a. It calculates the maximum index by subtracting 1 from the size
+ * of stack_a and then calculates the number of bits required to represent that maximum
+ * index value by shifting the index value right until it becomes zero, counting the number
+ * of shifts.
+ *
+ * @param stack_a Pointer to the stack_a list.
+ * @return The number of bits required to represent the maximum index in stack_a.
+ */
+int max_index_bits_nbr(t_list **stack_a);
+/**
+ * @brief Performs the radix sort algorithm on stack_a using stack_b.
+ *
+ * This function implements the radix sort algorithm to sort the integers in stack_a
+ * in ascending order. It iterates through each bit of the index value of the nodes
+ * in stack_a, starting from the least significant bit to the most significant bit.
+ * For each bit, it separates the nodes into two stacks: stack_a and stack_b. Nodes
+ * with the bit set(=1) are moved to stack_b using the "pb" operation, while nodes
+ * with the bit unset remain in stack_a and are rotated using the "ra" operation.
+ *
+ * After separating the nodes based on the checked bit, the function moves the nodes
+ * back from stack_b to stack_a using the "pa" operation, preserving the relative order
+ * of the nodes. This process is repeated for each bit of the index value until all bits
+ * have been checked.
+ *
+ * @param stack_a Pointer to the stack_a list.
+ * @param stack_b Pointer to the stack_b list.
+ * @return 0 to indicate successful execution of the algorithm.
+ */
+int algo(t_list **stack_a, t_list **stack_b);
+t_list	*find_minimum_node(t_list *stack_a);
+/**
+ * @brief Finds the minimum index value in a linked list.
+ *
+ * This function iterates through the linked list starting from the given stack_a node
+ * and finds the minimum index value. It returns the minimum index value found in the list.
+ *
+ * @param stack_a The pointer to the head of the linked list.
+ * @return        The minimum index value in the linked list.
+ */
+int	find_minimum_idx(t_list *stack_a);
+int	small_algo(t_list *stack);
+
+
 //other
 /**
  * @brief Assigns an index to each node in the linked list based on their values.
@@ -92,7 +155,7 @@ void	stack_ini(t_list **stack_a, int argc, char **argv);
  * This function calculates the number of nodes in a linked list.
  *
  * @param head Pointer to the head of the linked list.
- * @return The size of the linked list.
+ * @return The size of the linked list WHICH IS the max index
  */
 int lst_size(t_list *head);
 
@@ -226,57 +289,6 @@ int	rr(t_list **stack_a, t_list **stack_b);
  */
 int	rrr(t_list **stack_a, t_list **stack_b);
 
-
-
-//sorting algorithms
-/**
- * @brief Checks if a specific bit in an integer is set.
- *
- * This function checks the value of a specific bit in the binary representation
- * of an integer. It works by right-shifting the integer by the given bit position,
- * effectively moving the bit of interest to the rightmost position. Then, it performs
- * a bitwise AND operation with 1 to extract the value of the rightmost bit. If the
- * extracted bit is 1, the specified bit is considered set; otherwise, it is considered
- * not set.
- *
- * @param num The integer value.
- * @param bit The position of the bit to check.
- * @return 1 if the specified bit is set (1), 0 otherwise (0).
- */
-int is_bit_set(int num, int bit);
-/**
- * @brief Calculates the number of bits required to represent the maximum index in stack_a.
- *
- * This function determines the number of bits needed to represent the maximum index value
- * in the provided stack_a. It calculates the maximum index by subtracting 1 from the size
- * of stack_a and then calculates the number of bits required to represent that maximum
- * index value by shifting the index value right until it becomes zero, counting the number
- * of shifts.
- *
- * @param stack_a Pointer to the stack_a list.
- * @return The number of bits required to represent the maximum index in stack_a.
- */
-int max_index_bits_nbr(t_list **stack_a);
-/**
- * @brief Performs the radix sort algorithm on stack_a using stack_b.
- *
- * This function implements the radix sort algorithm to sort the integers in stack_a
- * in ascending order. It iterates through each bit of the index value of the nodes
- * in stack_a, starting from the least significant bit to the most significant bit.
- * For each bit, it separates the nodes into two stacks: stack_a and stack_b. Nodes
- * with the bit set(=1) are moved to stack_b using the "pb" operation, while nodes
- * with the bit unset remain in stack_a and are rotated using the "ra" operation.
- *
- * After separating the nodes based on the checked bit, the function moves the nodes
- * back from stack_b to stack_a using the "pa" operation, preserving the relative order
- * of the nodes. This process is repeated for each bit of the index value until all bits
- * have been checked.
- *
- * @param stack_a Pointer to the stack_a list.
- * @param stack_b Pointer to the stack_b list.
- * @return 0 to indicate successful execution of the algorithm.
- */
-int algo(t_list **stack_a, t_list **stack_b);
 
 #endif
 

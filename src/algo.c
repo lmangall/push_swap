@@ -1,25 +1,44 @@
 #include "../include/push_swap.h"
 #include "../lib/libft/src/libft.h"
 
-// t_list	find_minimum(t_list *stack_a)
-// {
-// 	t_list *node;
-// 	int tmp;
-// 	t_list *min_node;
+t_list	*find_minimum_node(t_list *stack_a)
+{
+	t_list *node;
+	t_list *min_node;
+	int min_value;
 
-// 	int min_value = 2147483648; // Initialize min_value to MAX_INT
-// 	min_node = NULL; // Initialize min_node to NULL
-// 	node = stack_a; // Start from the first node
-// 	while (node->next != NULL)
-// 	{
-// 		if (node->value < min_value)
-// 		{
-// 			min_value = node->value;
-// 			min_node = node;
-// 		}
-// 		node = node->next;
-// 	}
-// }
+	min_value = 2147483647; // Initialize min_value to MAX_INT
+	// min_node = NULL; // Initialize min_node to NULL
+	node = stack_a; // Start from the first node
+	while (node->next != NULL)
+	{
+		if (node->index < min_value)
+		{
+			min_value = node->index;
+			min_node = node;
+		}
+		node = node->next;
+		// printf("\nindex = %i\nvalue = %i\nmin_value = %i\n", node->index, node->value, min_value);
+	}
+	return(min_node);
+}
+
+int	find_minimum_idx(t_list *stack_a)
+{
+	t_list *node;
+	int min_index;
+
+	node = stack_a;
+	min_index = 0;
+	while(node->next != NULL)
+	{
+		if (node->index < min_index)
+			min_index = node->index;
+		node = node->next;
+	}
+	return(min_index);
+}
+
 
 int	is_bit_set(int num, int bit)
 {
@@ -79,4 +98,116 @@ int algo(t_list **stack_a, t_list **stack_b)
 		checked_bit++;
 	}
 	return (0);
+}
+
+
+// int	small_algo(t_list *stack)
+// {
+// 	// int	min_index;
+// 	// int	proximity;
+
+// 	// proximity = 0;
+// 	// min_index = 0;
+// 	// t_list *tmp = find_minimum(stack_a);
+// 	// min_index = tmp->index;
+// 	// proximity = lst_size(stack) / 2;
+// 	// if (proximity > min_index)
+// 	// 	rotate(stack_a, "ra");
+// 	// else
+// 	// 	reverse_rotate(stack_a, "rra");
+
+// 	// If the minimum value is equal to the value of the top element
+// 	if (find_minimum_idx(stack) == stack->index)
+// 	{
+// 		printf("minimum value is equal to the value of the top element");
+// 		reverse_rotate(&stack, "rra");
+// 		swap(&stack, "sa");
+// 	}
+// 	//If the maximum value is equal to the value of the top element 
+// 	else if (lst_size(stack) == stack->index)
+// 	{
+// 		printf("maximum value is equal to the value of the top element");
+// 		rotate(&stack, "rra");
+// 		if (!(is_sorted(stack)))
+// 			swap(&stack, "sa");
+// 	}
+// 	//If neither the mini nor the max value the top element
+// 	else
+// 	{
+// 		printf("neither the mini nor the max value the top element");
+// 		//if the maximum value is located at index 1 (second element) 
+// 		if (find_position(stack, lst_size(stack)) == 1)
+// 			reverse_rotate(&stack, "rra");
+// 		else
+// 			swap(&stack, "sa");
+// 	}
+// 	exit_free("correct execution", &stack);
+// 	return(0);
+// }
+
+
+/**
+ * @brief Finds the position of a node with a given index in a linked list.
+ *
+ * This function searches for a node with the specified index in the linked list
+ * starting from the given stack_a node. It returns the position of the node if found,
+ * otherwise -1 is returned.
+ *
+ * @param stack_a The pointer to the head of the linked list.
+ * @param index   The index value to search for.
+ * @return        The position of the node if found, -1 otherwise.
+ */
+static int	find_position(t_list *stack_a, int index)
+{
+	t_list *node;
+	int	position;
+
+	node = stack_a;
+	position = 1;
+	while (node != NULL)
+	{
+		if (node->index == index)
+			return(position);
+		position++;
+		node = node->next;
+	}
+	return(-1);
+}
+
+int	small_algo(t_list *stack)
+{
+	printf("\nIN SMALL ALGO\n");
+			// printf("\n\nposition of min index: %i\n", find_position(stack, find_minimum_idx(stack)));
+			// printf("lst_size: %i\n", lst_size(stack));
+	// If the minimum index is at the bottom of the stack 231
+	if (find_position(stack, find_minimum_idx(stack)) == lst_size(stack))
+	{
+		printf("minimum index is at the bottom of the stack");
+		swap(&stack, "sa");
+		reverse_rotate(&stack, "rra");
+	}
+	//If the maximum index is at the bottom of the stack  213
+	else if (find_position(stack, lst_size(stack) == lst_size(stack)))
+	{
+		printf("\n\nposition of max index: %i\n", find_position(stack, lst_size(stack)));
+		printf("lst_size: %i\n", lst_size(stack));
+		printf("maximum index is at the bottom of the stack ");
+		swap(&stack, "sa");
+	}
+	//If neither the mini nor the max index are at the bottom of the stack: 312
+	else
+	{
+		printf("neither the mini nor the max index are at the bottom of the stack");
+		//if the maximum value is located at index 2 (second element) 
+		if (find_position(stack, lst_size(stack) == 2))
+		{
+		printf("if the maximum value is located at index 2 (second element)");
+		rotate(&stack, "rra");
+		}
+		else
+			swap(&stack, "sa");
+	}
+	print_list(stack);
+	exit_free("correct execution", &stack);
+	return(0);
 }

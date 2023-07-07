@@ -1,18 +1,5 @@
 #include "../include/push_swap.h"
-
-// void print_list(const t_list *head)
-// {
-// 	const t_list	*tmp;
-
-// 	tmp = head;
-// 	while (tmp != NULL)
-// 	{
-// 		ft_putnbr_fd(tmp->value, 1);
-// 		ft_putendl_fd("", 1);
-// 		tmp = tmp->next;
-// 	}
-// }
-
+#include "../lib/libft/src/libft.h"
 
 void	stack_ini(t_list **stack_a, int argc, char **argv)
 {
@@ -89,7 +76,14 @@ int	main(int argc, char **argv)
 	assign_index_by_value(stack_a);
 	if(is_sorted(stack_a))
 		exit_free("sorted",&stack_a);
+
+	// printf("\nargc = %i\n", argc);
+	if (argc == 4)
+		small_algo(stack_a);
+	// printf("\nIN MAIN\n");
 	algo(&stack_a, &stack_b);
+	// printf("\nIN MAIN\n");
+	print_list(stack_a);
 	exit_free("correct execution", &stack_a);
 	return (0);
 }
