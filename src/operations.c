@@ -57,10 +57,10 @@ int	push(t_list **stack_a, t_list **stack_b, char *code)
 		node_cpy = *stack_from;
 		*stack_from = (*stack_from)->next;
 	}
-	if (!(*stack_to))
+	// if (!(*stack_to))
 		ft_lstadd_front(stack_to, node_cpy);
-	else
-		ft_lstadd_back(stack_to, node_cpy);
+	// else
+	// 	ft_lstadd_back(stack_to, node_cpy);
 	ft_putendl_fd(code, 1);
 	return (0);
 }

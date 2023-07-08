@@ -52,6 +52,7 @@ void print_list(const t_list *head)
 		ft_putnbr_fd(tmp->value, 1);
 		ft_putendl_fd("", 1);
 		tmp = tmp->next;
+		// printf("index = %i\n", tmp->index);
 	}
 }
 

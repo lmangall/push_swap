@@ -1,6 +1,81 @@
 
 
 
+
+
+
+
+
+
+
+```C
+void sort_5(t_list *stack_a, t_list *stack_b)
+{
+	int max;
+	int min;
+	int size;
+	
+	max = lst_size(stack_a) - 1;
+	min = find_minimum_idx(stack_a);
+	size = lst_size(stack_b);
+	while (size < 2)
+	{
+		//if the head index is the minimum or maximum  
+		if (stack_a->index == min || stack_a->index == max)
+			push(&stack_a, &stack_b, "pb");
+		else
+			rotate(&stack_a, "ra");
+		min = find_minimum_idx(stack_a);
+		size = lst_size(stack_b);
+	}
+	
+	stack_a = sort_3(stack_a);
+
+	push(&stack_a, &stack_b, "pa");
+	push(&stack_a, &stack_b, "pa");
+
+	//if the head index is the maximum  
+	if (stack_a->index == max)
+		rotate(&stack_a, "ra");
+	else
+	{
+		swap(&stack_a, "sa");
+		rotate(&stack_a, "ra");
+	}
+
+	exit_free("correct execution", &stack_a);
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 https://github.com/42YerevanProjects/push_swap/blob/master/src/simple.c
 https://github.com/iamrustamov/push_swap/blob/master/sort_3_and_5_element.c
 

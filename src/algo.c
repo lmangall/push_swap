@@ -30,13 +30,35 @@ int	find_minimum_idx(t_list *stack_a)
 
 	node = stack_a;
 	min_index = 2147483646;
-	while(node->next != NULL)
+	// printf("\nindex  value  min_index\n");
+	while(node) /// try: 	while (node != NULL)
 	{
 		if (node->index < min_index)
 			min_index = node->index;
+		// printf("\n%5i|%5i|%5i|\n", node->index, node->value, min_index);
+		if(node->next == NULL)
+			break;
 		node = node->next;
 	}
 	return(min_index);
+}
+
+static int	find_maximum_idx(t_list *stack)
+{
+	t_list *node;
+	int max_index;
+
+	node = stack;
+	max_index = 0;
+	while(node)
+	{
+		if (node->index > max_index)
+			max_index = node->index;
+		if(node->next == NULL)
+			break;
+		node = node->next;
+	}
+	return(max_index);
 }
 
 
@@ -141,8 +163,82 @@ static int	find_position(t_list *stack_a, int index)
 
 
 
+// int small_algo(t_list *stack)
+// {
+// 	int size;
+	
+// 	size = lst_size(stack) - 1;
+// 	if(size == 1)
+// 	{
+// 		rotate(&stack, "ra");
+// 		exit_free("correct execution", &stack);
+// 	}
+// 	// If the minimum index is at the bottom of the stack (231,321)
+// 	if (find_position(stack, find_minimum_idx(stack)) == size)
+// 	{
+// 			//if maximium is on top
+// 		if(size == stack->index)
+// 			swap(&stack, "sa");
+// 		reverse_rotate(&stack, "rra");
 
-void sort_3(t_list *stack)
+// 	}
+// 	// If the maximum index is at the bottom of the stack (213)(cannot be 123)
+// 	else if (size == ft_lstlast(stack)->index)
+// 		swap(&stack, "sa");
+// 	// If neither the minimum nor the maximum index are at the bottom of the stack (312,132)
+// 	else //if (find_position(stack, find_minimum_idx(stack)) == 2)
+// 	{
+// 		if (find_minimum_idx(stack) == stack->index)
+// 			swap(&stack, "sa");
+// 		rotate(&stack, "ra");
+// 	}
+// 	exit_free("correct execution", &stack);
+// 	return 0;
+// }
+
+
+// t_list *sort_3(t_list *stack)
+// {
+// 	printf(YEL"\nFUNCTION : sort_3\n");
+// 	int size;
+	
+// 	size = lst_size(stack) - 1;
+// 	if(size == 1)
+// 	{
+// 		rotate(&stack, "ra");
+// 		exit_free("correct execution", &stack);
+// 	}
+// 	print_list(stack);
+// 	// If the minimum index is at the bottom of the stack (231,321)
+// 	printf(BLU"find_minimum_idx(stack) = %i\n", find_minimum_idx(stack));
+// 	printf(BLU"\npos %i = %i size\n", find_position(stack, find_minimum_idx(stack)), size);
+// 	if (find_position(stack, find_minimum_idx(stack)) == size)
+// 	{
+// 	// printf(YEL"stack->index = %i", stack->index);
+// 	// printf(YEL"max index     = %i", find_maximum_idx(stack));
+// 			//if maximium is on top
+// 		if(find_maximum_idx(stack) == stack->index)
+// 			swap(&stack, "sa");
+// 		reverse_rotate(&stack, "rra");
+// 	// printf(RED"\nmax on top\n");
+
+// 	}
+// 	// If the maximum index is at the bottom of the stack (213)(cannot be 123)
+// 	else if (size == ft_lstlast(stack)->index)
+// 		swap(&stack, "sa");
+// 	// If neither the minimum nor the maximum index are at the bottom of the stack (312,132)
+// 	else //if (find_position(stack, find_minimum_idx(stack)) == 2)
+// 	{
+// 		if (find_minimum_idx(stack) == stack->index)
+// 			swap(&stack, "sa");
+// 		rotate(&stack, "ra");
+// 	}
+// 	printf(RED"\nprinting from sort_3");
+// 	print_list(stack);
+// 	return(stack);
+// }
+
+t_list *sort_3(t_list *stack)
 {
 	int size;
 	
@@ -152,27 +248,89 @@ void sort_3(t_list *stack)
 		rotate(&stack, "ra");
 		exit_free("correct execution", &stack);
 	}
-	// If the minimum index is at the bottom of the stack (231,321)
+
 	if (find_position(stack, find_minimum_idx(stack)) == size)
 	{
-			//if maximium is on top
-		if(size == stack->index)
+		if(find_maximum_idx(stack) == stack->index)
 			swap(&stack, "sa");
 		reverse_rotate(&stack, "rra");
-
 	}
-	// If the maximum index is at the bottom of the stack (213)(cannot be 123)
 	else if (size == ft_lstlast(stack)->index)
 		swap(&stack, "sa");
-	// If neither the minimum nor the maximum index are at the bottom of the stack (312,132)
-	else //if (find_position(stack, find_minimum_idx(stack)) == 2)
+	else
 	{
 		if (find_minimum_idx(stack) == stack->index)
 			swap(&stack, "sa");
 		rotate(&stack, "ra");
 	}
 	print_list(stack);
+	return(stack);
 }
+
+
+// void sort_5(t_list *stack_a, t_list *stack_b)
+// {
+// 	int max;
+// 	int min;
+// 	int size;
+	
+// 	max = lst_size(stack_a) - 1;
+// 	min = find_minimum_idx(stack_a);
+// 	size = lst_size(stack_b);
+// 	while (size < 2)
+// 	{
+// 		//checking if the head index is equal to either the minimum (stack->min) or  maximum  (stack->max).
+// 		if (stack_a->index == min || stack_a->index == max)
+// 			push(&stack_a, &stack_b, "pb");
+// 		else
+// 			rotate(&stack_a, "ra");
+// 		min = find_minimum_idx(stack_a);
+// 		// printf("\nmin index :  %i\n", find_minimum_idx(stack_a));
+// 		size = lst_size(stack_b);
+// 		// printf("\nsize stack b :  %i\n", size);
+// 	}
+// 	// print_list(stack_a);
+// 	// printf("\nMARK\n");
+
+// 	stack_a = sort_3(stack_a);
+// 	// print_list(stack_a);
+// 	// printf("\n\n\n\n");
+// 	// push(&stack_b, &stack_a, "pa");
+// 	// push(&stack_b, &stack_a, "pa");
+
+// 	// t_list *actual = ft_lstprev(&stack_a, stack_a);
+
+// 	// printf(GRN"\n idx = %i\n", actual->index);
+// 	// printf("\n idx = %i\n", actual->next->index);
+// 	// printf("\n idx = %i\n", actual->next->next->index);
+// 	// printf("\n idx = %i\n", actual->next->next->next->index);
+
+// 	printf(CYN"\nback in sort_5\n");
+// 	print_list(stack_a);
+// 	printf("\nNOW 2x pa\n");
+// 	push(&stack_a, &stack_b, "pa");
+// 	push(&stack_a, &stack_b, "pa");
+// 	print_list(stack_a);
+// 	if (stack_a->index == max)
+// 	{
+// 			// printf("\nTEST Y\n");
+// 			rotate(&stack_a, "ra");
+// 	}
+// 	else
+// 	{
+// 		// printf("\nTEST X\n");
+// 		swap(&stack_a, "sa");
+// 		rotate(&stack_a, "ra");
+// 	}
+// 	print_list(stack_a);
+// 	printf("\n\n");
+
+// 		print_list(stack_a);
+
+// 	exit_free("correct execution", &stack_a);
+// }
+
+
 
 void sort_5(t_list *stack_a, t_list *stack_b)
 {
@@ -185,35 +343,30 @@ void sort_5(t_list *stack_a, t_list *stack_b)
 	size = lst_size(stack_b);
 	while (size < 2)
 	{
-		//checking if the head index is equal to either the minimum (stack->min) or  maximum  (stack->max).
+		//if the head index is the minimum or maximum  
 		if (stack_a->index == min || stack_a->index == max)
 			push(&stack_a, &stack_b, "pb");
 		else
 			rotate(&stack_a, "ra");
 		min = find_minimum_idx(stack_a);
-		printf("\nmin index :  %i\n", find_minimum_idx(stack_a));
 		size = lst_size(stack_b);
-		printf("\nsize stack b :  %i\n", size);
 	}
-		print_list(stack_a);
-					printf("\nMARK\n");
-
-	sort_3(stack_a);
+	
+	stack_a = sort_3(stack_a);
 	push(&stack_a, &stack_b, "pa");
 	push(&stack_a, &stack_b, "pa");
-	print_list(stack_a);
-
-	if (stack_a->index == max)
-	{
-			printf("\nTEST Y\n");
-			rotate(&stack_a, "ra");
-	}
+	if(is_sorted(stack_a))
+		exit_free("correct execution", &stack_a);
 	else
 	{
-		printf("\nTEST X\n");
-		swap(&stack_a, "sa");
-		rotate(&stack_a, "ra");
+		//if the head index is the maximum  
+		if (stack_a->index == max)
+			rotate(&stack_a, "ra");
+		else
+		{
+			swap(&stack_a, "sa");
+			rotate(&stack_a, "ra");
+		}
 	}
-	print_list(stack_a);
 	exit_free("correct execution", &stack_a);
 }

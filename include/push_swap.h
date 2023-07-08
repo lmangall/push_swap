@@ -124,9 +124,22 @@ t_list	*find_minimum_node(t_list *stack_a);
  * @return        The minimum index value in the linked list.
  */
 int	find_minimum_idx(t_list *stack_a);
-void	sort_3(t_list *stack);
+t_list	*sort_3(t_list *stack);
 void sort_5(t_list *stack_a, t_list *stack_b);
 
+#ifndef FT_COLORS_H
+# define FT_COLORS_H
+
+# define BLK "\e[0;30m"
+# define RED "\e[0;31m"
+# define GRN "\e[0;32m"
+# define YEL "\e[0;33m"
+# define BLU "\e[0;34m"
+# define MAG "\e[0;35m"
+# define CYN "\e[0;36m"
+# define WHT "\e[0;37m"
+
+#endif
 
 //other
 /**
@@ -251,6 +264,14 @@ int push(t_list **stack_a, t_list **stack_b, char *code);
  * @param stack Pointer to the stack.
  * @param code The operation code to print.
  * @return 0 if successful, -1 if there are less than 2 elements in the stack.
+ */
+/**
+ * @brief Shifts up all elements of stack a by 1.
+ * The first element becomes the last one.
+ *
+ * @param stack A pointer to the stack to be rotated.
+ * @param code The code string representing the rotation operation.
+ * @return 0 if the rotation was successful, -1 otherwise.
  */
 int	rotate(t_list **stack, char *code);
 /**
