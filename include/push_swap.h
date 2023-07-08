@@ -124,7 +124,7 @@ t_list	*find_minimum_node(t_list *stack_a);
  * @return        The minimum index value in the linked list.
  */
 int	find_minimum_idx(t_list *stack_a);
-t_list	*sort_3(t_list *stack);
+void	sort_3(t_list **stack);
 void sort_5(t_list *stack_a, t_list *stack_b);
 
 #ifndef FT_COLORS_H

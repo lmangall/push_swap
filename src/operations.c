@@ -43,6 +43,8 @@ int	push(t_list **stack_a, t_list **stack_b, char *code)
 
 	stack_from = NULL;
 	stack_to = NULL;
+	// t_list **stack_from = stack_a;
+	// t_list **stack_to = stack_b;
 	if (ft_strcmp(code, "pb") == 0)
 	{
 		stack_from = stack_a;
@@ -57,6 +59,7 @@ int	push(t_list **stack_a, t_list **stack_b, char *code)
 		node_cpy = *stack_from;
 		*stack_from = (*stack_from)->next;
 	}
+	// printf("cpy = %p\n", *node_cpy);
 	// if (!(*stack_to))
 		ft_lstadd_front(stack_to, node_cpy);
 	// else

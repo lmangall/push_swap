@@ -1,8 +1,30 @@
 
 
 
+ENDS UP NOT USED
+```C
+t_list	*find_minimum_node(t_list *stack_a)
+{
+	t_list *node;
+	t_list *min_node;
+	int min_value;
 
-
+	min_value = 2147483647; // Initialize min_value to MAX_INT
+	// min_node = NULL; // Initialize min_node to NULL
+	node = stack_a; // Start from the first node
+	while (node->next != NULL)
+	{
+		if (node->index < min_value)
+		{
+			min_value = node->index;
+			min_node = node;
+		}
+		node = node->next;
+		// printf("\nindex = %i\nvalue = %i\nmin_value = %i\n", node->index, node->value, min_value);
+	}
+	return(min_node);
+}
+```
 
 
 
