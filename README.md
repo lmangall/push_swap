@@ -1,211 +1,8 @@
 
-./push_swap_visualizer-master/build/bin/visualizer
-
-ENDS UP NOT USED
-```C
-t_list	*find_minimum_node(t_list *stack_a)
-{
-	t_list *node;
-	t_list *min_node;
-	int min_value;
-
-	min_value = 2147483647; // Initialize min_value to MAX_INT
-	// min_node = NULL; // Initialize min_node to NULL
-	node = stack_a; // Start from the first node
-	while (node->next != NULL)
-	{
-		if (node->index < min_value)
-		{
-			min_value = node->index;
-			min_node = node;
-		}
-		node = node->next;
-		// printf("\nindex = %i\nvalue = %i\nmin_value = %i\n", node->index, node->value, min_value);
-	}
-	return(min_node);
-}
-```
-
-
-
-
-
-```C
-void sort_5(t_list *stack_a, t_list *stack_b)
-{
-	int max;
-	int min;
-	int size;
-	
-	max = lst_size(stack_a) - 1;
-	min = find_minimum_idx(stack_a);
-	size = lst_size(stack_b);
-	while (size < 2)
-	{
-		//if the head index is the minimum or maximum  
-		if (stack_a->index == min || stack_a->index == max)
-			push(&stack_a, &stack_b, "pb");
-		else
-			rotate(&stack_a, "ra");
-		min = find_minimum_idx(stack_a);
-		size = lst_size(stack_b);
-	}
-	
-	stack_a = sort_3(stack_a);
-
-	push(&stack_a, &stack_b, "pa");
-	push(&stack_a, &stack_b, "pa");
-
-	//if the head index is the maximum  
-	if (stack_a->index == max)
-		rotate(&stack_a, "ra");
-	else
-	{
-		swap(&stack_a, "sa");
-		rotate(&stack_a, "ra");
-	}
-
-	exit_free("correct execution", &stack_a);
-}
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 https://github.com/42YerevanProjects/push_swap/blob/master/src/simple.c
 https://github.com/iamrustamov/push_swap/blob/master/sort_3_and_5_element.c
-
-
-
-try this:
-```
-	else if (stacks->count_a == 3)
-	{
-		if (stacks->a->data == max)
-			ft_ra(&stacks->a, 1);
-		if (stacks->a->next->data == max)
-			ft_rra(&stacks->a, 1);
-		if (stacks->a->data > stacks->a->next->data)
-			ft_sa(stacks->a, 1);
-	}
-```
-
-```
-Combination 6: (3, 2, 1) 
-Combination 4: (2, 3, 1)
-sa if max on top then rra
-
-Combination 1: (1, 2, 3) sorted: problem already exited
-Combination 3: (2, 1, 3)
-sa
-
-Combination 2: (1, 3, 2)
-Combination 5: (3, 1, 2) 
-sa if min on top then ra
-
-```
-
-
-```C
-
-int small_algo(t_list *stack)
-{
-	int size = lst_size(stack) - 1;/////CHECK THIS
-		printf("\nsize = %i\n", size);
-
-// printf("\nposition de index 0 (1) = %i\n", find_position(stack, 0));
-// printf("\nposition de index 1 (2)= %i\n", find_position(stack, 1));
-// printf("\nposition de index 2 (3)= %i\n", find_position(stack, 2));
-// printf("\n\nfind_minimum_idx(stack) = %i\n", find_minimum_idx(stack));
-
-//index goes from 0 to 2
-
-	// If the minimum index is at the bottom of the stack (231,321)
-	if (find_position(stack, find_minimum_idx(stack)) == size)
-	{
-		// printf("\nIf the minimum index is at the bottom of the stack (231,321)\n");
-		// printf("\nstack->index = %i\n", stack->index);
-		// printf("\nfind_position(stack, size) = %i\n", find_position(stack, size));
-		// printf("\n%i = %i\n", size, stack->index);
-			//if maximium is on top
-		if(size == stack->index)
-			swap(&stack, "sa");
-		reverse_rotate(&stack, "rra");
-
-	}
-	// If the maximum index is at the bottom of the stack (213)(cannot be 123)
-	else if (size == ft_lstlast(stack)->index)
-	{
-		printf("If the maximum index is at the bottom of the stack ");
-		swap(&stack, "sa");
-	}
-	// If neither the minimum nor the maximum index are at the bottom of the stack (312,132)
-	else //if (find_position(stack, find_minimum_idx(stack)) == 2)
-	{
-		// printf("If neither the minimum nor the maximum index are at the bottom of the stack");
-		// printf("\n%i = %i\n", size, stack->index);
-		//if minimium is on top
-		if (find_minimum_idx(stack) == stack->index)
-			swap(&stack, "sa");
-		rotate(&stack, "ra");
-	}
-
-	print_list(stack);
-	exit_free("correct execution", &stack);
-	return 0;
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 - [Useful ressources:](https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e)
 - [https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e](https://www.youtube.com/watch?v=OaG81sDEpVk&ab_channel=Oceano)
@@ -217,6 +14,9 @@ int small_algo(t_list *stack)
 
 Regarding the use of double pointers:
 - [Why using double pointers](https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/)
+
+
+./push_swap_visualizer-master/build/bin/visualizer
 
 
 # CHECK IF CORRECT FOR SOME NUMBERS (seems to be a lot of operations)
@@ -251,127 +51,6 @@ sending
 =>sends a pointer to pointer, because it sends the address to a pointer
 
 be careful not to dereference
-
-```C
-void	stack_ini(t_list **stack, char **argv)
-{
-	int		i;
-	t_list	*new_list;
-	char	**args;
-
-	i = 0;
-	if (! stack)
-		return ;
-	// if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	// else
-	// 	args = &argv[1];
-	check_duplicate(args);
-	while (args[i])
-	{
-		check_int(args[i]);
-		new_list = ft_lstnew(atoi(args[i]));
-		ft_lstadd_back(stack, new_list);
-		i++;
-	}
-	free_array(args);
-}
-```
-
-munmap_chunk(): invalid pointer
-
-
-
-
-
-```C
-int	is_sorted(t_list **stack)
-{
-	t_list	*head;
-
-	head = *stack;
-	while (head && head->next)
-	{
-		if (head->value > head->next->value)
-			return (0);
-		head = head->next;
-	}
-	return (1);
-}
-```
-
-
-
-
-Same as...
-```C
-void	stack_ini(t_list **stack, int argc, char **argv)
-{
-	int		i;
-	t_list	*new_list;
-
-	i = 1;
-	// t_list = new_lst;
-	while (i < argc)
-	{
-		new_list = ft_lstnew(atoi(argv[i]));
-		ft_lstadd_back(stack, new_list);
-		i++;
-	}
-}
-```
-
-same as:
-```c
-void stack_ini(t_list **stack, int argc, char **argv)
-{
-	int i;
-
-	i = 1;
-	while (i < argc)
-	{
-		ft_lstadd_back(stack, ft_lstnew(atoi(argv[i])));
-		i++;
-	}
-}
-}```
-
-The print_list function takes a pointer to the head of a linked list (head) as its input and prints the contents of the list.
-```c
-void	print_list(const t_list *head)
-{
-	const t_list	*current;
-
-	current = head;
-	printf("\n     Value      Index     Binary\n");
-	while (current != NULL)
-	{
-		//%10d specifies a fixed width of 10 chars, left-aligned using the - flag
-        printf("%10d %10d %10d\n", current->value, current->index, print_binary(current->index));
-        current = current->next;
-		current = current->next;
-	}
-}
-```
-
-
-
-```c
-	// algo(stack_a, stack_b);
-	printf("\nstack_a has %d elements\n", lst_size(*stack_a));
-	printf("\nContents of stack_a:\n");
-	print_list(*stack_a);
-	printf("\nstack_b has %d elements\n", lst_size(*stack_b));
-	printf("\nContents of stack_b:\n");
-	print_list(*stack_b);
-````
-
-
-
-```c
-c code block
-```
-
 
 VSCode:
 Collapse all regions in Visual Studio Code is Cmd+K followed by Cmd+0 (zero).
@@ -509,6 +188,175 @@ int is_bit_set(int num, int bit)
 > - Otherwise, perform the `ra` operation to keep the number in `stack_a`.
 > - After that, perform the `pa` operation until there are no numbers left in `stack_b`.
 > - Repeat this process for the second and third bit.
+
+
+
+
+
+
+
+
+ENDS UP NOT USED
+```C
+t_list	*find_minimum_node(t_list *stack_a)
+{
+	t_list *node;
+	t_list *min_node;
+	int min_value;
+
+	min_value = 2147483647; // Initialize min_value to MAX_INT
+	// min_node = NULL; // Initialize min_node to NULL
+	node = stack_a; // Start from the first node
+	while (node->next != NULL)
+	{
+		if (node->index < min_value)
+		{
+			min_value = node->index;
+			min_node = node;
+		}
+		node = node->next;
+		// printf("\nindex = %i\nvalue = %i\nmin_value = %i\n", node->index, node->value, min_value);
+	}
+	return(min_node);
+}
+```
+
+OFFSET DISCOVERY:
+			current_node = *stack_a;
+was at the bottom of the while, not on top (it was inside)
+
+
+
+
+
+
+
+
+
+
+
+```C
+void	stack_ini(t_list **stack, char **argv)
+{
+	int		i;
+	t_list	*new_list;
+	char	**args;
+
+	i = 0;
+	if (! stack)
+		return ;
+	// if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	// else
+	// 	args = &argv[1];
+	check_duplicate(args);
+	while (args[i])
+	{
+		check_int(args[i]);
+		new_list = ft_lstnew(atoi(args[i]));
+		ft_lstadd_back(stack, new_list);
+		i++;
+	}
+	free_array(args);
+}
+```
+
+
+Algo for 3:
+```
+Combination 6: (3, 2, 1) 
+Combination 4: (2, 3, 1)
+sa if max on top then rra
+
+Combination 1: (1, 2, 3) sorted: problem already exited
+Combination 3: (2, 1, 3)
+sa
+
+Combination 2: (1, 3, 2)
+Combination 5: (3, 1, 2) 
+sa if min on top then ra
+
+```
+
+
+
+
+```C
+int	is_sorted(t_list **stack)
+{
+	t_list	*head;
+
+	head = *stack;
+	while (head && head->next)
+	{
+		if (head->value > head->next->value)
+			return (0);
+		head = head->next;
+	}
+	return (1);
+}
+```
+
+
+
+
+
+Same as...
+```C
+void	stack_ini(t_list **stack, int argc, char **argv)
+{
+	int		i;
+	t_list	*new_list;
+
+	i = 1;
+	// t_list = new_lst;
+	while (i < argc)
+	{
+		new_list = ft_lstnew(atoi(argv[i]));
+		ft_lstadd_back(stack, new_list);
+		i++;
+	}
+}
+```
+
+same as:
+```c
+void stack_ini(t_list **stack, int argc, char **argv)
+{
+	int i;
+
+	i = 1;
+	while (i < argc)
+	{
+		ft_lstadd_back(stack, ft_lstnew(atoi(argv[i])));
+		i++;
+	}
+}
+}```
+
+The print_list function takes a pointer to the head of a linked list (head) as its input and prints the contents of the list.
+```c
+void	print_list(const t_list *head)
+{
+	const t_list	*current;
+
+	current = head;
+	printf("\n     Value      Index     Binary\n");
+	while (current != NULL)
+	{
+		//%10d specifies a fixed width of 10 chars, left-aligned using the - flag
+        printf("%10d %10d %10d\n", current->value, current->index, print_binary(current->index));
+        current = current->next;
+		current = current->next;
+	}
+}
+```
+
+
+
+
+
+
 
 
 

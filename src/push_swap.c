@@ -1,6 +1,8 @@
 #include "../include/push_swap.h"
 #include "../lib/libft/src/libft.h"
 
+
+
 void	stack_ini(t_list **stack_a, int argc, char **argv)
 {
 	int		i;
@@ -9,8 +11,8 @@ void	stack_ini(t_list **stack_a, int argc, char **argv)
 	char	*msg;
 
 	i = 0;
-	// if (! stack_a)
-	// 	return ;
+	if (! stack_a)
+		return ;
 	if (argc == 2)
 		{
 		args = ft_split(argv[1], ' ');
@@ -77,10 +79,7 @@ int	main(int argc, char **argv)
 	assign_index_by_value(stack_a);
 	if(is_sorted(stack_a))
 		exit_free("sorted",&stack_a);
-	// printf("\nargc = %i\n", argc);
-	// printf("\nIN MAIN\n");
 	algo(&stack_a, &stack_b);
-	// printf("\nIN MAIN\n");
 	exit_free("correct execution", &stack_a);
 	return (0);
 }

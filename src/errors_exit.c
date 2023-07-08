@@ -18,8 +18,9 @@ int is_sorted(t_list *stack)
 
 void free_array(char **str)
 {
-    int i = 0;
-
+    int i;
+	
+	i = 0;
 	while (str[i])
 	{
 		free(str[i]);
@@ -27,6 +28,13 @@ void free_array(char **str)
 	}
 	free(str);
 }
+
+// static void	ft_free(char **strs, int j)
+// {
+// 	while (j-- > 0)
+// 		free(strs[j]);
+// 	free(strs);
+// }
 
 void free_stack(t_list *stack) 
 {
@@ -42,6 +50,8 @@ void free_stack(t_list *stack)
     }
 }
 
+
+
 void exit_free(char *msg, t_list **stack_a)
 {
 	if (ft_strcmp(msg, "correct execution") != 0)
@@ -52,11 +62,11 @@ void exit_free(char *msg, t_list **stack_a)
 	if (ft_strcmp(msg, "Nothing to sort") == 0\
 	 || ft_strcmp(msg, "Duplicate among the arguments") == 0)
 		exit(1);
-	// if (ft_strcmp(msg, "sorted") == 0)
-	// {
-	// 	free_stack(*stack_a);
-	// 	exit(1);
-	// }
+	if (ft_strcmp(msg, "sorted") == 0)
+	{
+		free_stack(*stack_a);
+		exit(1);
+	}
 	free_stack(*stack_a);
 	exit(1);
 }
@@ -104,6 +114,6 @@ char* check_int(char *arg)
     }
 	tmp = ft_atolli(arg);
 	if (tmp < -2147483648 || tmp > 2147483647)
-		return("Number exceeds int range");
+		return("Value exceeds int range");
 	return("all good");
 }
