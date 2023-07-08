@@ -44,7 +44,6 @@ void free_stack(t_list *stack)
 
 void exit_free(char *msg, t_list **stack_a)
 {
-	print_list(*stack_a);
 	if (ft_strcmp(msg, "correct execution") != 0)
 	{
 		ft_putstr_fd("Error:\n", 1);

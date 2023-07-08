@@ -1,5 +1,5 @@
 
-
+./push_swap_visualizer-master/build/bin/visualizer
 
 ENDS UP NOT USED
 ```C

@@ -71,7 +71,6 @@ int algo(t_list **stack_a, t_list **stack_b)
 	int checked_bit;
 
 	stack_a_size = lst_size(*stack_a);
-	printf("\nstack_a_size: %i\n", stack_a_size);
 	stack_b_size = 0;
 	checked_bit = 0;
 	current_node = *stack_a;
@@ -84,17 +83,18 @@ int algo(t_list **stack_a, t_list **stack_b)
 		sort_5(*stack_a, *stack_b);
 	while (checked_bit < max_index_bits_nbr(stack_a))
 	{
-		while (i++ < stack_a_size)
+		i = 0;
+		while (i < stack_a_size)
 		{
+			current_node = *stack_a;
 			if (!is_bit_set(current_node->index, checked_bit))
 				push(stack_a, stack_b, "pb");
 			else
 				rotate(stack_a, "ra");
-			current_node = *stack_a;
+			i++;
 		}
-		i = 0;
 		stack_b_size = lst_size(*stack_b);
-		while (stack_b_size > 0)
+		while (stack_b_size != 0)
 		{
 			push(stack_a, stack_b, "pa");
 			stack_b_size--;

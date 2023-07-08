@@ -75,9 +75,9 @@ int	rotate(t_list **stack, char *code)
 
 	if (lst_size(*stack) < 2)
 		return (-1);
-	head = (*stack);
+	head = *stack;
 	tail = ft_lstlast(head);
-	(*stack) = head->next;
+	*stack = head->next;
 	head->next = NULL;
 	tail->next = head;
 	if (ft_strstr(code, "ra") || ft_strstr(code, "rb"))

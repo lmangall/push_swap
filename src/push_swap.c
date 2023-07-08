@@ -81,7 +81,6 @@ int	main(int argc, char **argv)
 	// printf("\nIN MAIN\n");
 	algo(&stack_a, &stack_b);
 	// printf("\nIN MAIN\n");
-	print_list(stack_a);
 	exit_free("correct execution", &stack_a);
 	return (0);
 }
