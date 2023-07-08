@@ -1,6 +1,24 @@
 
 
 
+https://github.com/42YerevanProjects/push_swap/blob/master/src/simple.c
+https://github.com/iamrustamov/push_swap/blob/master/sort_3_and_5_element.c
+
+
+
+try this:
+```
+	else if (stacks->count_a == 3)
+	{
+		if (stacks->a->data == max)
+			ft_ra(&stacks->a, 1);
+		if (stacks->a->next->data == max)
+			ft_rra(&stacks->a, 1);
+		if (stacks->a->data > stacks->a->next->data)
+			ft_sa(stacks->a, 1);
+	}
+```
+
 ```
 Combination 6: (3, 2, 1) 
 Combination 4: (2, 3, 1)
@@ -66,10 +84,6 @@ int small_algo(t_list *stack)
 	return 0;
 }
 ```
-
-
-
-
 
 
 

@@ -14,6 +14,7 @@
 		"ios": "c",
 		"chrono": "c",
 		"variant": "c",
-		"__locale": "c"
+		"__locale": "c",
+		"limits": "c"
 	}
 }

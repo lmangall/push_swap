@@ -166,11 +166,32 @@ int small_algo(t_list *stack)
 			swap(&stack, "sa");
 		rotate(&stack, "ra");
 	}
-
-	print_list(stack);
 	exit_free("correct execution", &stack);
 	return 0;
 }
 
 
 // int	sort_5(t_list *stack)
+void sort_5_element(t_list *stack_a, t_list *stack_b)
+{
+	while (lst_size(stack_b) < 2)
+	{
+		//checking if the data value of the top element of stack_a is equal to either the minimum value (stack->min) or the maximum value (stack->max).
+		if (stack_a->data == stack->min || stack_a->data == stack->max)
+		push(stack_a, stack_b, "pb");
+		else
+			rotate(&stack, "ra");
+	}
+	ft_sort_3_element(stack);
+	push(stack_a, stack_b, "pa");
+	push(stack_a, stack_b, "pa");
+	if (stack_a->data == stack->max)
+	{
+		ft_ra(&stack_a, 1);
+	}
+	else
+	{
+		swap(&stack, "sa");
+		rotate(&stack, "ra");
+	}
+}

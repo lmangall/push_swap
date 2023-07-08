@@ -76,10 +76,7 @@ int	main(int argc, char **argv)
 	assign_index_by_value(stack_a);
 	if(is_sorted(stack_a))
 		exit_free("sorted",&stack_a);
-
 	// printf("\nargc = %i\n", argc);
-	if (argc == 4)
-		small_algo(stack_a);
 	// printf("\nIN MAIN\n");
 	algo(&stack_a, &stack_b);
 	// printf("\nIN MAIN\n");
