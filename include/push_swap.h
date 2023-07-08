@@ -94,7 +94,7 @@ int is_bit_set(int num, int bit);
  */
 int max_index_bits_nbr(t_list **stack_a);
 /**
- * @brief Performs the radix sort algorithm on stack_a using stack_b.
+ * @brief Call small_algo or performs the radix sort algorithm on stack_a using stack_b.
  *
  * This function implements the radix sort algorithm to sort the integers in stack_a
  * in ascending order. It iterates through each bit of the index value of the nodes

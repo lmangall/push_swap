@@ -15,6 +15,7 @@ int is_sorted(t_list *stack)
 	return 1;
 }
 
+
 void free_array(char **str)
 {
     int i = 0;

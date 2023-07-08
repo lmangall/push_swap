@@ -61,6 +61,7 @@ int	max_index_bits_nbr(t_list **stack_a)
 		bits_nbr++;
 	return (bits_nbr);
 }
+
 int algo(t_list **stack_a, t_list **stack_b)
 {
 	int i;
@@ -74,6 +75,8 @@ int algo(t_list **stack_a, t_list **stack_b)
 	stack_b_size = 0;
 	checked_bit = 0;
 	current_node = *stack_a;
+	if(stack_a_size <= 3)
+		small_algo(*stack_a);
 	while (checked_bit < max_index_bits_nbr(stack_a))
 	{
 		i = 0;
@@ -99,52 +102,6 @@ int algo(t_list **stack_a, t_list **stack_b)
 	}
 	return (0);
 }
-
-
-// int	small_algo(t_list *stack)
-// {
-// 	// int	min_index;
-// 	// int	proximity;
-
-// 	// proximity = 0;
-// 	// min_index = 0;
-// 	// t_list *tmp = find_minimum(stack_a);
-// 	// min_index = tmp->index;
-// 	// proximity = lst_size(stack) / 2;
-// 	// if (proximity > min_index)
-// 	// 	rotate(stack_a, "ra");
-// 	// else
-// 	// 	reverse_rotate(stack_a, "rra");
-
-// 	// If the minimum value is equal to the value of the top element
-// 	if (find_minimum_idx(stack) == stack->index)
-// 	{
-// 		printf("minimum value is equal to the value of the top element");
-// 		reverse_rotate(&stack, "rra");
-// 		swap(&stack, "sa");
-// 	}
-// 	//If the maximum value is equal to the value of the top element 
-// 	else if (lst_size(stack) == stack->index)
-// 	{
-// 		printf("maximum value is equal to the value of the top element");
-// 		rotate(&stack, "rra");
-// 		if (!(is_sorted(stack)))
-// 			swap(&stack, "sa");
-// 	}
-// 	//If neither the mini nor the max value the top element
-// 	else
-// 	{
-// 		printf("neither the mini nor the max value the top element");
-// 		//if the maximum value is located at index 1 (second element) 
-// 		if (find_position(stack, lst_size(stack)) == 1)
-// 			reverse_rotate(&stack, "rra");
-// 		else
-// 			swap(&stack, "sa");
-// 	}
-// 	exit_free("correct execution", &stack);
-// 	return(0);
-// }
-
 
 /**
  * @brief Finds the position of a node with a given index in a linked list.
@@ -178,38 +135,21 @@ static int	find_position(t_list *stack_a, int index)
 
 
 
-// Combination 6: (3, 2, 1) 
-// Combination 4: (2, 3, 1)
-// sa if max on top then rra
-
-// Combination 1: (1, 2, 3) sorted: problem already exited
-// Combination 3: (2, 1, 3)
-// sa
-
-// Combination 2: (1, 3, 2)
-// Combination 5: (3, 1, 2) 
-// sa if min on top then ra
 
 
 int small_algo(t_list *stack)
 {
-	int size = lst_size(stack) - 1;/////CHECK THIS
-		printf("\nsize = %i\n", size);
-
-// printf("\nposition de index 0 (1) = %i\n", find_position(stack, 0));
-// printf("\nposition de index 1 (2)= %i\n", find_position(stack, 1));
-// printf("\nposition de index 2 (3)= %i\n", find_position(stack, 2));
-// printf("\n\nfind_minimum_idx(stack) = %i\n", find_minimum_idx(stack));
-
-//index goes from 0 to 2
-
+	int size;
+	
+	size = lst_size(stack) - 1;
+	if(size == 1)
+	{
+		rotate(&stack, "ra");
+		exit_free("correct execution", &stack);
+	}
 	// If the minimum index is at the bottom of the stack (231,321)
 	if (find_position(stack, find_minimum_idx(stack)) == size)
 	{
-		// printf("\nIf the minimum index is at the bottom of the stack (231,321)\n");
-		// printf("\nstack->index = %i\n", stack->index);
-		// printf("\nfind_position(stack, size) = %i\n", find_position(stack, size));
-		// printf("\n%i = %i\n", size, stack->index);
 			//if maximium is on top
 		if(size == stack->index)
 			swap(&stack, "sa");
@@ -218,16 +158,10 @@ int small_algo(t_list *stack)
 	}
 	// If the maximum index is at the bottom of the stack (213)(cannot be 123)
 	else if (size == ft_lstlast(stack)->index)
-	{
-		printf("If the maximum index is at the bottom of the stack ");
 		swap(&stack, "sa");
-	}
 	// If neither the minimum nor the maximum index are at the bottom of the stack (312,132)
 	else //if (find_position(stack, find_minimum_idx(stack)) == 2)
 	{
-		// printf("If neither the minimum nor the maximum index are at the bottom of the stack");
-		// printf("\n%i = %i\n", size, stack->index);
-		//if minimium is on top
 		if (find_minimum_idx(stack) == stack->index)
 			swap(&stack, "sa");
 		rotate(&stack, "ra");
@@ -239,3 +173,4 @@ int small_algo(t_list *stack)
 }
 
 
+// int	sort_5(t_list *stack)
