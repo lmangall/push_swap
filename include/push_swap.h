@@ -124,7 +124,8 @@ t_list	*find_minimum_node(t_list *stack_a);
  * @return        The minimum index value in the linked list.
  */
 int	find_minimum_idx(t_list *stack_a);
-int	small_algo(t_list *stack);
+void	sort_3(t_list *stack);
+void sort_5(t_list *stack_a, t_list *stack_b);
 
 
 //other
@@ -245,9 +246,8 @@ int ss(t_list **stack_a, t_list **stack_b);
  */
 int push(t_list **stack_a, t_list **stack_b, char *code);
 /**
- * Rotate stack a : Shift up all elements of stack a by 1.
- * The first element becomes the last one.
- * 
+ * Push stack: Moves the top element of a stack
+ *	to the top of another stack.
  * @param stack Pointer to the stack.
  * @param code The operation code to print.
  * @return 0 if successful, -1 if there are less than 2 elements in the stack.
