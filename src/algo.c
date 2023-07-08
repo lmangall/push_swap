@@ -159,15 +159,15 @@ int algo(t_list **stack_a, t_list **stack_b)
  */
 static int	find_position(t_list *stack_a, int index)
 {
-	printf("in find_position");
+	// printf("current index  |  index searched  |  position");
 	t_list *node;
 	int	position;
 
 	node = stack_a;
-	position = 1;
+	position = 0;
 	while (node != NULL)
 	{
-		printf("\n\n%i | %i\n\n", node->index, index);
+		// printf("\n%i | %i | %i\n", node->index, index, position);
 		if (node->index == index)
 			return(position);
 		position++;
@@ -176,31 +176,66 @@ static int	find_position(t_list *stack_a, int index)
 	return(-1);
 }
 
+
+
+// Combination 6: (3, 2, 1) 
+// Combination 4: (2, 3, 1)
+// sa if max on top then rra
+
+// Combination 1: (1, 2, 3) sorted: problem already exited
+// Combination 3: (2, 1, 3)
+// sa
+
+// Combination 2: (1, 3, 2)
+// Combination 5: (3, 1, 2) 
+// sa if min on top then ra
+
+
 int small_algo(t_list *stack)
 {
-	int size = lst_size(stack) - 1;
+	int size = lst_size(stack) - 1;/////CHECK THIS
+		printf("\nsize = %i\n", size);
 
-	// If the minimum index is at the bottom of the stack (231)
+// printf("\nposition de index 0 (1) = %i\n", find_position(stack, 0));
+// printf("\nposition de index 1 (2)= %i\n", find_position(stack, 1));
+// printf("\nposition de index 2 (3)= %i\n", find_position(stack, 2));
+// printf("\n\nfind_minimum_idx(stack) = %i\n", find_minimum_idx(stack));
+
+//index goes from 0 to 2
+
+	// If the minimum index is at the bottom of the stack (231,321)
 	if (find_position(stack, find_minimum_idx(stack)) == size)
 	{
-		swap(&stack, "sa");
+		// printf("\nIf the minimum index is at the bottom of the stack (231,321)\n");
+		// printf("\nstack->index = %i\n", stack->index);
+		// printf("\nfind_position(stack, size) = %i\n", find_position(stack, size));
+		// printf("\n%i = %i\n", size, stack->index);
+			//if maximium is on top
+		if(size == stack->index)
+			swap(&stack, "sa");
 		reverse_rotate(&stack, "rra");
+
 	}
-	// If the maximum index is at the bottom of the stack (213)
-	else if (find_position(stack, size + 1) == 1)
+	// If the maximum index is at the bottom of the stack (213)(cannot be 123)
+	else if (size == ft_lstlast(stack)->index)
 	{
+		printf("If the maximum index is at the bottom of the stack ");
 		swap(&stack, "sa");
 	}
-	// If neither the minimum nor the maximum index are at the bottom of the stack (312)
-	else if (find_position(stack, find_minimum_idx(stack)) == 2)
+	// If neither the minimum nor the maximum index are at the bottom of the stack (312,132)
+	else //if (find_position(stack, find_minimum_idx(stack)) == 2)
 	{
+		// printf("If neither the minimum nor the maximum index are at the bottom of the stack");
+		// printf("\n%i = %i\n", size, stack->index);
+		//if minimium is on top
+		if (find_minimum_idx(stack) == stack->index)
+			swap(&stack, "sa");
 		rotate(&stack, "ra");
 	}
-	else
-	{
-		swap(&stack, "sa");
-	}
+
 	print_list(stack);
 	exit_free("correct execution", &stack);
 	return 0;
 }
+
+
