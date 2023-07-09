@@ -7,17 +7,6 @@
 - final norminette
 
 
-> Radix sort:
-> 
-> - Check the numbers one by one.
-> - If a number ends with 1, put it in the 1 stack (`stack_b`).
-> - If a number ends with 0, leave it in the 0 stack (`stack_a`). => by rotating the list `ra`
-> - If the i-th digit of the top number in `stack_a` is 0, perform the `pb` operation to move this number to `stack_b`.
-> - Otherwise, perform the `ra` operation to keep the number in `stack_a`.
-> - After that, perform the `pa` operation until there are no numbers left in `stack_b`.
-> - Repeat this process for the second and third bit.
-
-
 
 # Push Swap
 
@@ -51,31 +40,30 @@ A limited set of operations is provided to manipulate the stacks. The allowed op
 | `rrb` | reverse rotate b                    | Shifts down all elements of stack b by 1                |
 | `rrr` | reverse rotate a + reverse rotate b | Both `rra` and `rrb`                                   |
 
-### Algorithm Complexity
-
-The project emphasizes developing an efficient algorithm. The number of operations performed should be limited, and the algorithm should sort the stack within a specific range of allowed operations.
-
-## Algorithm
+## The radix algorithm
 
 To solve the push_swap problem, we will utilize the radix sort algorithm. Radix sort efficiently sorts non-negative integers by grouping them based on their digits, from the least significant to the most significant, and repeatedly rearranging them accordingly. The time complexity of radix sort is O(n * d), where n is the number of elements and d is the number of digits in the largest element.
+> The project emphasizes developing an efficient algorithm. The number of operations performed should be limited, and the algorithm should sort the stack within a specific range of allowed operations. 
 
 ### Advantages of Radix Sort
-
 - Easy implementation
 - Stable sorting algorithm (preserves the relative order of equal elements)
 
 ### Disadvantages of Radix Sort
-
 - May not achieve optimal instructions for the push_swap project (unless optimized)
 
+### Implementation (overall steps))
 
-### Implementation Steps
+1. Simplify the numbers in stack A by replacing them with **index** values in the range [0, N-1].
+2. Check the BRI (**binary** representation of the index) of each number **bit by bit**.
+3. Starting from the rightmost bit, perform operations on each number to place them into the corresponding stack based on their digit.
+>>If a BRI ends (bitwise rightshift) with 0, put it in the `stack_b`: `pb`
+>>If a BRI ends with 1, leave it in `stack_a`. (by rotating the list `ra`)
+>>repeat for each number
+4. Upon completion, the numbers will be arranged in the stacks according to their respective digits.
 
-1. Simplify the numbers in stack A by replacing them with index values in the range [0, N-1].
-2. Starting from the rightmost bit, perform operations on each number to place them into the corresponding stack based on their digit.
-3. Upon completion, the numbers will be arranged in the stacks according to their respective digits.
 
-### Using an index to simplify the numbers
+### Implementation (details)
 
 To facilitate efficient manipulation using bitwise operators and binary representation, we will give the numbers in stack A an index (from 0 to N-1, where N is the size of the stack) before applying radix sort. We will manipulate the nodes using the indexes, effectively pushing or rotating the values themselves.
 
@@ -96,8 +84,6 @@ By using the 'is_bit_set' function, the code decides whether to push the current
 
 
 the push to stack_b (pb) will be made if the bit is not set (i.e., the result is 0), and the rotate operation (ra) will be performed if the bit is set (i.e., the result is 1).
-
-
 
 |   Index  | Binary | Move |           | Stack A       | Stack B     |
 |----------|--------|------|-----------|---------------|-------------|
@@ -131,7 +117,12 @@ The specific values themselves are not relevant. The movements of the nodes depe
 2. Execute the program, passing the initial configuration of the stack as command-line arguments.
 3. The program will output the list of operations to sort the stack.
 
-Example usage: `./push_swap 4 3 2 1`
+Example usage: `./push_swap 2 4 1 3`
+
+- [Visualizer](https://github.com/o-reo/push_swap_visualizer) command *./push_swap_visualizer-master/build/bin/visualizer*
+
+The visualizer is usefull for debugging
+
 
 ## Resources
 
@@ -146,22 +137,25 @@ Example usage: `./push_swap 4 3 2 1`
 
 ## Miscellaneous
 
-- [VSCode Tips](#vscode-tips)
-
-
-./push_swap_visualizer-master/build/bin/visualizer
-
-
-
-## conversion between decimal and binary numbers.
+### conversion between decimal and binary numbers.
 This table can be used to quickly look up the binary representation of a decimal number or vice versa.
 
-| Decimal |    1     |    2     |    4     |    8     |   16     |   32     |   64     |   128    |
-|---------|----------|----------|----------|----------|----------|----------|----------|----------|
-| Binary  | 00000001 | 00000010 | 00000100 | 00001000 | 00010000 | 00100000 | 01000000 | 10000000 |
+| Decimal |    1     |    2     |    4     |    8     |   16     |   32     |   64     |
+|---------|----------|----------|----------|----------|----------|----------|----------|
+| Binary  | 00000001 | 00000010 | 00000100 | 00001000 | 00010000 | 00100000 | 01000000 |
+
+[Video on binary to decimal](https://youtu.be/RrJXLdv1i74?t=605)
 
 
-[Yt on binary to decimal](https://youtu.be/RrJXLdv1i74?t=605)
+
+
+## Blockquotes
+
+
+> Blockquotes can also be nested...
+>> ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.
+
 
 
 
@@ -169,32 +163,8 @@ This table can be used to quickly look up the binary representation of a decimal
 ## Implementation Notes
 
 
-### Foo function
 
-Intro
-
-```c
-void foo
-{
-	// Implementation details here...
-}
-```
-
-
-### Foo function
-
-Intro
-
-```c
-void foo
-{
-	// Implementation details here...
-}
-```
-
-
-
-### Foo function
+#### is_bit_set
 
 When you say that a bit is "set" in binary, it means that the value of that particular bit is 1. In binary representation, each digit or bit can have a value of either 0 or 1. When a bit is set, it indicates that it is turned on or active with a value of 1. Conversely, when a bit is not set, it means the value of that bit is 0.
 
@@ -212,20 +182,61 @@ int	is_bit_set(int num, int bit)
 	return (result);
 }
 ```
-the push to stack_b (pb) will be made if the bit is not set (i.e., the result is 0), and the rotate operation (ra) will be performed if the bit is set (i.e., the result is 1).
+>the push to stack_b (pb) will be made if the bit is not set (i.e., the result is 0), and the rotate operation (ra) will be performed if the bit is set (i.e., the result is 1).
 
 
+#### struct s_list
 
-
-## Binary Representation
-The print_binary function converts a decimal number to its binary representation.
+This structure is used to implement a stack data structure. A stack is an abstract data type (ADT) that follows the Last-In-First-Out (LIFO) principle. It is a linear data structure where elements are added and removed from the same end, known as the top of the stack. 
 
 ```c
-int print_binary(int num)
+typedef struct	s_list
+{
+	int				index;
+	int				value;
+	struct	s_list	*next;
+}	t_list;
+```
+>It's worth noting that while the linked list implementation allows for dynamic resizing of the stack, it may consume more memory due to the additional pointers required for each node. If a fixed-size stack is required, an array-based implementation could be used instead.
+
+
+## VSCode Tips
+To collapse all regions in Visual Studio Code, use Cmd+K followed by Cmd+0 (zero).
+To hide the terminal, use Cmd+j.
+To move up or down selected lines holding Alt and use the arrow keys.
+
+
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+
+
+
+
+### Foo function
+
+Intro
+
+```c
+void foo
 {
 	// Implementation details here...
 }
-
 ```
 
 
@@ -235,32 +246,9 @@ is_bit_set: Checks if a specific bit in an integer is set.
 find_minimum_node: Finds the node with the minimum value in a linked list.
 is_sorted: Checks if a linked list is sorted in ascending order.
 
-```c
-
-```
 
 
-
-
-##VSCode Tips
-To collapse all regions in Visual Studio Code, use Cmd+K followed by Cmd+0 (zero).
-To hide the terminal, use Cmd+j.
-To move up or down selected lines holding Alt and use the arrow keys.
-
-
-
-##Node struct for the linked list
-```c
-typedef struct	s_list
-{
-	int				index;
-	int				value;
-	struct	s_list	*prev;
-	struct	s_list	*next;
-}	t_list;
-```
-
-## ENDS UP NOT USED
+## find_minimum_node  => not used in the code
 ```C
 t_list	*find_minimum_node(t_list *stack_a)
 {
@@ -286,7 +274,10 @@ t_list	*find_minimum_node(t_list *stack_a)
 ```
 
 
-## The print_list function takes a pointer to the head of a linked list (head) as its input and prints the contents of the list.
+## Print list function => used for debugging
+
+The print_list function takes a pointer to the head of a linked list (head) as its input and prints the contents of the list.
+
 ```c
 void	print_list(const t_list *head)
 {
@@ -302,20 +293,11 @@ void	print_list(const t_list *head)
 		current = current->next;
 	}
 }
+```
 
 
-## Print binary
+## Print binary => used to better grasp binary
 ```c
-
-```C
-/**
- * @brief Converts a decimal number to its binary representation.
- *
- * This function takes a decimal number as input and converts it to its binary representation.
- *
- * @param num The decimal number to be converted.
- * @return The binary representation of the input number.
- */
 int print_binary(int num)
 {
 	// Handling special case when num is 0
@@ -349,15 +331,26 @@ int print_binary(int num)
 	return (binary);
 }
 ```
-```
 
 
-
-
-
-
-
-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
 
 
 
@@ -397,87 +390,3 @@ void stack_ini(t_list **stack, int argc, char **argv)
 }
 }```
 
-
-
-
-
-
-
-
-
-
-Same as...
-```C
-void check_int(char *arg)
-{
-    int i;
-    int is_negative;
-    size_t max_length;
-
-    i = 0;
-    is_negative = (arg[i] == '-');
-    if (is_negative)
-        i++;
-
-    max_length = 10 + is_negative * (11 - 10);
-    if (ft_strlen(arg) > max_length)
-        exit_free("Number exceeds int range", NULL, NULL);
-
-    while (arg[i])
-    {
-        if (!ft_isdigit(arg[i]))
-            exit_free("Not a number", NULL, NULL);
-        i++;
-    }
-
-    int is_exceed_range = (is_negative && strlen(arg) == 11 && strcmp(arg, "2147483648") > 0) ||
-                          (!is_negative && strlen(arg) == 10 && strcmp(arg, "2147483647") > 0);
-
-    if (is_exceed_range)
-        exit_free("Number exceeds int range", NULL, NULL);
-}
-```
-
-same as:
-```c
-void check_int(char *arg)
-{
-    int i;
-    int is_negative;
-	size_t max_length;
-
-    i = 0;
-    is_negative = 0;
-    if (arg[i] == '-')
-    {
-        is_negative = 1;
-        i++;
-    }
-
-    max_length = (is_negative) * 11 + (!is_negative) * 10;
-    if (ft_strlen(arg) > max_length)
-        exit_free("Number exceeds int range", NULL, NULL);
-
-    while (arg[i])
-    {
-        if (!ft_isdigit(arg[i]))
-            exit_free("Not a number", NULL, NULL);
-        i++;
-    }
-
-    int is_exceed_range = 0;
-    if (is_negative)
-    {
-        if (strlen(arg) == 11 && strcmp(arg, "2147483648") > 0)
-            is_exceed_range = 1;
-    }
-    else
-    {
-        if (strlen(arg) == 10 && strcmp(arg, "2147483647") > 0)
-            is_exceed_range = 1;
-    }
-
-    if (is_exceed_range)
-        exit_free("Number exceeds int range", NULL, NULL);
-}
-```
