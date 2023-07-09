@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:30:14 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 19:20:32 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/09 21:11:35 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,8 +216,8 @@ int		algo(t_list **stack_a, t_list **stack_b, int Astk_siz, int Bstk_siz);
  */
 int		find_minimum_idx(t_list *stack_a);
 int		find_maximum_idx(t_list *stack);
-void	sort_3(t_list **stack);
-void	sort_5(t_list *stack_a, t_list *stack_b, int max, int size);
+int		sort_3(t_list **stack, char *msg);
+void	sort_5(t_list **stack_a, t_list **stack_b, int max, int size);
 
 //Helper functions
 /**
