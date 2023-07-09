@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:30:14 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 22:51:05 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/09 23:00:17 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,8 +245,7 @@ int		lst_size(t_list *head);
  */
 int		is_bit_set(int num, int bit);
 /**
- * @brief Calculates the number of bits required 
- * to represent the maximum index in stack_a.
+ * @brief Calculates the number of bits to represent the max index
  *
  * This function determines the number of bits needed
  * to represent the maximum index value in the stack_a. 
