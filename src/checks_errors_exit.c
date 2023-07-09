@@ -28,24 +28,6 @@ void	free_array(char **str)
 	free(str);
 }
 
-// static void	ft_free(char **strs, int j)
-// {
-// 	while (j-- > 0)
-// 		free(strs[j]);
-// 	free(strs);
-// }
-
-// void	ft_free(char **str)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (str[i])
-// 		i++;
-// 	while (i >= 0)
-// 		free(str[i--]);
-// }
-
 void	free_stack(t_list *stack)
 {
 	t_list	*current;
@@ -123,4 +105,34 @@ char	*check_int(char *arg)
 	if (tmp < -2147483648 || tmp > 2147483647)
 		return ("Value exceeds int range");
 	return ("all good");
+}
+
+
+void	check_args(int argc, char **argv, t_list **stack_a)
+{
+	char	**args;
+	char	*msg;
+	int 	i;
+
+	i = 0;
+	if (argc < 2)
+		exit_free("Nothing to sort", NULL);
+	if (argc == 2)
+	{
+		args = ft_split(argv[1], ' ');
+		check_duplicate(args, "free");
+		while (args[i])
+		{
+			msg = check_int(args[i]);
+			if (ft_strcmp(msg, "all good") != 0)
+			{
+				free_array(args);
+				exit_free(msg, stack_a);
+			}
+			i++;
+		}
+		free_array(args);
+	}
+	if (argc > 2)
+		check_duplicate(argv + 1, "do not free");
 }

@@ -9,7 +9,7 @@ LIBFTDIR = lib/libft
 SRCS = push_swap.c \
 		list_manip.c \
 		operations.c \
-		errors_exit.c \
+		checks_errors_exit.c \
 		algo.c
 
 # Object files

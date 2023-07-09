@@ -356,6 +356,20 @@ int print_binary(int num)
 
 ## SHORTEN THE CODE
 
+### VS Code collapse
+To collapse all code blocks in Visual Studio Code, you can use the following methods:
+
+Using Keyboard Shortcuts:
+
+- Windows/Linux: Press `Ctrl + K` followed by `Ctrl + 0` (zero).
+- macOS: Press `Cmd + K` followed by `Cmd + 0` (zero).
+
+Using the Command Palette:
+
+- Open the Command Palette by pressing `Ctrl + Shift + P` (Windows/Linux) or `Cmd + Shift + P` (macOS).
+- Type "Fold All" and select the "Fold All" command from the dropdown.
+
+
 
 Same as...
 ```C

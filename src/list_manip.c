@@ -75,36 +75,3 @@ int	lst_size(t_list *head)
 	}
 	return (i);
 }
-
-void	assign_index_by_value(t_list *stack)
-{
-	t_list	*node;
-	int		index;
-	int		node_nbr;
-	t_list	*min_node;
-
-	node_nbr = lst_size(stack);
-	index = 0;
-	while (index < node_nbr)
-		// instead of this I could use 'while(node->next != NULL) 7 lines below ?
-	{
-		int min_value = 2147483647; // Initialize min_value to MAX_INT
-		min_node = NULL;            // Initialize min_node to NULL
-		node = stack;               // Start from the first node
-		// Find the node with the minimum value
-		while (node != NULL)
-		{
-			if (node->index == NO_IDX && node->value < min_value)
-			{
-				min_value = node->value;
-				min_node = node;
-			}
-			node = node->next;
-		}
-		if (min_node != NULL)
-			min_node->index = index++;
-		else
-			break ;
-				// Break the loop if no node is found or all nodes have been assigned an index
-	}
-}

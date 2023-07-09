@@ -1,12 +1,43 @@
 #include "../include/push_swap.h"
 #include "../lib/libft/src/libft.h"
 
+
+void	assign_index_by_value(t_list *stack)
+{
+	t_list	*node;
+	int		index;
+	int		node_nbr;
+	t_list	*min_node;
+	int min_value;
+
+	node_nbr = lst_size(stack);
+	index = 0;
+	while (index < node_nbr)
+	{ 
+		min_value = 2147483647;
+		min_node = NULL;
+		node = stack;
+		while (node != NULL)
+		{
+			if (node->index == NO_IDX && node->value < min_value)
+			{
+				min_value = node->value;
+				min_node = node;
+			}
+			node = node->next;
+		}
+		if (min_node != NULL)
+			min_node->index = index++;
+		else
+			break ;
+	}
+}
+
 void	stack_ini(t_list **stack_a, int argc, char **argv)
 {
 	int		i;
 	t_list	*new_list;
 	char	**args;
-	char	*msg;
 
 	i = 0;
 	if (!stack_a)
@@ -16,12 +47,6 @@ void	stack_ini(t_list **stack_a, int argc, char **argv)
 		args = ft_split(argv[1], ' ');
 		while (args[i])
 		{
-			msg = check_int(args[i]);
-			if (ft_strcmp(msg, "all good") != 0)
-			{
-				free_array(args);
-				exit_free(msg, stack_a);
-			}
 			new_list = ft_lstnew(ft_atoi(args[i]));
 			ft_lstadd_back(stack_a, new_list);
 			i++;
@@ -32,9 +57,6 @@ void	stack_ini(t_list **stack_a, int argc, char **argv)
 	{
 		while (i != argc - 1)
 		{
-			msg = check_int(argv[i + 1]);
-			if (ft_strcmp(msg, "all good") != 0)
-				exit_free(msg, stack_a);
 			new_list = ft_lstnew(ft_atoi(argv[i + 1]));
 			ft_lstadd_back(stack_a, new_list);
 			i++;
@@ -60,19 +82,10 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	char	**args;
 
-	if (argc < 2)
-		exit_free("Nothing to sort", NULL);
-	if (argc == 2)
-	{
-		args = ft_split(argv[1], ' ');
-		check_duplicate(args, "free");
-	}
-	if (argc > 2)
-		check_duplicate(argv + 1, "do not free");
 	stack_a = NULL;
 	stack_b = NULL;
+	check_args(argc, argv, &stack_a);
 	stack_ini(&stack_a, argc, argv);
 	assign_index_by_value(stack_a);
 	if (is_sorted(stack_a))
