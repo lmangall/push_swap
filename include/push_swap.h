@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/09 18:30:14 by lmangall          #+#    #+#             */
+/*   Updated: 2023/07/09 18:46:04 by lmangall         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -11,15 +22,14 @@
 
 # include "../lib/libft/src/libft.h"
 
-#define NO_IDX -1
+# define NO_IDX -1
 
-typedef struct	s_list
+typedef struct s_list
 {
 	int				index;
 	int				value;
-	struct	s_list	*next;
+	struct s_list	*next;
 }	t_list;
-
 
 //PROTOTYPING   get rid of
 int		print_binary(int num);
@@ -40,42 +50,56 @@ int		is_sorted(t_list *stack);
 /**
  * @brief Checks for duplicate arguments in an array.
  *
- * This function checks for duplicate arguments in the given array. It iterates through the array and compares each
- * argument with the rest of the arguments. If a duplicate argument is found, the function takes appropriate action
- * based on the provided message. If the message is "free", it frees the memory allocated for the array before exiting
- * with an error message. Otherwise, it simply exits with an error message.
+ * This function checks for duplicate arguments in the given array. It
+ * iterates through the array and compares each argument with the rest
+ * of the arguments. If a duplicate argument is found, the function takes
+ * appropriate action based on the provided message. If the message is
+ * "free", it frees the memory allocated for the array before exiting
+ * with an error message. Otherwise, it simply exits with an error
+ * message.
  *
  * @param args An array of character pointers representing the arguments.
  * @param msg A pointer to a character array representing the message.
  * @return None.
  */
+
 void	check_duplicate(char **args, char *msg);
 /**
  * @brief Checks if a given argument is a valid integer.
  *
- * This function checks whether the provided argument is a valid integer. It verifies if the argument consists
- * of digits only and falls within the range of a signed 32-bit integer. If the argument fails any of these checks,
+ * This function checks whether the provided argument is a valid int. 
+ * It verifies if the argument consists of digits only and 
+ * falls within the range of a signed 32-bit integer. 
+ * If the argument fails any of these checks,
  * the program terminates and displays an appropriate error message.
  *
  * @param arg A pointer to the character array representing the argument.
  * @return None.
  */
-char*	check_int(char *arg);
+char	*check_int(char *arg);
 /**
  * @brief Checks the arguments and performs necessary validations.
  *
- * This function checks the arguments passed to the program and performs necessary validations. If the number of arguments
- * is less than 2, the function exits with an error message stating that there is nothing to sort. If the number of arguments
- * is exactly 2, it splits the second argument into an array of strings using space as the delimiter. It then checks for duplicate
- * arguments in the array and performs integer validation on each argument. If any argument is not a valid integer, the function
- * frees the memory allocated for the array and exits with an appropriate error message. Finally, if there are more than 2 arguments,
- * the function checks for duplicate arguments in the arguments array, without freeing the memory.
+ * This function checks the arguments passed to the program and performs
+ * necessary validations. If the number of arguments is less than 2, the
+ * function exits with an error message stating that there is nothing to
+ * sort. If the number of arguments is exactly 2, it splits the second
+ * argument into an array of strings using space as the delimiter. It then
+ * checks for duplicate arguments in the array and performs integer
+ * validation on each argument. If any argument is not a valid integer,
+ * the function frees the memory allocated for the array and exits with an
+ * appropriate error message. Finally, if there are more than 2 arguments,
+ * the function checks for duplicate arguments in the arguments array,
+ * without freeing the memory.
  *
  * @param argc The number of command-line arguments.
- * @param argv An array of character pointers representing the command-line arguments.
- * @param stack_a A pointer to a pointer to the t_list structure representing stack A.
+ * @param argv An array of character pointers representing the
+ *             command-line arguments.
+ * @param stack_a A pointer to a pointer to the t_list structure
+ *                representing stack A.
  * @return None.
  */
+
 void	check_args(int argc, char **argv, t_list **stack_a);
 /**
  * @brief Frees a stack of t_list nodes.
@@ -94,15 +118,15 @@ void	free_stack(t_list *stack);
 void	exit_free(char *msg, t_list **stack_a);
 void	free_array(char **str);
 
-
 //list manipulation
 /**
- * @brief Adds the specified node to the front of a stack (list), making it the new head.
+ * @brief Adds a node to the front of a stack making it the new head.
  *
  * @param stack A pointer to the stack (list).
  * @param new The node to add to the stack.
  *
- * @note The new node becomes the head of the stack, and its next pointer is set to the previous head.
+ * @note The new node becomes the head of the stack, 
+ * and its next pointer is set to the previous head.
  */
 void	ft_lstadd_front(t_list **stack, t_list *new);
 /**
@@ -119,32 +143,33 @@ void	ft_lstadd_back(t_list **stack, t_list *new);
 /**
  * @brief Creates a new node and returns a pointer to it.
  *
- * This function creates a new node with the specified value and returns a
- * pointer to the newly created node. The value is assigned to the 'value'
- * field of the node, and other fields such as 'index' and 'next' are
+ * This function creates a new node with the specified value,
+ * it returns a pointer to the newly created node. 
+ * The value is assigned to the 'value' field of the node, 
+ * and other fields such as 'index' and 'next' are
  * initialized to -1 and NULL.
  *
  * @param value The value to be assigned to the new node.
- * @return A pointer to the newly created node, or NULL if memory allocation fails.
+ * @return A pointer to the newly node, or NULL if memalloc fails.
  */
 t_list	*ft_lstnew(int value);
 /**
  * @brief Returns the last node of a linked list.
  *
- * This function traverses the linked list starting from the specified node
- * until it reaches the last node and returns a pointer to that last node.
+ * This function traverses the linked list until it reaches 
+ * the last node and returns a pointer to that last node.
  *
  * @param lst The starting node of the linked list.
- * @return A pointer to the last node of the linked list, or NULL if the list is empty.
+ * @return A pointer to the last node or NULL if the list is empty.
  */
 t_list	*ft_lstlast(t_list *lst);
 
 //Initialization and sorting
 /**
- * @brief Assigns an index to each node in the linked list based on their values.
+ * @brief Assigns an index to each node based on their values.
  *
- * This function iterates through the linked list and assigns an index value to each node
- * based on their values. Nodes with smaller values are assigned lower indices, starting from 0.
+ * This function iterates through the linked list and assigns an index 
+ * Nodes with smaller values are assigned lower indices, starting from 0.
  *
  * @param stack Pointer to the head of the linked list.
  */
@@ -162,33 +187,29 @@ void	assign_index_by_value(t_list *stack, int node_nbr);
  */
 void	stack_ini(t_list **stack_a, int argc, char **argv);
 
-
-//sorting algorithms
 /**
- * @brief Call small_algo or performs the radix sort algorithm on stack_a using stack_b.
+ * @brief Perform radix sort algorithm to sort integers in stack_a using stack_b.
  *
- * This function implements the radix sort algorithm to sort the integers in stack_a
- * in ascending order. It iterates through each bit of the index value of the nodes
- * in stack_a, starting from the least significant bit to the most significant bit.
- * For each bit, it separates the nodes into two stacks: stack_a and stack_b. Nodes
- * with the bit set(=1) are moved to stack_b using the "pb" operation, while nodes
- * with the bit unset remain in stack_a and are rotated using the "ra" operation.
+ * Implements radix sort to sort integers in stack_a in ascending order.
+ * It iterates through each bit of the index value of nodes, separating them
+ * into stack_a and stack_b based on the checked bit. Nodes with the bit set(=1)
+ * are moved to stack_b using "pb", while nodes with the bit unset are rotated
+ * in stack_a using "ra". After separating the nodes, it moves them back from
+ * stack_b to stack_a using "pa", preserving relative order. This process is
+ * repeated for each bit until all bits are checked.
  *
- * After separating the nodes based on the checked bit, the function moves the nodes
- * back from stack_b to stack_a using the "pa" operation, preserving the relative order
- * of the nodes. This process is repeated for each bit of the index value until all bits
- * have been checked.
- *
- * @param stack_a Pointer to the stack_a list.
- * @param stack_b Pointer to the stack_b list.
- * @return 0 to indicate successful execution of the algorithm.
+ * @param stack_a Pointer to stack_a list.
+ * @param stack_b Pointer to stack_b list.
+ * @return 0 for successful execution of the algorithm.
  */
+
 int		algo(t_list **stack_a, t_list **stack_b, int Astk_siz, int Bstk_siz);
 /**
  * @brief Finds the minimum index value in a linked list.
  *
- * This function iterates through the linked list starting from the given stack_a node
- * and finds the minimum index value. It returns the minimum index value found in the list.
+ * This function iterates through the linked list 
+ * starting from stack_a node and finds the minimum index value. 
+ * It returns the minimum index value found in the list.
  *
  * @param stack_a The pointer to the head of the linked list.
  * @return        The minimum index value in the linked list.
@@ -211,12 +232,12 @@ int		lst_size(t_list *head);
 /**
  * @brief Checks if a specific bit in an integer is set.
  *
- * This function checks the value of a specific bit in the binary representation
- * of an integer. It works by right-shifting the integer by the given bit position,
- * effectively moving the bit of interest to the rightmost position. Then, it performs
- * a bitwise AND operation with 1 to extract the value of the rightmost bit. If the
- * extracted bit is 1, the specified bit is considered set; otherwise, it is considered
- * not set.
+ * This function checks the value of a specific bit in the binary
+ * representation of an integer. It works by right-shifting the integer
+ * by the given bit position, effectively moving the bit of interest to
+ * the rightmost position. Then, it performs a bitwise AND operation with
+ * 1 to extract the value of the rightmost bit. If the extracted bit is 1,
+ * the specified bit is considered set; otherwise, it is considered not set.
  *
  * @param num The integer value.
  * @param bit The position of the bit to check.
@@ -224,19 +245,21 @@ int		lst_size(t_list *head);
  */
 int		is_bit_set(int num, int bit);
 /**
- * @brief Calculates the number of bits required to represent the maximum index in stack_a.
+ * @brief Calculates the number of bits required 
+ * to represent the maximum index in stack_a.
  *
- * This function determines the number of bits needed to represent the maximum index value
- * in the provided stack_a. It calculates the maximum index by subtracting 1 from the size
- * of stack_a and then calculates the number of bits required to represent that maximum
- * index value by shifting the index value right until it becomes zero, counting the number
- * of shifts.
+ * This function determines the number of bits needed
+ * to represent the maximum index value in the stack_a. 
+ * It calculates the maximum index by subtracting 1 from the size
+ * of stack_a and then calculates the number of bits 
+ * required to represent that maximum index value 
+ * by shifting the index value right until it becomes zero,
+ * counting the number of shifts.
  *
  * @param stack_a Pointer to the stack_a list.
  * @return The number of bits required to represent the maximum index in stack_a.
  */
 int		max_index_bits_nbr(t_list **stack_a);
-
 
 //sorting operations
 /**
@@ -250,9 +273,8 @@ int		max_index_bits_nbr(t_list **stack_a);
  *  If the operation code is "sb", the message "sb" will be printed.
  */
 int		swap(t_list **stack, char *code);
-
 /**
- * @brief Swaps the top two elements of both stack_a and stack_b simultaneously.
+ * @brief Swaps the top two elements of both stack_a and b
  *
  * @param stack_a A pointer to stack_a.
  * @param stack_b A pointer to stack_b.
@@ -266,12 +288,11 @@ int		ss(t_list **stack_a, t_list **stack_b);
  *
  * @param stack_a Pointer to the stack A.
  * @param stack_b Pointer to the stack B.
- * @param code    The operation code: "pa" for push a, "pb" for push b.
+ * @param code    The operation code: "pa" or "pb" for push a/b.
  *
  * @return 0 if the operation is successful, otherwise -1.
  *
- * @note This function prints the operation code to the standard output, indicating
- *       whether it was "pa" (push a) or "pb" (push b).
+ * @note Prints "pa" (push a) or "pb" (push b) to stdout.
  */
 int		push(t_list **stack_a, t_list **stack_b, char *code);
 /**
@@ -308,7 +329,8 @@ int		reverse_rotate(t_list **stack, char *code);
  */
 t_list	*ft_lstprev(t_list **lst, t_list *current);
 /**
- * Rotate stack a and stack b simultaneously: Shift up all elements of both stacks by 1.
+ * Rotate stack a and stack b simultaneously: 
+ * Shift up all elements of both stacks by 1.
  * The first element becomes the last one in each stack.
  * 
  * @param stack_a Pointer to stack a.
@@ -317,7 +339,8 @@ t_list	*ft_lstprev(t_list **lst, t_list *current);
  */
 int		rr(t_list **stack_a, t_list **stack_b);
 /**
- * Reverse rotate stack a and stack b simultaneously: Shift down all elements of both stacks by 1.
+ * Reverse rotate stack a and stack b simultaneously: 
+ * Shift down all elements of both stacks by 1.
  * The last element becomes the first one in each stack.
  * 
  * @param stack_a Pointer to stack a.
@@ -326,6 +349,4 @@ int		rr(t_list **stack_a, t_list **stack_b);
  */
 int		rrr(t_list **stack_a, t_list **stack_b);
 
-
 #endif
-

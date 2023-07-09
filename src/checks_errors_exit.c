@@ -6,24 +6,11 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 15:54:54 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 18:09:05 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/09 18:25:38 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-void	free_array(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-}
 
 void	exit_free(char *msg, t_list **stack_a)
 {

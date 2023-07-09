@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/07/09 18:29:39 by lmangall          #+#    #+#              #
+#    Updated: 2023/07/09 18:48:04 by lmangall         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 # Makefile
 
 # Directories
@@ -8,8 +20,10 @@ LIBFTDIR = lib/libft
 # Source files
 SRCS = main_ini_assign.c \
 		list_manip.c \
-		operations.c \
+		operations_main.c \
+		operations_redirect.c \
 		checks_errors_exit.c \
+		free.c \
 		algo.c \
 		utils.c \
 		algo_utils.c
@@ -35,7 +49,7 @@ $(NAME): $(OBJS)
 
 clean:
 	@$(MAKE) -C $(LIBFTDIR) clean
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJS) $(NAME).o
 
 fclean: clean
 	@$(MAKE) -C $(LIBFTDIR) fclean

@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 15:54:39 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 18:18:24 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/09 18:25:48 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,4 @@ int	max_index_bits_nbr(t_list **stack_a)
 	while ((idx >> bits_nbr) != 0)
 		bits_nbr++;
 	return (bits_nbr);
-}
-
-void	free_stack(t_list *stack)
-{
-	t_list	*current;
-	t_list	*tmp;
-
-	current = stack;
-	while (current != NULL)
-	{
-		tmp = current;
-		current = current->next;
-		free(tmp);
-	}
 }

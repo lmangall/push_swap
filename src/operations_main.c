@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:23:59 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 18:24:32 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/09 18:27:24 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,6 @@ int	swap(t_list **stack, char *code)
 		ft_putendl_fd("sa", 1);
 	else if (ft_strcmp(code, "sb") == 0)
 		ft_putendl_fd("sb", 1);
-	return (0);
-}
-
-int	ss(t_list **stack_a, t_list **stack_b)
-{
-	if (!(swap(stack_a, "ss")) || (!swap(stack_b, "ss")))
-		return (-1);
-	ft_putendl_fd("ss", 1);
 	return (0);
 }
 
@@ -91,16 +83,6 @@ int	rotate(t_list **stack, char *code)
 	return (0);
 }
 
-int	rr(t_list **stack_a, t_list **stack_b)
-{
-	if ((lst_size(*stack_a) < 2) || (lst_size(*stack_b) < 2))
-		return (-1);
-	rotate(stack_a, "no msg");
-	rotate(stack_b, "no msg");
-	ft_putendl_fd("rr", 1);
-	return (0);
-}
-
 int	reverse_rotate(t_list **stack, char *code)
 {
 	t_list	*head;
@@ -117,15 +99,5 @@ int	reverse_rotate(t_list **stack, char *code)
 	*stack = tail;
 	if (ft_strstr(code, "rra") || ft_strstr(code, "rrb"))
 		ft_putendl_fd(code, 1);
-	return (0);
-}
-
-int	rrr(t_list **stack_a, t_list **stack_b)
-{
-	if ((lst_size(*stack_a) < 2) || (lst_size(*stack_b) < 2))
-		return (-1);
-	reverse_rotate(stack_a, "no msg");
-	reverse_rotate(stack_b, "no msg");
-	ft_putendl_fd("rrr", 1);
 	return (0);
 }
