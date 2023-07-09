@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 15:54:54 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 19:22:00 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/09 19:26:31 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	check_args(int argc, char **argv, t_list **stack_a)
 	i = 0;
 	msg = "all good";
 	if (argc < 2)
-		exit_free("Nothing to sort", NULL);
+		exit_free("correct execution", NULL);
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');

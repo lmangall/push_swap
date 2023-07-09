@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:12:07 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 19:20:32 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/09 19:36:54 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	main(int argc, char **argv)
 		exit_free("sorted", &stack_a);
 	if (lst_size(stack_a) <= 3)
 		sort_3(&stack_a);
-	if (lst_size(stack_b) == 5)
+	if (lst_size(stack_a) == 5)
 		sort_5(stack_a, stack_b, lst_size(stack_a) - 1, lst_size(stack_b));
 	algo(&stack_a, &stack_b, lst_size(stack_a), lst_size(stack_b));
 	exit_free("correct execution", &stack_a);
