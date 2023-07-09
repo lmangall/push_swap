@@ -1,16 +1,10 @@
 # Yet to do 
 - 
 - double check the check_int func and clean it
-- implement a small number algo ?
-- add a test to check if already sorted
-- Use tester
+- implement a 4 number algo 
 - Check for leaks
 - polish and check makefile
 - final norminette
-- check exit_free relative to check_int (doest it free, should it free?)
-- organize code
-- clean readme
-
 
 
 > Radix sort:
@@ -22,10 +16,6 @@
 > - Otherwise, perform the `ra` operation to keep the number in `stack_a`.
 > - After that, perform the `pa` operation until there are no numbers left in `stack_b`.
 > - Repeat this process for the second and third bit.
-
-
-
-
 
 
 
@@ -41,7 +31,7 @@ The push_swap project is a coding assignment from the coding school 42, which fo
 
 ### Stacks
 
-The project revolves around two stacks, named `stack_a` and `stack_b`. Initially, `stack_a` contains a random list of integers, while `stack_b` is empty. The objective is to sort the integers in `stack_a` in ascending order.
+The project revolves around two stacks, named `stack_a` and `stack_b`. `stack_a` will be initialized with a random list of integers. The objective is to sort the integers in `stack_a` in ascending order. 
 
 ### Operations
 
@@ -78,16 +68,14 @@ To solve the push_swap problem, we will utilize the radix sort algorithm. Radix 
 
 - May not achieve optimal instructions for the push_swap project (unless optimized)
 
-To facilitate efficient manipulation using bitwise operators and binary representation, we will simplify the numbers in stack A before applying radix sort. This simplification involves replacing the numbers with a range of values from 0 to N-1, where N is the size of the stack.
 
 ### Implementation Steps
 
-1. Simplify the numbers in stack A by replacing them with values in the range [0, N-1].
-2. Apply radix sort, treating `stack_a` as "stack A" and `stack_b` as "stack B."
-3. Starting from the rightmost bit, perform operations on each number to place them into the corresponding stack based on their digit.
-4. Upon completion, the numbers will be arranged in the stacks according to their respective digits.
+1. Simplify the numbers in stack A by replacing them with index values in the range [0, N-1].
+2. Starting from the rightmost bit, perform operations on each number to place them into the corresponding stack based on their digit.
+3. Upon completion, the numbers will be arranged in the stacks according to their respective digits.
 
-### Using an index
+### Using an index to simplify the numbers
 
 To facilitate efficient manipulation using bitwise operators and binary representation, we will give the numbers in stack A an index (from 0 to N-1, where N is the size of the stack) before applying radix sort. We will manipulate the nodes using the indexes, effectively pushing or rotating the values themselves.
 
@@ -98,20 +86,42 @@ Here is an example of stack A contains the following numbers, the indexes that w
 | Index  |  4   |  0   |  6  |  1   |  5  |  2  |  3  |
 | Binary | 0100 | 0000 | 0110| 0001 | 0101| 0010| 0011|
 
+'
+When converting binary numbers to decimal, the odd and even nature of the number can still be determined based on the last bit. If the last bit of the binary number  is not set (i.e., it is 0), the corresponding decimal number will be even. If the last bit is set (i.e., it is 1), the decimal number will be odd. 
+'
 
 By simplifying the numbers, we transform them into non-negative integers within the range [0, N-1]. Consequently, we only need to sort the simplified numbers, making radix sort an efficient choice.
 
 By using the 'is_bit_set' function, the code decides whether to push the current node to stack_b or rotate stack_a based on the value of the checked_bit position in the binary representation of the index. The loop continues until all elements in stack_a have been processed. Here is an example for the very first loop:
 
+
+the push to stack_b (pb) will be made if the bit is not set (i.e., the result is 0), and the rotate operation (ra) will be performed if the bit is set (i.e., the result is 1).
+
+
+
 |   Index  | Binary | Move |           | Stack A       | Stack B     |
 |----------|--------|------|-----------|---------------|-------------|
-|    4     |  0100  |  ra  |           |  0100         |  0011       |
-|    0     |  0000  |  pb  |           |  0001         |  0010       |
-|    6     |  0110  |  pb  |           |  0101         |  0110       |
-|    1     |  0001  |  ra  |           |               |  0000       |
+|    4     |  0100  |  pb  |           |  0001         |  0010       |
+|    0     |  0000  |  pb  |           |  0101         |  0110       |
+|    6     |  0110  |  pb  |           |  0011         |  0000       |
+|    1     |  0001  |  ra  |           |               |  0100       |
 |    5     |  0101  |  ra  |           |               |             |
 |    2     |  0010  |  pb  |           |               |             |
-|    3     |  0011  |  pb  |           |               |             |
+|    3     |  0011  |  ra  |           |               |             |
+
+
+Following the completion of the loop, the values in Stack B are pushed back to Stack A. Then, the second rightmost bit of each index will be examined.
+
+| Stack A | Index |
+|---------|-------|
+|   0100  |   4   |
+|   0000  |   0   |
+|   0110  |   6   |
+|   0010  |   2   |
+|   0001  |   0   |
+|   0101  |   5   |
+|   0011  |   3   |
+
 
 The specific values themselves are not relevant. The movements of the nodes depend solely on the index, and as a result, the corresponding values are also moved accordingly.
 
@@ -143,11 +153,13 @@ Example usage: `./push_swap 4 3 2 1`
 
 
 
+## conversion between decimal and binary numbers.
+This table can be used to quickly look up the binary representation of a decimal number or vice versa.
 
+| Decimal|    1     |     2    |     4    |     8    |    16    |    32    |    64    |    128   |
+| Binary | 00000001 | 00000010 | 00000100 | 00001000 | 00010000 | 00100000 | 01000000 | 10000000 |
 
-
-
-
+[Yt on binary to decimal](https://youtu.be/RrJXLdv1i74?t=605)
 
 
 
@@ -198,6 +210,8 @@ int	is_bit_set(int num, int bit)
 	return (result);
 }
 ```
+the push to stack_b (pb) will be made if the bit is not set (i.e., the result is 0), and the rotate operation (ra) will be performed if the bit is set (i.e., the result is 1).
+
 
 
 
