@@ -156,10 +156,9 @@ Example usage: `./push_swap 4 3 2 1`
 ## conversion between decimal and binary numbers.
 This table can be used to quickly look up the binary representation of a decimal number or vice versa.
 
-
-|--------||----------||----------||----------||----------||----------||----------||----------||----------|
-| Decimal|    1     |     2    |     4    |     8    |    16    |    32    |    64    |    128   |
-| Binary | 00000001 | 00000010 | 00000100 | 00001000 | 00010000 | 00100000 | 01000000 | 10000000 |
+| Decimal |    1     |    2     |    4     |    8     |   16     |   32     |   64     |   128    |
+|---------|----------|----------|----------|----------|----------|----------|----------|----------|
+| Binary  | 00000001 | 00000010 | 00000100 | 00001000 | 00010000 | 00100000 | 01000000 | 10000000 |
 
 
 [Yt on binary to decimal](https://youtu.be/RrJXLdv1i74?t=605)
