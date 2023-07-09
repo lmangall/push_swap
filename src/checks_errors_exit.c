@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 15:54:54 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 18:25:38 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/09 19:22:00 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,20 +84,21 @@ void	check_args(int argc, char **argv, t_list **stack_a)
 	int		i;
 
 	i = 0;
+	msg = "all good";
 	if (argc < 2)
 		exit_free("Nothing to sort", NULL);
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
 		check_duplicate(args, "free");
-		while (args[++i] && (ft_strcmp(msg, "all good") != 0))
+		while (args[++i] && (ft_strcmp(msg, "all good") == 0))
 			msg = check_int(args[i]);
 		free_array(args);
 	}
 	if (argc > 2)
 	{
 		check_duplicate(argv + 1, "do not free");
-		while (++i != argc - 1 && (ft_strcmp(msg, "all good") != 0))
+		while (++i != argc - 1 && (ft_strcmp(msg, "all good") == 0))
 			msg = check_int(argv[i + 1]);
 	}
 	if (ft_strcmp(msg, "all good") != 0)
