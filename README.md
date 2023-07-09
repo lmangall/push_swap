@@ -93,13 +93,27 @@ To facilitate efficient manipulation using bitwise operators and binary represen
 
 Here is an example of stack A contains the following numbers, the indexes that will be given and their binary representation
 
-| Values | 87   | -487 | 781 | -100 | 101 | 0   | 1   |
-|--------|------|------|-----|------|-----|-----|-----|
-| Index  | 4    | 0    | 6   | 1    | 5   | 2   | 3   |
+| Values |  87  | -487 | 781 | -100 | 101 |  0  |  1  |
+|--------|:----:|-----:|----:|-----:|----:|----:|----:|
+| Index  |  4   |  0   |  6  |  1   |  5  |  2  |  3  |
 | Binary | 0100 | 0000 | 0110| 0001 | 0101| 0010| 0011|
+
 
 By simplifying the numbers, we transform them into non-negative integers within the range [0, N-1]. Consequently, we only need to sort the simplified numbers, making radix sort an efficient choice.
 
+By using the 'is_bit_set' function, the code decides whether to push the current node to stack_b or rotate stack_a based on the value of the checked_bit position in the binary representation of the index. The loop continues until all elements in stack_a have been processed. Here is an example for the very first loop:
+
+|   Index  | Binary | Move |           | Stack A       | Stack B     |
+|----------|--------|------|-----------|---------------|-------------|
+|    4     |  0100  |  ra  |           |  0100         |  0011       |
+|    0     |  0000  |  pb  |           |  0001         |  0010       |
+|    6     |  0110  |  pb  |           |  0101         |  0110       |
+|    1     |  0001  |  ra  |           |               |  0000       |
+|    5     |  0101  |  ra  |           |               |             |
+|    2     |  0010  |  pb  |           |               |             |
+|    3     |  0011  |  pb  |           |               |             |
+
+The specific values themselves are not relevant. The movements of the nodes depend solely on the index, and as a result, the corresponding values are also moved accordingly.
 
 ## Usage
 
@@ -170,13 +184,10 @@ void foo
 
 When you say that a bit is "set" in binary, it means that the value of that particular bit is 1. In binary representation, each digit or bit can have a value of either 0 or 1. When a bit is set, it indicates that it is turned on or active with a value of 1. Conversely, when a bit is not set, it means the value of that bit is 0.
 
-> This function checks the value of a specific bit in the binary representation of an integer. It right-shifts the integer by the given bit position, moving the bit of interest to the rightmost position. Then, it performs a bitwise AND operation with 1 to extract the value of the rightmost bit. If the extracted bit is 1, the specified bit is considered set; otherwise, it is considered not set.
-
-
+> This function checks the value of a specific bit in the binary representation of an integer. It right-shifts the integer by the given bit position, moving the bit of interest to the rightmost position. Then, it performs a bitwise AND operation with 1 to extract the value of the rightmost bit.
 
 ```c
-void foo
-{
+
 int	is_bit_set(int num, int bit)
 {
 	int	shifted;
@@ -185,7 +196,7 @@ int	is_bit_set(int num, int bit)
 	shifted = num >> bit;
 	result = shifted & 1;
 	return (result);
-}}
+}
 ```
 
 
