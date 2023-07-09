@@ -74,7 +74,6 @@ void	print_list(const t_list *head)
 		ft_putnbr_fd(tmp->value, 1);
 		ft_putendl_fd("", 1);
 		tmp = tmp->next;
-		// printf("index = %i\n", tmp->index);
 	}
 }
 
@@ -90,7 +89,11 @@ int	main(int argc, char **argv)
 	assign_index_by_value(stack_a);
 	if (is_sorted(stack_a))
 		exit_free("sorted", &stack_a);
-	algo(&stack_a, &stack_b);
+	if (lst_size(stack_a) <= 3)
+		sort_3(&stack_a);
+	if (lst_size(stack_b) == 5)
+		sort_5(stack_a, stack_b);
+	algo(&stack_a, &stack_b, lst_size(stack_a), lst_size(stack_b));
 	exit_free("correct execution", &stack_a);
 	return (0);
 }

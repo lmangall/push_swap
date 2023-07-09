@@ -6,11 +6,12 @@ INCDIR = include
 LIBFTDIR = lib/libft
 
 # Source files
-SRCS = push_swap.c \
+SRCS = main_ini_assign.c \
 		list_manip.c \
 		operations.c \
 		checks_errors_exit.c \
-		algo.c
+		algo.c \
+		algo_utils.c
 
 # Object files
 OBJS = $(patsubst %.c, %.o, $(SRCS))

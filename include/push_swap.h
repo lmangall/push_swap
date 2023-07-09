@@ -183,7 +183,7 @@ void	stack_ini(t_list **stack_a, int argc, char **argv);
  * @param stack_b Pointer to the stack_b list.
  * @return 0 to indicate successful execution of the algorithm.
  */
-int		algo(t_list **stack_a, t_list **stack_b);
+int		algo(t_list **stack_a, t_list **stack_b, int Astk_siz, int Bstk_siz);
 /**
  * @brief Finds the minimum index value in a linked list.
  *
@@ -194,6 +194,7 @@ int		algo(t_list **stack_a, t_list **stack_b);
  * @return        The minimum index value in the linked list.
  */
 int		find_minimum_idx(t_list *stack_a);
+int		find_maximum_idx(t_list *stack);
 void	sort_3(t_list **stack);
 void	sort_5(t_list *stack_a, t_list *stack_b);
 
@@ -238,7 +239,6 @@ int		max_index_bits_nbr(t_list **stack_a);
 
 
 //sorting operations
-
 /**
  * @brief Swaps the top two elements of a stack.
  *

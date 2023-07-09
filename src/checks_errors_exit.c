@@ -121,7 +121,7 @@ void	check_args(int argc, char **argv, t_list **stack_a)
 	{
 		args = ft_split(argv[1], ' ');
 		check_duplicate(args, "free");
-		while (args[i])
+		while (args[++i])
 		{
 			msg = check_int(args[i]);
 			if (ft_strcmp(msg, "all good") != 0)
@@ -129,10 +129,17 @@ void	check_args(int argc, char **argv, t_list **stack_a)
 				free_array(args);
 				exit_free(msg, stack_a);
 			}
-			i++;
 		}
 		free_array(args);
 	}
 	if (argc > 2)
+	{
 		check_duplicate(argv + 1, "do not free");
+		while (++i != argc - 1)
+		{
+			msg = check_int(argv[i + 1]);
+			if (ft_strcmp(msg, "all good") != 0)
+				exit_free(msg, stack_a);
+		}
+	}
 }

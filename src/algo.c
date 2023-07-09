@@ -1,101 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/09 14:46:56 by lmangall          #+#    #+#             */
+/*   Updated: 2023/07/09 15:14:49 by lmangall         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 #include "../lib/libft/src/libft.h"
 
-int	find_minimum_idx(t_list *stack_a)
-{
-	t_list	*node;
-	int		min_index;
-
-	node = stack_a;
-	min_index = 2147483646;
-	while (node) /// try: 	while (node != NULL)
-	{
-		if (node->index < min_index)
-			min_index = node->index;
-		if (node->next == NULL)
-			break ;
-		node = node->next;
-	}
-	return (min_index);
-}
-
-static int	find_maximum_idx(t_list *stack)
-{
-	t_list	*node;
-	int		max_index;
-
-	node = stack;
-	max_index = 0;
-	while (node)
-	{
-		if (node->index > max_index)
-			max_index = node->index;
-		if (node->next == NULL)
-			break ;
-		node = node->next;
-	}
-	return (max_index);
-}
-
-int	is_bit_set(int num, int bit)
-{
-	int	shifted;
-	int	result;
-
-	shifted = num >> bit;
-	result = shifted & 1;
-	return (result);
-}
-
-int	max_index_bits_nbr(t_list **stack_a)
-{
-	int	idx;
-	int	bits_nbr;
-
-	bits_nbr = 0;
-	idx = lst_size(*stack_a) - 1;
-	while ((idx >> bits_nbr) != 0)
-		bits_nbr++;
-	return (bits_nbr);
-}
-
-int	algo(t_list **stack_a, t_list **stack_b)
+int	algo(t_list **stack_a, t_list **stack_b, int stack_a_size, int stack_b_size)
 {
 	int		i;
 	t_list	*current_node;
-	int		stack_a_size;
-	int		stack_b_size;
 	int		checked_bit;
 
-	stack_a_size = lst_size(*stack_a);
-	stack_b_size = 0;
 	checked_bit = 0;
 	current_node = *stack_a;
-	if (stack_a_size <= 3)
-	{
-		sort_3(stack_a);
-		exit_free("correct execution", stack_a);
-	}
-	if (stack_a_size == 5)
-		sort_5(*stack_a, *stack_b);
 	while (checked_bit < max_index_bits_nbr(stack_a))
 	{
 		i = 0;
-		while (i < stack_a_size)
+		while (i++ < stack_a_size)
 		{
 			current_node = *stack_a;
 			if (!is_bit_set(current_node->index, checked_bit))
 				push(stack_a, stack_b, "pb");
 			else
 				rotate(stack_a, "ra");
-			i++;
 		}
 		stack_b_size = lst_size(*stack_b);
-		while (stack_b_size != 0)
-		{
+		while (stack_b_size-- != 0)
 			push(stack_a, stack_b, "pa");
-			stack_b_size--;
-		}
 		checked_bit++;
 	}
 	return (0);
@@ -142,6 +81,7 @@ void	sort_3(t_list **stack)
 			swap(stack, "sa");
 		rotate(stack, "ra");
 	}
+	exit_free("correct execution", stack);
 }
 
 void	sort_5(t_list *stack_a, t_list *stack_b)
@@ -155,7 +95,6 @@ void	sort_5(t_list *stack_a, t_list *stack_b)
 	size = lst_size(stack_b);
 	while (size < 2)
 	{
-		// if the head index is the minimum or maximum
 		if (stack_a->index == min || stack_a->index == max)
 			push(&stack_a, &stack_b, "pb");
 		else
@@ -170,7 +109,6 @@ void	sort_5(t_list *stack_a, t_list *stack_b)
 		exit_free("correct execution", &stack_a);
 	else
 	{
-		// if the head index is the maximum
 		if (stack_a->index == max)
 			rotate(&stack_a, "ra");
 		else
