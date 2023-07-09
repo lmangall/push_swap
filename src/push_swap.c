@@ -1,8 +1,6 @@
 #include "../include/push_swap.h"
 #include "../lib/libft/src/libft.h"
 
-
-
 void	stack_ini(t_list **stack_a, int argc, char **argv)
 {
 	int		i;
@@ -11,25 +9,25 @@ void	stack_ini(t_list **stack_a, int argc, char **argv)
 	char	*msg;
 
 	i = 0;
-	if (! stack_a)
+	if (!stack_a)
 		return ;
 	if (argc == 2)
-		{
+	{
 		args = ft_split(argv[1], ' ');
 		while (args[i])
 		{
 			msg = check_int(args[i]);
 			if (ft_strcmp(msg, "all good") != 0)
-				{
-					free_array(args);
-					exit_free(msg, stack_a);
-				}
+			{
+				free_array(args);
+				exit_free(msg, stack_a);
+			}
 			new_list = ft_lstnew(ft_atoi(args[i]));
 			ft_lstadd_back(stack_a, new_list);
 			i++;
 		}
 		free_array(args);
-		}
+	}
 	else
 	{
 		while (i != argc - 1)
@@ -44,7 +42,7 @@ void	stack_ini(t_list **stack_a, int argc, char **argv)
 	}
 }
 
-void print_list(const t_list *head)
+void	print_list(const t_list *head)
 {
 	const t_list	*tmp;
 
@@ -61,15 +59,15 @@ void print_list(const t_list *head)
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
-	t_list	*stack_b;	
-	char 	**args;
+	t_list	*stack_b;
+	char	**args;
 
 	if (argc < 2)
 		exit_free("Nothing to sort", NULL);
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
-	 	check_duplicate(args, "free");
+		check_duplicate(args, "free");
 	}
 	if (argc > 2)
 		check_duplicate(argv + 1, "do not free");
@@ -77,8 +75,8 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	stack_ini(&stack_a, argc, argv);
 	assign_index_by_value(stack_a);
-	if(is_sorted(stack_a))
-		exit_free("sorted",&stack_a);
+	if (is_sorted(stack_a))
+		exit_free("sorted", &stack_a);
 	algo(&stack_a, &stack_b);
 	exit_free("correct execution", &stack_a);
 	return (0);

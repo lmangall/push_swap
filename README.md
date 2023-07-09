@@ -1,26 +1,3 @@
-
-
-
-https://github.com/42YerevanProjects/push_swap/blob/master/src/simple.c
-https://github.com/iamrustamov/push_swap/blob/master/sort_3_and_5_element.c
-
-- [Useful ressources:](https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e)
-- [https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e](https://www.youtube.com/watch?v=OaG81sDEpVk&ab_channel=Oceano)
-- [https://www.youtube.com/watch?v=OaG81sDEpVk&ab_channel=Oceano](https://www.geeksforgeeks.org/radix-sort/)
-- [https://www.geeksforgeeks.org/radix-sort/](https://www.programiz.com/dsa/radix-sort)
-- [https://www.programiz.com/dsa/radix-sort](https://medium.com/@ayogun/push-swap-c1f5d2d41e97)
-- [https://medium.com/@ayogun/push-swap-c1f5d2d41e97](https://sharkigamers.github.io/pushswap_epitech_project/)
-- [https://sharkigamers.github.io/pushswap_epitech_project/](https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/)
-
-Regarding the use of double pointers:
-- [Why using double pointers](https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/)
-
-
-./push_swap_visualizer-master/build/bin/visualizer
-
-
-# CHECK IF CORRECT FOR SOME NUMBERS (seems to be a lot of operations)
-
 # Yet to do 
 - 
 - double check the check_int func and clean it
@@ -35,72 +12,82 @@ Regarding the use of double pointers:
 - clean readme
 
 
-ARG=4 20 38; ./push_swap $ARG | ./checker_Mac $ARG
+
+> Radix sort:
+> 
+> - Check the numbers one by one.
+> - If a number ends with 1, put it in the 1 stack (`stack_b`).
+> - If a number ends with 0, leave it in the 0 stack (`stack_a`). => by rotating the list `ra`
+> - If the i-th digit of the top number in `stack_a` is 0, perform the `pb` operation to move this number to `stack_b`.
+> - Otherwise, perform the `ra` operation to keep the number in `stack_a`.
+> - After that, perform the `pa` operation until there are no numbers left in `stack_b`.
+> - Repeat this process for the second and third bit.
 
 
- ARG="4 20 38 43 43 654 765 231 564 76 4376 765 765 423"; ./push_swap $ARG | ./checker_Mac $ARG
-
-'
 
 
 
-creation
-	t_list	*stack_a;
-sending
-	&stack_a
-=>sends a pointer to pointer, because it sends the address to a pointer
-
-be careful not to dereference
-
-VSCode:
-Collapse all regions in Visual Studio Code is Cmd+K followed by Cmd+0 (zero).
-Cmd+j hides the terminal
 
 
-# push_swap
-Coding assignment from the 42 Berlin school : sort a stack of int in the most efficient way possible
+# Push Swap
 
-## The push_swap project is a coding assignment from the coding school 42 (which is known for its unique pedagogical approach and focus on peer learning). The goal of the push_swap project is to develop a sorting algorithm that can sort a stack of integers using a limited set of predefined operations.
+Coding assignment from the 42 Berlin school: sort a stack of integers in the most efficient way possible.
 
-Here's a breakdown of how the project works:
+## Introduction
 
-Stacks:
-The project revolves around two stacks, named `stack_a` and `stack_b`. `stack_a` initially contains a random list of integers, and `stack_b` is empty. The objective is to sort the integers in `stack_a` in ascending order.
+The push_swap project is a coding assignment from the coding school 42, which focuses on peer learning and a unique pedagogical approach. The goal of the push_swap project is to develop a sorting algorithm that can sort a stack of integers using a limited set of predefined operations.
 
-Operations: A limited set of operations is provided to manipulate the stacks. The allowed operations are:
+## Project Overview
 
+### Stacks
 
+The project revolves around two stacks, named `stack_a` and `stack_b`. Initially, `stack_a` contains a random list of integers, while `stack_b` is empty. The objective is to sort the integers in `stack_a` in ascending order.
+
+### Operations
+
+A limited set of operations is provided to manipulate the stacks. The allowed operations are:
 
 | Code  | Instruction                         | Action                                                 |
 | ----- | ----------------------------------- | ------------------------------------------------------ |
 | `sa`  | swap a                              | Swaps the 2 top elements of stack a                    |
 | `sb`  | swap b                              | Swaps the 2 top elements of stack b                    |
 | `ss`  | swap a + swap b                     | Both `sa` and `sb`                                     |
-| `pa`  | push a                              | Moves the top element of stack b at the top of stack a |
-| `pb`  | push b                              | Moves the top element of stack a at the top of stack b |
-| `ra`  | rotate a                            | Shift up all elements of stack a by 1                  |
-| `rb`  | rotate b                            | Shift up all elements of stack b by 1                  |
+| `pa`  | push a                              | Moves the top element of stack b to the top of stack a  |
+| `pb`  | push b                              | Moves the top element of stack a to the top of stack b  |
+| `ra`  | rotate a                            | Shifts up all elements of stack a by 1                  |
+| `rb`  | rotate b                            | Shifts up all elements of stack b by 1                  |
 | `rr`  | rotate a + rotate b                 | Both `ra` and `rb`                                     |
-| `rra` | reverse rotate a                    | Shift down all elements of stack a by 1                |
-| `rrb` | reverse rotate b                    | Shift down all elements of stack b by 1                |
+| `rra` | reverse rotate a                    | Shifts down all elements of stack a by 1                |
+| `rrb` | reverse rotate b                    | Shifts down all elements of stack b by 1                |
 | `rrr` | reverse rotate a + reverse rotate b | Both `rra` and `rrb`                                   |
 
-The program should follow specific formatting rules for the output.
-Algorithm Complexity: The project places importance on developing an efficient algorithm. The number of operations performed should be limited, and the algorithm should sort the stack within a specific range of allowed operations.
+### Algorithm Complexity
 
-This project challenged me to think critically, optimize my code, and implement an efficient sorting algorithm using a limited set of operations. 
-
-
+The project emphasizes developing an efficient algorithm. The number of operations performed should be limited, and the algorithm should sort the stack within a specific range of allowed operations.
 
 ## Algorithm
+
 To solve the push_swap problem, we will utilize the radix sort algorithm. Radix sort efficiently sorts non-negative integers by grouping them based on their digits, from the least significant to the most significant, and repeatedly rearranging them accordingly. The time complexity of radix sort is O(n * d), where n is the number of elements and d is the number of digits in the largest element.
 
-## Advantages of Radix Sort:
+### Advantages of Radix Sort
+
 - Easy implementation
 - Stable sorting algorithm (preserves the relative order of equal elements)
 
-## Disadvantages of Radix Sort:
+### Disadvantages of Radix Sort
+
 - May not achieve optimal instructions for the push_swap project (unless optimized)
+
+To facilitate efficient manipulation using bitwise operators and binary representation, we will simplify the numbers in stack A before applying radix sort. This simplification involves replacing the numbers with a range of values from 0 to N-1, where N is the size of the stack.
+
+### Implementation Steps
+
+1. Simplify the numbers in stack A by replacing them with values in the range [0, N-1].
+2. Apply radix sort, treating `stack_a` as "stack A" and `stack_b` as "stack B."
+3. Starting from the rightmost bit, perform operations on each number to place them into the corresponding stack based on their digit.
+4. Upon completion, the numbers will be arranged in the stacks according to their respective digits.
+
+### Using an index
 
 To facilitate efficient manipulation using bitwise operators and binary representation, we will simplify the numbers in stack A before applying radix sort. This simplification involves replacing the numbers with a range of values from 0 to N-1, where N is the size of the stack.
 
@@ -124,13 +111,32 @@ We can simplify these numbers as follows:
 
 By simplifying the numbers, we transform them into non-negative integers within the range [0, N-1]. Consequently, we only need to sort the simplified numbers, making radix sort an efficient choice.
 
-By simplifying the numbers, we transform them into non-negative integers within the range [0, N-1]. Consequently, we only need to sort the simplified numbers, making radix sort an efficient choice.
 
-To apply radix sort in the push_swap context, we will treat `stack_a` as "stack A" and `stack_b` as "stack B". Starting from the rightmost bit, we perform operations on each number to place them into the corresponding stack based on their digit.
+## Usage
 
-At the i-th bit from the right, if the i-th bit of the top number in `stack_a` is 0, we execute the "pb" instruction to move the number to `stack_b`. Otherwise, we execute the "ra" instruction to leave it in `stack_a`. This process emulates the concept of placing numbers during radix sort.
+1. Compile the push_swap program.
+2. Execute the program, passing the initial configuration of the stack as command-line arguments.
+3. The program will output the list of operations to sort the stack.
 
-Upon completion of these operations for each number, they will be arranged in the stacks according to their respective digits.
+Example usage: `./push_swap 4 3 2 1`
+
+## Resources
+
+- [Why Use Double Pointers](https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/)
+- [Tutorial on Push Swap](https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e)
+- [Video Tutorial on Push Swap](https://www.youtube.com/watch?v=OaG81sDEpVk&ab_channel=Oceano)
+- [Radix Sort Explanation](https://www.geeksforgeeks.org/radix-sort/)
+- [Radix Sort Tutorial](https://www.programiz.com/dsa/radix-sort)
+- [Additional Push Swap Tutorial](https://medium.com/@ayogun/push-swap-c1f5d2d41e97)
+- [Push Swap Project Documentation](https://sharkigamers.github.io/pushswap_epitech_project/)
+- [Double Pointers and Linked List in C](https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/)
+
+## Miscellaneous
+
+- [VSCode Tips](#vscode-tips)
+
+
+./push_swap_visualizer-master/build/bin/visualizer
 
 
 
@@ -138,13 +144,68 @@ Upon completion of these operations for each number, they will be arranged in th
 
 
 
-In C, a linked list is a data structure used to store a collection of elements. Unlike arrays, linked lists do not require contiguous memory allocation. Instead, each element in a linked list, known as a node, contains a value and a reference to the next node in the list.
 
 
 
 
 
-Define the structure for a node:
+## Implementation Notes
+
+
+### Initialization
+
+To initialize the stacks, use the `stack_ini` function. It takes the address of the stack and the command-line arguments as inputs.
+
+```c
+void stack_ini(t_list **stack, int argc, char **argv)
+{
+	// Implementation details here...
+}
+```
+
+##Check Integer Function
+The check_int function ensures that the input arguments are valid integers within the range of int. It also handles error cases, such as non-numeric inputs or numbers exceeding the int range.
+
+```c
+void check_int(char *arg)
+{
+	// Implementation details here...
+}
+```
+
+
+##Binary Representation
+The print_binary function converts a decimal number to its binary representation.
+```c
+int print_binary(int num)
+{
+	// Implementation details here...
+}
+
+```
+
+
+
+##Helper Functions
+is_bit_set: Checks if a specific bit in an integer is set.
+find_minimum_node: Finds the node with the minimum value in a linked list.
+is_sorted: Checks if a linked list is sorted in ascending order.
+
+```c
+
+```
+
+
+
+
+##VSCode Tips
+To collapse all regions in Visual Studio Code, use Cmd+K followed by Cmd+0 (zero).
+To hide the terminal, use Cmd+j.
+To move up or down selected lines holding Alt and use the arrow keys.
+
+
+
+##Node struct for the linked list
 ```c
 typedef struct	s_list
 {
@@ -155,13 +216,9 @@ typedef struct	s_list
 }	t_list;
 ```
 
-
-
-
-
 ## What does it means for abit to be "set"
 When you say that a bit is "set" in binary, it means that the value of that particular bit is 1. In binary representation, each digit or bit can have a value of either 0 or 1. When a bit is set, it indicates that it is turned on or active with a value of 1. Conversely, when a bit is not set, it means the value of that bit is 0.
-
+```c
 /**
  * @brief Checks if a specific bit in an integer is set.
  *
@@ -177,26 +234,10 @@ When you say that a bit is "set" in binary, it means that the value of that part
  * @return 1 if the specified bit is set (1), 0 otherwise (0).
  */
 int is_bit_set(int num, int bit)
+```
 
 
-> Radix sort:
-> 
-> - Check the numbers one by one.
-> - If a number ends with 1, put it in the 1 stack (`stack_b`).
-> - If a number ends with 0, leave it in the 0 stack (`stack_a`). => by rotating the list `ra`
-> - If the i-th digit of the top number in `stack_a` is 0, perform the `pb` operation to move this number to `stack_b`.
-> - Otherwise, perform the `ra` operation to keep the number in `stack_a`.
-> - After that, perform the `pa` operation until there are no numbers left in `stack_b`.
-> - Repeat this process for the second and third bit.
-
-
-
-
-
-
-
-
-ENDS UP NOT USED
+## ENDS UP NOT USED
 ```C
 t_list	*find_minimum_node(t_list *stack_a)
 {
@@ -221,84 +262,83 @@ t_list	*find_minimum_node(t_list *stack_a)
 }
 ```
 
-OFFSET DISCOVERY:
-			current_node = *stack_a;
-was at the bottom of the while, not on top (it was inside)
+
+## The print_list function takes a pointer to the head of a linked list (head) as its input and prints the contents of the list.
+```c
+void	print_list(const t_list *head)
+{
+	const t_list	*current;
+
+	current = head;
+	printf("\n     Value      Index     Binary\n");
+	while (current != NULL)
+	{
+		//%10d specifies a fixed width of 10 chars, left-aligned using the - flag
+        printf("%10d %10d %10d\n", current->value, current->index, print_binary(current->index));
+        current = current->next;
+		current = current->next;
+	}
+}
 
 
-
-
-
-
-
-
-
-
+## Print binary
+```c
 
 ```C
-void	stack_ini(t_list **stack, char **argv)
+/**
+ * @brief Converts a decimal number to its binary representation.
+ *
+ * This function takes a decimal number as input and converts it to its binary representation.
+ *
+ * @param num The decimal number to be converted.
+ * @return The binary representation of the input number.
+ */
+int print_binary(int num)
 {
-	int		i;
-	t_list	*new_list;
-	char	**args;
-
-	i = 0;
-	if (! stack)
-		return ;
-	// if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	// else
-	// 	args = &argv[1];
-	check_duplicate(args);
-	while (args[i])
+	// Handling special case when num is 0
+	if (num == 0)
 	{
-		check_int(args[i]);
-		new_list = ft_lstnew(atoi(args[i]));
-		ft_lstadd_back(stack, new_list);
-		i++;
+		return (0);
 	}
-	free_array(args);
+
+	// Finding the number of bits required
+	int numBits = 0;
+	int temp = num;
+	while (temp > 0)
+	{
+		numBits++;
+		temp /= 2;
+	}
+
+	// Creating an integer to store the binary representation
+	int binary = 0;
+	int bitPosition = 1;
+
+	// Converting to binary representation
+	for (int i = numBits - 1; i >= 0; i--)
+	{
+		int bit = num % 2;
+		binary += bit * bitPosition;
+		bitPosition *= 10;
+		num /= 2;
+	}
+
+	return (binary);
 }
 ```
-
-
-Algo for 3:
-```
-Combination 6: (3, 2, 1) 
-Combination 4: (2, 3, 1)
-sa if max on top then rra
-
-Combination 1: (1, 2, 3) sorted: problem already exited
-Combination 3: (2, 1, 3)
-sa
-
-Combination 2: (1, 3, 2)
-Combination 5: (3, 1, 2) 
-sa if min on top then ra
-
 ```
 
 
 
 
-```C
-int	is_sorted(t_list **stack)
-{
-	t_list	*head;
-
-	head = *stack;
-	while (head && head->next)
-	{
-		if (head->value > head->next->value)
-			return (0);
-		head = head->next;
-	}
-	return (1);
-}
-```
 
 
 
+
+
+
+
+## SHORTEN THE CODE
 
 
 Same as...
@@ -333,81 +373,6 @@ void stack_ini(t_list **stack, int argc, char **argv)
 	}
 }
 }```
-
-The print_list function takes a pointer to the head of a linked list (head) as its input and prints the contents of the list.
-```c
-void	print_list(const t_list *head)
-{
-	const t_list	*current;
-
-	current = head;
-	printf("\n     Value      Index     Binary\n");
-	while (current != NULL)
-	{
-		//%10d specifies a fixed width of 10 chars, left-aligned using the - flag
-        printf("%10d %10d %10d\n", current->value, current->index, print_binary(current->index));
-        current = current->next;
-		current = current->next;
-	}
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#INI AND MAIN VERSION 2 (malloced in ini)
-```c
-void stack_ini(t_list **stack, int argc, char **argv)
-{
-	int i;
-	t_list *new_list;
-
-	i = 1;
-	while (i < argc)
-	{
-		new_list = (t_list *)malloc(sizeof(t_list));
-		if (!new_list)
-			exit_free("Memory allocation failed", *stack, NULL);
-		new_list->value = atoi(argv[i]);
-		new_list->index = 0;
-		new_list->next = NULL;
-		ft_lstadd_back(stack, new_list);
-		i++;
-	}
-}
-
-
-int main(int argc, char **argv)
-{
-	t_list *stack_a;
-	t_list *stack_b;
-
-	if (argc < 2)
-		return (-1);
-
-	stack_a = NULL;
-	stack_b = NULL;
-
-	stack_ini(&stack_a, argc, argv);
-	assign_index_by_value(stack_a);
-
-	algo(&stack_a, &stack_b);
-	print_list(stack_a);
-
-	exit_free("allgood", stack_a, stack_b);
-	return (0);
-}
-```
 
 
 

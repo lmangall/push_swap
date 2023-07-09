@@ -16,5 +16,8 @@
 		"variant": "c",
 		"__locale": "c",
 		"limits": "c"
+	},
+	"[c]": {
+		"editor.defaultFormatter": "keyhr.42-c-format"
 	}
 }

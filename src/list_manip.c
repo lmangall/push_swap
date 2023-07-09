@@ -27,7 +27,7 @@ t_list	*ft_lstnew(int value)
 {
 	t_list	*new;
 
-	new = malloc(sizeof(t_list));//sizeof (t_list) ??
+	new = malloc(sizeof(t_list)); // sizeof (t_list) ??
 	if (!new)
 		return (NULL);
 	new->value = value;
@@ -56,7 +56,7 @@ t_list	*ft_lstprev(t_list **lst, t_list *current)
 	while (lst && lst != &current)
 	{
 		prev = *lst;
-		*lst = (*lst)->next;//why parenthesis
+		*lst = (*lst)->next; // why parenthesis
 	}
 	return (prev);
 }
@@ -76,20 +76,21 @@ int	lst_size(t_list *head)
 	return (i);
 }
 
-void assign_index_by_value(t_list *stack)
+void	assign_index_by_value(t_list *stack)
 {
-	t_list *node;
-	int index;
-	int node_nbr;
-	t_list *min_node;
+	t_list	*node;
+	int		index;
+	int		node_nbr;
+	t_list	*min_node;
 
 	node_nbr = lst_size(stack);
 	index = 0;
-	while (index < node_nbr)//instead of this I could use 'while(node->next != NULL) 7 lines below ?
-		{
+	while (index < node_nbr)
+		// instead of this I could use 'while(node->next != NULL) 7 lines below ?
+	{
 		int min_value = 2147483647; // Initialize min_value to MAX_INT
-		min_node = NULL; // Initialize min_node to NULL
-		node = stack; // Start from the first node
+		min_node = NULL;            // Initialize min_node to NULL
+		node = stack;               // Start from the first node
 		// Find the node with the minimum value
 		while (node != NULL)
 		{
@@ -103,6 +104,7 @@ void assign_index_by_value(t_list *stack)
 		if (min_node != NULL)
 			min_node->index = index++;
 		else
-			break; // Break the loop if no node is found or all nodes have been assigned an index
+			break ;
+				// Break the loop if no node is found or all nodes have been assigned an index
 	}
 }
