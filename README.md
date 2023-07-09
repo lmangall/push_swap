@@ -89,25 +89,14 @@ To facilitate efficient manipulation using bitwise operators and binary represen
 
 ### Using an index
 
-To facilitate efficient manipulation using bitwise operators and binary representation, we will simplify the numbers in stack A before applying radix sort. This simplification involves replacing the numbers with a range of values from 0 to N-1, where N is the size of the stack.
+To facilitate efficient manipulation using bitwise operators and binary representation, we will give the numbers in stack A an index (from 0 to N-1, where N is the size of the stack) before applying radix sort. We will manipulate the nodes using the indexes, effectively pushing or rotating the values themselves.
 
-For example, suppose stack A initially contains the following numbers:
-- 87
-- -487
-- 781
-- -100
-- 101
-- 0
-- 1
+Here is an example of stack A contains the following numbers, the indexes that will be given and their binary representation
 
-We can simplify these numbers as follows:
-- 4
-- 0
-- 6
-- 1
-- 5
-- 2
-- 3
+| Values | 87   | -487 | 781 | -100 | 101 | 0   | 1   |
+|--------|------|------|-----|------|-----|-----|-----|
+| Index  | 4    | 0    | 6   | 1    | 5   | 2   | 3   |
+| Binary | 0100 | 0000 | 0110| 0001 | 0101| 0010| 0011|
 
 By simplifying the numbers, we transform them into non-negative integers within the range [0, N-1]. Consequently, we only need to sort the simplified numbers, making radix sort an efficient choice.
 
@@ -152,30 +141,58 @@ Example usage: `./push_swap 4 3 2 1`
 ## Implementation Notes
 
 
-### Initialization
+### Foo function
 
-To initialize the stacks, use the `stack_ini` function. It takes the address of the stack and the command-line arguments as inputs.
-
-```c
-void stack_ini(t_list **stack, int argc, char **argv)
-{
-	// Implementation details here...
-}
-```
-
-##Check Integer Function
-The check_int function ensures that the input arguments are valid integers within the range of int. It also handles error cases, such as non-numeric inputs or numbers exceeding the int range.
+Intro
 
 ```c
-void check_int(char *arg)
+void foo
 {
 	// Implementation details here...
 }
 ```
 
 
-##Binary Representation
+### Foo function
+
+Intro
+
+```c
+void foo
+{
+	// Implementation details here...
+}
+```
+
+
+
+### Foo function
+
+When you say that a bit is "set" in binary, it means that the value of that particular bit is 1. In binary representation, each digit or bit can have a value of either 0 or 1. When a bit is set, it indicates that it is turned on or active with a value of 1. Conversely, when a bit is not set, it means the value of that bit is 0.
+
+> This function checks the value of a specific bit in the binary representation of an integer. It right-shifts the integer by the given bit position, moving the bit of interest to the rightmost position. Then, it performs a bitwise AND operation with 1 to extract the value of the rightmost bit. If the extracted bit is 1, the specified bit is considered set; otherwise, it is considered not set.
+
+
+
+```c
+void foo
+{
+int	is_bit_set(int num, int bit)
+{
+	int	shifted;
+	int	result;
+
+	shifted = num >> bit;
+	result = shifted & 1;
+	return (result);
+}}
+```
+
+
+
+## Binary Representation
 The print_binary function converts a decimal number to its binary representation.
+
 ```c
 int print_binary(int num)
 {
@@ -186,7 +203,7 @@ int print_binary(int num)
 
 
 
-##Helper Functions
+## Helper Functions
 is_bit_set: Checks if a specific bit in an integer is set.
 find_minimum_node: Finds the node with the minimum value in a linked list.
 is_sorted: Checks if a linked list is sorted in ascending order.
@@ -215,27 +232,6 @@ typedef struct	s_list
 	struct	s_list	*next;
 }	t_list;
 ```
-
-## What does it means for abit to be "set"
-When you say that a bit is "set" in binary, it means that the value of that particular bit is 1. In binary representation, each digit or bit can have a value of either 0 or 1. When a bit is set, it indicates that it is turned on or active with a value of 1. Conversely, when a bit is not set, it means the value of that bit is 0.
-```c
-/**
- * @brief Checks if a specific bit in an integer is set.
- *
- * This function checks the value of a specific bit in the binary representation
- * of an integer. It works by right-shifting the integer by the given bit position,
- * effectively moving the bit of interest to the rightmost position. Then, it performs
- * a bitwise AND operation with 1 to extract the value of the rightmost bit. If the
- * extracted bit is 1, the specified bit is considered set; otherwise, it is considered
- * not set.
- *
- * @param num The integer value.
- * @param bit The position of the bit to check.
- * @return 1 if the specified bit is set (1), 0 otherwise (0).
- */
-int is_bit_set(int num, int bit)
-```
-
 
 ## ENDS UP NOT USED
 ```C
