@@ -417,3 +417,8 @@ Combination 2: (1, 3, 2)
 Combination 5: (3, 1, 2) 
 sa if min on top then ra
 ```
+
+tester command:
+```
+ARG="324 5 43 65 435"; ./push_swap $ARG | ./checker_linux $ARG
+```

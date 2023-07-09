@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 14:46:56 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 22:31:56 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/09 22:41:58 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	find_position(t_list *stack_a, int index)
 int	sort_3(t_list **stack, char *msg)
 {
 	int	size;
-printf("Address of stack_a (S3): %p\n", (void*)stack);
 
 	size = lst_size(*stack) - 1;
 	if (size == 1)
@@ -68,20 +67,17 @@ printf("Address of stack_a (S3): %p\n", (void*)stack);
 		rotate(stack, "ra");
 		exit_free("correct execution", stack);
 	}
-	if (find_position(*stack, find_minimum_idx(*stack)) == size)
+	if (find_position(*stack, find_min_idx(*stack)) == size)
 	{
-		if (find_maximum_idx(*stack) == (*stack)->index)
+		if (find_max_idx(*stack) == (*stack)->index)
 			swap(stack, "sa");
 		reverse_rotate(stack, "rra");
 	}
-	else if (size == find_minimum_idx(*stack))
-{
+	else if (size == find_min_idx(*stack))
 		swap(stack, "sa");
-		printf("Address of stack_a (XXX): %p\n", (void*)stack);
-}
 	else
 	{
-		if (find_minimum_idx(*stack) == (*stack)->index)
+		if (find_min_idx(*stack) == (*stack)->index)
 			swap(stack, "sa");
 		rotate(stack, "ra");
 	}
@@ -93,15 +89,10 @@ printf("Address of stack_a (S3): %p\n", (void*)stack);
 void	sort_5(t_list **stack_a, t_list **stack_b, int max, int size_b)
 {
 	int	min;
-printf("Address of stack_a (0): %p\n", (void*)stack_a);
 
-		min = find_minimum_idx(*stack_a);
+	min = find_min_idx(*stack_a);
 	while (size_b < 2)
 	{
-		printf("size = %d\n", size_b);
-		printf("min = %d\n", min);
-		printf("max = %d\n", max);
-		printf("stack_a->index = %d\n", (*stack_a)->index);
 		if ((*stack_a)->index == min || (*stack_a)->index == max)
 			push(stack_a, stack_b, "pb");
 		else

@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:12:07 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 21:11:38 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/09 22:42:00 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	main(int argc, char **argv)
 	if (lst_size(stack_a) == 3)
 		sort_3(&stack_a, "correct execution");
 	if (lst_size(stack_a) == 5)
-		sort_5(&stack_a, &stack_b, find_maximum_idx(stack_a), lst_size(stack_b));
+		sort_5(&stack_a, &stack_b, find_max_idx(stack_a), lst_size(stack_b));
 	algo(&stack_a, &stack_b, lst_size(stack_a), lst_size(stack_b));
 	exit_free("correct execution", &stack_a);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:30:14 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 21:11:35 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/09 22:51:05 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,8 +214,8 @@ int		algo(t_list **stack_a, t_list **stack_b, int Astk_siz, int Bstk_siz);
  * @param stack_a The pointer to the head of the linked list.
  * @return        The minimum index value in the linked list.
  */
-int		find_minimum_idx(t_list *stack_a);
-int		find_maximum_idx(t_list *stack);
+int		find_min_idx(t_list *stack_a);
+int		find_max_idx(t_list *stack);
 int		sort_3(t_list **stack, char *msg);
 void	sort_5(t_list **stack_a, t_list **stack_b, int max, int size);
 

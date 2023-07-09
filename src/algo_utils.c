@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 15:54:39 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 18:25:48 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/09 22:42:34 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_sorted(t_list *stack)
 	return (1);
 }
 
-int	find_minimum_idx(t_list *stack_a)
+int	find_min_idx(t_list *stack_a)
 {
 	t_list	*node;
 	int		min_index;
@@ -45,7 +45,7 @@ int	find_minimum_idx(t_list *stack_a)
 	return (min_index);
 }
 
-int	find_maximum_idx(t_list *stack)
+int	find_max_idx(t_list *stack)
 {
 	t_list	*node;
 	int		max_index;
