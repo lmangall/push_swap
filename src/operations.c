@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/09 18:23:59 by lmangall          #+#    #+#             */
+/*   Updated: 2023/07/09 18:24:32 by lmangall         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 #include "../lib/libft/src/libft.h"
 
@@ -89,24 +101,6 @@ int	rr(t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
-// int	reverse_rotate(t_list **stack, char *code)
-// {
-// 	t_list	*head;
-// 	t_list	*tail;
-// 	t_list	*prev_tail;
-
-// 	if (lst_size(*stack) < 2)
-// 		return (-1);
-// 	head = (*stack);
-// 	tail = ft_lstlast(head);
-// 	prev_tail = ft_lstprev(stack, tail);
-// 	prev_tail->next = NULL;
-// 	tail->next = head;
-// 	(*stack) = tail;
-// 	if (ft_strstr(code, "rra") || ft_strstr(code, "rrb"))
-// 		ft_putendl_fd(code, 1);
-// 	return (0);
-// }
 int	reverse_rotate(t_list **stack, char *code)
 {
 	t_list	*head;

@@ -15,7 +15,8 @@
 		"chrono": "c",
 		"variant": "c",
 		"__locale": "c",
-		"limits": "c"
+		"limits": "c",
+		"push_swap.h": "c"
 	},
 	"[c]": {
 		"editor.defaultFormatter": "keyhr.42-c-format"

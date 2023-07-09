@@ -1,19 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_ini_assign.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/09 18:12:07 by lmangall          #+#    #+#             */
+/*   Updated: 2023/07/09 18:23:13 by lmangall         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 #include "../lib/libft/src/libft.h"
 
-
-void	assign_index_by_value(t_list *stack)
+void	assign_index_by_value(t_list *stack, int node_nbr)
 {
 	t_list	*node;
 	int		index;
-	int		node_nbr;
 	t_list	*min_node;
-	int min_value;
+	int		min_value;
 
-	node_nbr = lst_size(stack);
 	index = 0;
 	while (index < node_nbr)
-	{ 
+	{
 		min_value = 2147483647;
 		min_node = NULL;
 		node = stack;
@@ -40,8 +49,6 @@ void	stack_ini(t_list **stack_a, int argc, char **argv)
 	char	**args;
 
 	i = 0;
-	if (!stack_a)
-		return ;
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
@@ -84,11 +91,9 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc < 2)
-		exit_free("Nothing to sort", NULL);
-	check_args(argc, argv, &stack_a, ft_split(argv[1], ' '));
+	check_args(argc, argv, &stack_a);
 	stack_ini(&stack_a, argc, argv);
-	assign_index_by_value(stack_a);
+	assign_index_by_value(stack_a, lst_size(stack_a));
 	if (is_sorted(stack_a))
 		exit_free("sorted", &stack_a);
 	if (lst_size(stack_a) <= 3)

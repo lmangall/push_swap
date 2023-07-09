@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 15:54:54 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 16:20:11 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/09 18:09:05 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,6 @@ void	free_array(char **str)
 		i++;
 	}
 	free(str);
-}
-
-void	free_stack(t_list *stack)
-{
-	t_list	*current;
-	t_list	*tmp;
-
-	current = stack;
-	while (current != NULL)
-	{
-		tmp = current;
-		current = current->next;
-		free(tmp);
-	}
 }
 
 void	exit_free(char *msg, t_list **stack_a)
@@ -104,32 +90,29 @@ char	*check_int(char *arg)
 	return ("all good");
 }
 
-void	check_args(int argc, char **argv, t_list **stack_a, char **args)
+void	check_args(int argc, char **argv, t_list **stack_a)
 {
+	char	**args;
 	char	*msg;
 	int		i;
 
 	i = 0;
+	if (argc < 2)
+		exit_free("Nothing to sort", NULL);
 	if (argc == 2)
 	{
+		args = ft_split(argv[1], ' ');
 		check_duplicate(args, "free");
-		while (args[++i])
-		{
+		while (args[++i] && (ft_strcmp(msg, "all good") != 0))
 			msg = check_int(args[i]);
-			if (ft_strcmp(msg, "all good") != 0)
-				break ;
-		}
 		free_array(args);
 	}
 	if (argc > 2)
 	{
 		check_duplicate(argv + 1, "do not free");
-		while (++i != argc - 1)
-		{
+		while (++i != argc - 1 && (ft_strcmp(msg, "all good") != 0))
 			msg = check_int(argv[i + 1]);
-			if (ft_strcmp(msg, "all good") != 0)
-				break ;
-		}
 	}
-	exit_free(msg, stack_a);
+	if (ft_strcmp(msg, "all good") != 0)
+		exit_free(msg, stack_a);
 }

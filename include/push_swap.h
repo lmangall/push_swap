@@ -76,7 +76,7 @@ char*	check_int(char *arg);
  * @param stack_a A pointer to a pointer to the t_list structure representing stack A.
  * @return None.
  */
-void	check_args(int argc, char **argv, t_list **stack_a, char **args);
+void	check_args(int argc, char **argv, t_list **stack_a);
 /**
  * @brief Frees a stack of t_list nodes.
  *
@@ -148,7 +148,7 @@ t_list	*ft_lstlast(t_list *lst);
  *
  * @param stack Pointer to the head of the linked list.
  */
-void	assign_index_by_value(t_list *stack);
+void	assign_index_by_value(t_list *stack, int node_nbr);
 /**
  * @brief Initializes a stack with values from command-line arguments.
  *

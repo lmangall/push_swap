@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_manip.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/09 18:10:57 by lmangall          #+#    #+#             */
+/*   Updated: 2023/07/09 18:10:58 by lmangall         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 void	ft_lstadd_front(t_list **stack, t_list *new)
@@ -19,7 +31,7 @@ void	ft_lstadd_back(t_list **stack, t_list *new)
 	else
 	{
 		*stack = new;
-		(*stack)->next = NULL; // why parenthesis ?
+		(*stack)->next = NULL;
 	}
 }
 
@@ -27,7 +39,7 @@ t_list	*ft_lstnew(int value)
 {
 	t_list	*new;
 
-	new = malloc(sizeof(t_list)); // sizeof (t_list) ??
+	new = malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
 	new->value = value;
@@ -56,22 +68,7 @@ t_list	*ft_lstprev(t_list **lst, t_list *current)
 	while (lst && lst != &current)
 	{
 		prev = *lst;
-		*lst = (*lst)->next; // why parenthesis
+		*lst = (*lst)->next;
 	}
 	return (prev);
-}
-
-int	lst_size(t_list *head)
-{
-	int		i;
-	t_list	*tmp;
-
-	i = 0;
-	tmp = head;
-	while (tmp != NULL)
-	{
-		tmp = tmp->next;
-		i++;
-	}
-	return (i);
 }

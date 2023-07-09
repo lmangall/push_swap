@@ -11,6 +11,7 @@ SRCS = main_ini_assign.c \
 		operations.c \
 		checks_errors_exit.c \
 		algo.c \
+		utils.c \
 		algo_utils.c
 
 # Object files
