@@ -1,4 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/09 15:54:39 by lmangall          #+#    #+#             */
+/*   Updated: 2023/07/09 15:58:45 by lmangall         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
+int	is_sorted(t_list *stack)
+{
+	t_list	*current_node;
+
+	current_node = stack;
+	while (current_node->next != NULL)
+	{
+		if (current_node->index > current_node->next->index)
+			return (0);
+		else
+			current_node = current_node->next;
+	}
+	return (1);
+}
 
 int	find_minimum_idx(t_list *stack_a)
 {
@@ -7,7 +34,7 @@ int	find_minimum_idx(t_list *stack_a)
 
 	node = stack_a;
 	min_index = 2147483646;
-	while (node) /// try: 	while (node != NULL)
+	while (node)
 	{
 		if (node->index < min_index)
 			min_index = node->index;

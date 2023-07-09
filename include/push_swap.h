@@ -76,7 +76,7 @@ char*	check_int(char *arg);
  * @param stack_a A pointer to a pointer to the t_list structure representing stack A.
  * @return None.
  */
-void	check_args(int argc, char **argv, t_list **stack_a);
+void	check_args(int argc, char **argv, t_list **stack_a, char **args);
 /**
  * @brief Frees a stack of t_list nodes.
  *
@@ -196,7 +196,7 @@ int		algo(t_list **stack_a, t_list **stack_b, int Astk_siz, int Bstk_siz);
 int		find_minimum_idx(t_list *stack_a);
 int		find_maximum_idx(t_list *stack);
 void	sort_3(t_list **stack);
-void	sort_5(t_list *stack_a, t_list *stack_b);
+void	sort_5(t_list *stack_a, t_list *stack_b, int max, int size);
 
 //Helper functions
 /**

@@ -84,7 +84,9 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	check_args(argc, argv, &stack_a);
+	if (argc < 2)
+		exit_free("Nothing to sort", NULL);
+	check_args(argc, argv, &stack_a, ft_split(argv[1], ' '));
 	stack_ini(&stack_a, argc, argv);
 	assign_index_by_value(stack_a);
 	if (is_sorted(stack_a))
@@ -92,7 +94,7 @@ int	main(int argc, char **argv)
 	if (lst_size(stack_a) <= 3)
 		sort_3(&stack_a);
 	if (lst_size(stack_b) == 5)
-		sort_5(stack_a, stack_b);
+		sort_5(stack_a, stack_b, lst_size(stack_a) - 1, lst_size(stack_b));
 	algo(&stack_a, &stack_b, lst_size(stack_a), lst_size(stack_b));
 	exit_free("correct execution", &stack_a);
 	return (0);

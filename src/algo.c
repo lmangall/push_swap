@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 14:46:56 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 15:14:49 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/09 15:52:29 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,22 +84,17 @@ void	sort_3(t_list **stack)
 	exit_free("correct execution", stack);
 }
 
-void	sort_5(t_list *stack_a, t_list *stack_b)
+void	sort_5(t_list *stack_a, t_list *stack_b, int max, int size)
 {
-	int	max;
 	int	min;
-	int	size;
 
-	max = lst_size(stack_a) - 1;
 	min = find_minimum_idx(stack_a);
-	size = lst_size(stack_b);
 	while (size < 2)
 	{
 		if (stack_a->index == min || stack_a->index == max)
 			push(&stack_a, &stack_b, "pb");
 		else
 			rotate(&stack_a, "ra");
-		min = find_minimum_idx(stack_a);
 		size = lst_size(stack_b);
 	}
 	sort_3(&stack_a);
@@ -107,15 +102,12 @@ void	sort_5(t_list *stack_a, t_list *stack_b)
 	push(&stack_a, &stack_b, "pa");
 	if (is_sorted(stack_a))
 		exit_free("correct execution", &stack_a);
+	if (stack_a->index == max)
+		rotate(&stack_a, "ra");
 	else
 	{
-		if (stack_a->index == max)
-			rotate(&stack_a, "ra");
-		else
-		{
-			swap(&stack_a, "sa");
-			rotate(&stack_a, "ra");
-		}
+		swap(&stack_a, "sa");
+		rotate(&stack_a, "ra");
 	}
 	exit_free("correct execution", &stack_a);
 }

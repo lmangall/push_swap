@@ -1,19 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checks_errors_exit.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/09 15:54:54 by lmangall          #+#    #+#             */
+/*   Updated: 2023/07/09 16:20:11 by lmangall         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
-
-int	is_sorted(t_list *stack)
-{
-	t_list	*current_node;
-
-	current_node = stack;
-	while (current_node->next != NULL)
-	{
-		if (current_node->index > current_node->next->index)
-			return (0);
-		else
-			current_node = current_node->next;
-	}
-	return (1);
-}
 
 void	free_array(char **str)
 {
@@ -107,28 +104,20 @@ char	*check_int(char *arg)
 	return ("all good");
 }
 
-
-void	check_args(int argc, char **argv, t_list **stack_a)
+void	check_args(int argc, char **argv, t_list **stack_a, char **args)
 {
-	char	**args;
 	char	*msg;
-	int 	i;
+	int		i;
 
 	i = 0;
-	if (argc < 2)
-		exit_free("Nothing to sort", NULL);
 	if (argc == 2)
 	{
-		args = ft_split(argv[1], ' ');
 		check_duplicate(args, "free");
 		while (args[++i])
 		{
 			msg = check_int(args[i]);
 			if (ft_strcmp(msg, "all good") != 0)
-			{
-				free_array(args);
-				exit_free(msg, stack_a);
-			}
+				break ;
 		}
 		free_array(args);
 	}
@@ -139,7 +128,8 @@ void	check_args(int argc, char **argv, t_list **stack_a)
 		{
 			msg = check_int(argv[i + 1]);
 			if (ft_strcmp(msg, "all good") != 0)
-				exit_free(msg, stack_a);
+				break ;
 		}
 	}
+	exit_free(msg, stack_a);
 }
