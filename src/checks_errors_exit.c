@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 15:54:54 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 19:26:31 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/10 10:08:26 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	exit_free(char *msg, t_list **stack_a)
 {
 	if (ft_strcmp(msg, "correct execution") != 0)
 	{
-		ft_putstr_fd("Error:\n", 1);
-		ft_putendl_fd(msg, 1);
+		ft_putstr_fd("Error:\n", 2);
+		ft_putendl_fd(msg, 2);
 	}
 	if (ft_strcmp(msg, "Nothing to sort") == 0 || ft_strcmp(msg,
 			"Duplicate among the arguments") == 0)
@@ -85,8 +85,6 @@ void	check_args(int argc, char **argv, t_list **stack_a)
 
 	i = 0;
 	msg = "all good";
-	if (argc < 2)
-		exit_free("correct execution", NULL);
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
