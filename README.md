@@ -210,14 +210,69 @@ To move up or down selected lines holding Alt and use the arrow keys.
 -
 -
 -
--
--
--
--
--
--
--
 
+
+
+-
+-
+-
+-
+-
+-
+-
+## Error management
+The subject didn't specifically require error messages, and using error messages in this context may even be considered unconventional. However, I chose to employ error messages as they significantly enhance code cleanliness and improve readability, aiding in understanding the outputs and the underlying processes. Additionally, I leverage these error messages to selectively trigger various options within a function. By comparing a message sent to a function with a specific one, the code evaluates these comparisons and conditionally executes different code blocks. This allows for dynamic decision-making, such as choosing whether or not to free certain structures or stacks based on the outcome of the comparisons.
+
+```C
+void	exit_free(char *msg, t_list **stack_a)
+{
+	//If the execution is correct we don't want to output error or any messages
+	if (ft_strcmp(msg, "correct execution") != 0)
+	{
+		ft_putstr_fd("Error:\n", 1);
+		ft_putendl_fd(msg, 1);
+	}
+	//in this case we don't want to free
+	if (ft_strcmp(msg, "Nothing to sort") == 0 || ft_strcmp(msg, "Duplicate among the arguments") == 0)
+		exit(1);
+	if (ft_strcmp(msg, "sorted") == 0)
+	{
+		free_stack(*stack_a);
+		exit(1);
+	}
+	free_stack(*stack_a);
+	exit(1);
+}
+```
+
+By utilizing the error messages that are output to stderr (2), the code becomes more debuggable, and it becomes possible to redirect the output of a single execution to a file based on whether the messages are sent to stdout (1) or stderr (2). This approach can be useful for error tracking, or generating reports that isolate error-related information.
+
+### The ">" operator: the "output redirection operator" or the "stdout redirection operator."
+By using the appropriate redirection operators, you can capture and segregate the stdout and stderr outputs separately, allowing for more effective debugging and analysis of the program's execution.
+>> "1>" redirects the standard output (stdout) of a command to a file. "2>" redirects the standard error (stderr) of a command to a file.
+
+Let's say we have a command called "mycommand" that produces both regular output (stdout) and error messages (stderr). To capture only the output from either stream, you can use the following commands:
+
+```C
+mycommand > stdout.txt
+```
+In this case, the regular output from "mycommand" will be redirected to the "stdout.txt" file, while any error messages will still be displayed on the terminal.
+
+```C
+mycommand 2> stderr.txt
+```
+In this case, the error messages from "mycommand" will be redirected to the "stderr.txt" file, while the regular output will still be displayed on the terminal.
+
+By redirecting the desired output stream to a file using the ">" operator, you can save that specific output to a file while disregarding the other stream. This allows you to focus on the output that is relevant to your analysis or debugging, keeping it separate for further examination or processing.
+
+
+-
+-
+-
+-
+-
+-
+-
 
 
 
