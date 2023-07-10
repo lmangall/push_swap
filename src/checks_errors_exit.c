@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 15:54:54 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/10 10:29:05 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/10 14:53:10 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	exit_free(char *msg, t_list **stack_a)
 		free_stack(*stack_a);
 		exit(1);
 	}
+	print_list(*stack_a);
 	if (stack_a != NULL)
 		free_stack(*stack_a);
 	exit(1);

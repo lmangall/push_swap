@@ -399,18 +399,24 @@ void stack_ini(t_list **stack, int argc, char **argv)
 
 ### Overview and logic to sort 3 values:
 ```
+//minimum at end
 Combination 6: (3, 2, 1) 
 Combination 4: (2, 3, 1)
 sa if max on top then rra
 
+//maximum at end
 Combination 1: (1, 2, 3) sorted: problem already exited
 Combination 3: (2, 1, 3)
 sa
 
+//other / middle at end
 Combination 2: (1, 3, 2)
 Combination 5: (3, 1, 2) 
 sa if min on top then ra
 ```
+
+
+
 
 ### tester command:
 ```

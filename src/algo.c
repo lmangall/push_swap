@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 14:46:56 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 22:41:58 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/10 15:24:36 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +62,34 @@ int	sort_3(t_list **stack, char *msg)
 	int	size;
 
 	size = lst_size(*stack) - 1;
+			printf("current idx: %d\n", (*stack)->index);
+
+	printf("size: %d\n", size);
 	if (size == 1)
 	{
 		rotate(stack, "ra");
 		exit_free("correct execution", stack);
 	}
-	if (find_position(*stack, find_min_idx(*stack)) == size)
+	printf("min idx: %d\n", find_min_idx(*stack));
+	if (find_min_idx(*stack) == size)
 	{
 		if (find_max_idx(*stack) == (*stack)->index)
+			{
+			printf("found max idx\n");
 			swap(stack, "sa");
+			}
 		reverse_rotate(stack, "rra");
 	}
-	else if (size == find_min_idx(*stack))
+	else if (find_max_idx(*stack) == size)
+{
 		swap(stack, "sa");
+		printf("MARKcurrent idx: %d\n", (*stack)->index);
+	}
 	else
 	{
+		printf("minimum idx: %d\n", find_min_idx(*stack));
+		printf("current idx: %d\n", (*stack)->index);
+		printf("value: %d\n", (*stack)->value);
 		if (find_min_idx(*stack) == (*stack)->index)
 			swap(stack, "sa");
 		rotate(stack, "ra");
