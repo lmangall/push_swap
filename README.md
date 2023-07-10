@@ -1,12 +1,3 @@
-# Yet to do 
-- 
-- double check the check_int func and clean it
-- implement a 4 number algo 
-- Check for leaks
-- polish and check makefile
-- final norminette
-
-
 
 # Push Swap
 
@@ -134,6 +125,8 @@ The visualizer is usefull for debugging
 - [Additional Push Swap Tutorial](https://medium.com/@ayogun/push-swap-c1f5d2d41e97)
 - [Push Swap Project Documentation](https://sharkigamers.github.io/pushswap_epitech_project/)
 - [Double Pointers and Linked List in C](https://dev-notes.eu/2018/07/double-pointers-and-linked-list-in-c/)
+- [Article on 42 cursus gitbook](https://42-cursus.gitbook.io/guide/rank-02/push_swap/building-the-thing)
+- [Vizualizer](https://github.com/o-reo/push_swap_visualizer)
 
 ## Miscellaneous
 
@@ -404,6 +397,7 @@ void stack_ini(t_list **stack, int argc, char **argv)
 }
 ```
 
+### Overview and logic to sort 3 values:
 ```
 Combination 6: (3, 2, 1) 
 Combination 4: (2, 3, 1)
@@ -418,7 +412,7 @@ Combination 5: (3, 1, 2)
 sa if min on top then ra
 ```
 
-tester command:
+### tester command:
 ```
 ARG="324 5 43 65 435"; ./push_swap $ARG | ./checker_linux $ARG
 ```
