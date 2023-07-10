@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 13:54:17 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/06 14:11:18 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/10 10:23:18 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 * @return 0	If the parameter isn't an alphabet
 * "NonZero"	If the parameter is an alphabet.
 */
-int		ft_isalpha(int argument);
+int			ft_isalpha(int argument);
 
 /**
 * @brief Checks whether a character is numeric (0-9).
@@ -39,7 +39,7 @@ int		ft_isalpha(int argument);
 * @return 0 if not a numeric character
 * "NonZero"	if numeric.
 */
-int		ft_isdigit(int arg);
+int			ft_isdigit(int arg);
 
 /**
 * @brief Checks whether the argument is an alphanumeric character 
@@ -47,7 +47,7 @@ int		ft_isdigit(int arg);
 * @return Returns 0 if argument is neither an alphabet nor a digit.
 * Returns "NonZero" if argument is an alphanumeric character.
 */
-int		ft_isalnum(int arg);
+int			ft_isalnum(int arg);
 
 /**
 * @brief Checks whether arg fits into the ASCII character set.
@@ -55,35 +55,35 @@ int		ft_isalnum(int arg);
 * @return non-zero value if passed value is an ascii character
 * otherwise zero.
 */
-int		ft_isascii(int arg);
+int			ft_isascii(int arg);
 
 /**
 * @brief Checks whether a character is a printable character.
 * @param arg to check
 * @return returns non-zero int for printable, returns 0 for unprintable.
 */
-int		ft_isprint(int argument);
+int			ft_isprint(int argument);
 
 /**
 * @brief Calculates  the  length of the string pointed to by s
 * excluding the terminating  null byte ('\0').
 * @return The number of bytes in the string pointed to by s.
 */
-size_t	ft_strlen(const char *arg);
+size_t		ft_strlen(const char *arg);
 
 /**
 * @brief Convert lowercase letters to uppercase
 * @param char letter to convert
 * @return Converted letter or arg if not possible
 */
-int		ft_toupper(int arg);
+int			ft_toupper(int arg);
 
 /**
 * @brief Convert luppercase letters to lowercase
 * @param char letter to convert
 * @return Converted letter or arg if not possible
 */
-int		ft_tolower(int arg);
+int			ft_tolower(int arg);
 
 /**
 * @brief Returns a pointer to the first occurrence of the character c 
@@ -93,7 +93,7 @@ int		ft_tolower(int arg);
 * @return return a pointer to the matched character 
 *or NULL if the character is not found
 */
-char	*ft_strchr(const char *str, int c);
+char		*ft_strchr(const char *str, int c);
 
 /**
 * @brief Returns a pointer to the last occurrence of the character c 
@@ -103,7 +103,7 @@ char	*ft_strchr(const char *str, int c);
 * @return return a pointer to the matched character 
 *or NULL if the character is not found
 */
-char	*ft_strrchr(char *str, int c);
+char		*ft_strrchr(char *str, int c);
 
 /**
 * @brief Compares the two strings s1 and s2. 
@@ -112,7 +112,7 @@ char	*ft_strrchr(char *str, int c);
 * @return It returns an integer less than, equal to, or greater than zero 
 *if s1 is found, respectively, to be less than, to match, 
 *or be greater than s2. */
-int		ft_strcmp(const char *str1, const char *str2);
+int			ft_strcmp(const char *str1, const char *str2);
 
 /**
 * @brief Compares the first (at most) n bytes of s1 and s2. 
@@ -123,7 +123,7 @@ int		ft_strcmp(const char *str1, const char *str2);
 *if s1 is found, respectively, to be less than, to match, 
 *or be greater than s2. 
 */
-int		ft_strncmp(const char *str1, const char *str2, size_t n);
+int			ft_strncmp(const char *str1, const char *str2, size_t n);
 
 /**
 * @brief Fills the first n bytes of the memory area 
@@ -133,7 +133,7 @@ int		ft_strncmp(const char *str1, const char *str2, size_t n);
 * @param len of bytes to be filled starting
 * @return void
 */
-void	*ft_memset(void *s, int c, size_t n);
+void		*ft_memset(void *s, int c, size_t n);
 
 /**
 * @brief Erases the data in the n bytes of the memory starting 
@@ -142,7 +142,7 @@ void	*ft_memset(void *s, int c, size_t n);
 * @param len: The number of bytes to fill
 * @return void
 */
-void	ft_bzero(void *str, size_t len);
+void		ft_bzero(void *str, size_t len);
 
 /**
 * @brief Copies n characters from memory area src to memory area dest.
@@ -153,7 +153,7 @@ void	ft_bzero(void *str, size_t len);
 * @param n − This is the number of bytes to be copied.
 * @return void
 */
-void	*ft_memcpy(void *dst, const void *src, size_t n);
+void		*ft_memcpy(void *dst, const void *src, size_t n);
 
 /**
 * @brief copies n characters from str2 to str1
@@ -167,7 +167,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 * @param len − This is the number of bytes to be copied
 * @return void
 */
-void	*ft_memmove(void *dst, void *src, size_t len);
+void		*ft_memmove(void *dst, void *src, size_t len);
 
 /**
 * @brief takes the full size of the buffer, not only the length,
@@ -179,7 +179,7 @@ void	*ft_memmove(void *dst, void *src, size_t len);
 * @return Total length of the string that would have been copied if
 * there was unlimited space.
 */
-size_t	ft_strlcpy(char *dst, const char *src, size_t len);
+size_t		ft_strlcpy(char *dst, const char *src, size_t len);
 
 /**
 * @brief Appends the NULL-terminated string src to the end of dst. It will
@@ -190,7 +190,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t len);
 * @return Total length of the string that would have been copied if
 * there was unlimited space.
 */
-size_t	ft_strlcat(char *dst, const char *src, size_t len);
+size_t		ft_strlcat(char *dst, const char *src, size_t len);
 
 /**
 * @brief locates the first occurrence of the null-terminated
@@ -202,7 +202,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t len);
 * nowhere * in big, NULL is returned; otherwise a pointer to the first
 * character of the first occurrence of little is returned.
 */
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 /**
 * @brief searches for the first occurrence of the character c (an unsigned
@@ -216,7 +216,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 * @return This function returns a pointer to the matching byte or NULL
 * if the character does not occur in the given memory area.
 */
-void	*ft_memchr(const void *s, int c, size_t n);
+void		*ft_memchr(const void *s, int c, size_t n);
 
 /**
 * @brief Compares the first n bytes of memory area str1 and memory area str2
@@ -227,7 +227,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 *if Return value > 0 then it indicates str2 is less than str1.
 *if Return value = 0 then it indicates str1 is equal to str2.
 */
-int		ft_memcmp(const void *str1, const void *str2, size_t len);
+int			ft_memcmp(const void *str1, const void *str2, size_t len);
 
 /**
 * @brief converts the string argument str to an integer (type int).
@@ -235,7 +235,7 @@ int		ft_memcmp(const void *str1, const void *str2, size_t len);
 * @return This function returns the converted integral number as an int
 * value. If no valid conversion could be performed, it returns zero.
 */
-int		ft_atoi(const char *str);
+int			ft_atoi(const char *str);
 
 /**
 * @brief converts the string argument str to a long int.
@@ -243,7 +243,7 @@ int		ft_atoi(const char *str);
 * @return This function returns the converted integral number as a long
 * int value. If no valid conversion could be performed, it returns zero.
 */
-long long		ft_atolli(const char *str);
+long long	ft_atolli(const char *str);
 
 /**
 * @brief allocates the requested memory and returns a pointer to it.
@@ -253,7 +253,7 @@ long long		ft_atolli(const char *str);
 * @param len - This is the size of elements.
 * @return void
 */
-void	*ft_calloc(size_t nitems, size_t len);
+void		*ft_calloc(size_t nitems, size_t len);
 
 /**
 * @brief Allocates with malloc and returns a string
@@ -264,14 +264,14 @@ void	*ft_calloc(size_t nitems, size_t len);
 * @return The string representing the integer.
 * NULL if the allocation fails.
 */
-char	*ft_itoa(int n);
+char		*ft_itoa(int n);
 
 /**
 * @brief Duplicate String
 * @param Pointer to start of the string to be copied
 * @return A pointer to a new string
 */
-char	*ft_strdup(const char *src);
+char		*ft_strdup(const char *src);
 
 /**
 * @brief Allocates (with malloc(3)) and returns a substring
@@ -282,7 +282,7 @@ char	*ft_strdup(const char *src);
 * @param len: The maximum length of the substring.
 * @return The substring. NULL if the allocation fails.
 */
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
 
 /**
 * @brief Allocates with malloc and returns a new string, 
@@ -291,7 +291,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 * @param s2: The suffix string.
 * @return The new string.NULL if the allocation fails.
 */
-char	*ft_strjoin(const char *s1, const char *s2);
+char		*ft_strjoin(const char *s1, const char *s2);
 
 /**
 * @brief Allocates with malloc and returns a copy of
@@ -302,7 +302,7 @@ char	*ft_strjoin(const char *s1, const char *s2);
 * @return The trimmed string.
 * NULL if the allocation fails.
 */
-char	*ft_strtrim(char const *s1, char const *set);
+char		*ft_strtrim(char const *s1, char const *set);
 
 /**
 * @brief Allocates (with malloc(3)) and returns an array
@@ -314,7 +314,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 * @return The array of new strings resulting from the split.
 * NULL if the allocation fails.
 */
-char	**ft_split(char const *str, char c);
+char		**ft_split(char const *str, char c);
 
 /**
 * @brief Applies the function ’f’ to each character of the
@@ -326,7 +326,7 @@ char	**ft_split(char const *str, char c);
 * @return The string created from the successive applications
 * of ’f’. *Returns NULL if the allocation fails.
 */
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 /**
 * @brief Applies the function ’f’ on each character of
@@ -337,7 +337,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 * @param f: The function to apply to each character.
 * @return void
 */
-void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void		ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 /**
 * @brief Outputs the character ’c’ to the given file
@@ -346,7 +346,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 * @param fd: The file descriptor on which to write.
 * @return void
 */
-int		ft_putchar_fd(char c, int fd);
+int			ft_putchar_fd(char c, int fd);
 
 /**
 * @brief Outputs the string ’s’ to the given file
@@ -355,7 +355,7 @@ int		ft_putchar_fd(char c, int fd);
 * @param fd: The file descriptor on which to write.
 * @return number of chars printed (1)
 */
-int		ft_putstr_fd(char *s, int fd);
+int			ft_putstr_fd(char *s, int fd);
 
 /**
 * @brief Outputs the string ’s’ to the given file descriptor
@@ -364,7 +364,7 @@ int		ft_putstr_fd(char *s, int fd);
 * @param fd: The file descriptor on which to write.
 * @return number of chars printed
 */
-void	ft_putendl_fd(char *s, int fd);
+void		ft_putendl_fd(char *s, int fd);
 
 /**
 * @brief Outputs the integer ’n’ to the given file descriptor.
@@ -372,14 +372,14 @@ void	ft_putendl_fd(char *s, int fd);
 * @param fd: The file descriptor on which to write.
 * @return number of chars printed (1)
 */
-int		ft_putnbr_fd(int n, int fd);
+int			ft_putnbr_fd(int n, int fd);
 
 /**
  * @brief Verify in string if there is any space or similar char
  * @param c
  * @return int. (0) if not space
  */
-int		ft_isspace(int c);
+int			ft_isspace(int c);
 
 // size_t	ft_strlen(char *s);
 // char	*ft_strchr(char *s, int c);
@@ -393,16 +393,16 @@ int		ft_isspace(int c);
  * @return A pointer to the first occurrence of the substring within the string,
  *         or NULL if the substring is not found.
  */
-char	*ft_strstr(const char *haystack, const char *needle);
+char		*ft_strstr(const char *haystack, const char *needle);
 
 //extra for GNL:
-char	*stored_s_to_str(char *stored_s);
-char	*new_stored_s(char	*stored_s);
-char	*get_next_line(int fd);
-char	*read_to_stored_s(int fd, char *stored_s);
+char		*stored_s_to_str(char *stored_s);
+char		*new_stored_s(char	*stored_s);
+char		*get_next_line(int fd);
+char		*read_to_stored_s(int fd, char *stored_s);
 
 //extra for ft_printf:
-int		putnbr_with_itoa(int nbr);
-int		putunbr_with_itoa(unsigned int nbr);
+int			putnbr_with_itoa(int nbr);
+int			putunbr_with_itoa(unsigned int nbr);
 
 #endif
