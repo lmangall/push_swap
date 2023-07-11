@@ -133,9 +133,10 @@ The visualizer is usefull for debugging
 ### conversion between decimal and binary numbers.
 This table can be used to quickly look up the binary representation of a decimal number or vice versa.
 
-| Decimal |    1     |    2     |    4     |    8     |   16     |   32     |   64     |
+| Decimal |   64     |   32     |   16     |   8      |   4      |   2      |   1      |
 |---------|----------|----------|----------|----------|----------|----------|----------|
-| Binary  | 00000001 | 00000010 | 00000100 | 00001000 | 00010000 | 00100000 | 01000000 |
+| Binary  | 01000000 | 00100000 | 00010000 | 00001000 | 00000100 | 00000010 | 00000001 |
+
 
 [Video on binary to decimal](https://youtu.be/RrJXLdv1i74?t=605)
 
