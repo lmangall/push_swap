@@ -6,7 +6,7 @@
 /*   By: lmangall <lmangall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:12:07 by lmangall          #+#    #+#             */
-/*   Updated: 2023/07/09 22:42:00 by lmangall         ###   ########.fr       */
+/*   Updated: 2023/07/12 14:51:49 by lmangall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,13 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
-		exit_free("correct execution", NULL);
+		exit(1);
 	check_args(argc, argv, &stack_a);
 	stack_ini(&stack_a, argc, argv);
 	assign_index_by_value(stack_a, lst_size(stack_a));
 	if (is_sorted(stack_a))
 		exit_free("sorted", &stack_a);
-	if (lst_size(stack_a) == 3)
+	if (lst_size(stack_a) <= 3)
 		sort_3(&stack_a, "correct execution");
 	if (lst_size(stack_a) == 5)
 		sort_5(&stack_a, &stack_b, find_max_idx(stack_a), lst_size(stack_b));

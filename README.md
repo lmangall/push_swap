@@ -456,7 +456,7 @@ void stack_ini(t_list **stack, int argc, char **argv)
 ### Overview and logic to sort 3 values:
 ```
 //minimum at end
-Combination 6: (2, 1, 0) 
+Combination 6: (2, 1, 0)              X
 Combination 4: (1, 2, 0)
 sa if max on top then rra
 
