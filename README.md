@@ -236,6 +236,10 @@ To hide the terminal, use Cmd+j.
 To move up or down selected lines holding Alt and use the arrow keys.
 
 
+## Organization and visualisation:
+If you like the Doxygen comments and want to take it a step further you can visualize them, the easy with Carlo's script :  https://gist.github.com/CarloCattano/1f1db247c4eb8477a365e29eaf12aaf1
+
+
 -
 -
 -
